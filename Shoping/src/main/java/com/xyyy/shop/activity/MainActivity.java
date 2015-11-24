@@ -1,0 +1,406 @@
+package com.xyyy.shop.activity;
+
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.android.volley.VolleyError;
+import com.android.volley.listener.HttpBackBaseListener;
+import com.android.volley.util.VolleyUtil;
+import com.baidu.mobstat.StatService;
+import com.xyyy.shop.AppManager;
+import com.xyyy.shop.R;
+import com.xyyy.shop.ShopApplication;
+import com.xyyy.shop.db.CartDao;
+import com.xyyy.shop.fragment.CartFragment;
+import com.xyyy.shop.fragment.ClassifyFragment;
+import com.xyyy.shop.fragment.HomeFragment;
+import com.xyyy.shop.fragment.MemberFragment;
+import com.xyyy.shop.fragment.MycenterFragment;
+import com.xyyy.shop.toolUtil.CommonVariable;
+import com.xyyy.shop.toolUtil.StrToNumber;
+
+/**
+ * 主Activity
+ * 
+ * @author lxn
+ */
+public class MainActivity extends FragmentActivity {
+
+	public int FLAG_HOME = 0;
+	public int FLAG_CLASSIFY = 1;
+	public int FLAG_CART = 2;
+	public int FLAG_MEMBER = 3;
+	public int FLAG_MYCENTER = 4;
+
+	private HomeFragment homeFragment;// 首页
+	private ClassifyFragment classifyFragment;// 分类
+	private CartFragment cartFragment;// 购物车的
+	private MemberFragment memberFragment;// 会员卡
+	private MycenterFragment mycenterFragment;// 我的新侬
+	private Fragment[] fragments;
+	private int index;// 将要展示那个fragment
+	private int currentTabIndex;// 页面当前展示的是那个fragment
+	private int flag;// 跳转标记 0 首页 1 分类 2购物车 3 会员卡 4我的新侬
+	private String username;// 从登录跳转回来的 所带的用户名
+	private String imgurl;
+	private RelativeLayout rel_cart;
+	private RelativeLayout rel_home;
+	private RelativeLayout rel_classify;
+	private RelativeLayout rel_member;
+	private RelativeLayout rel_mycenter;
+	private RelativeLayout num_rel;
+	private TextView item_count;
+	private ChangeReceiver receiver;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		AppManager.getAppManager().addActivity(this);
+		setContentView(R.layout.activity_main);
+		flag = getIntent().getIntExtra("flag", 0);
+		username = getIntent().getStringExtra("username");
+		imgurl = getIntent().getStringExtra("imgurl");
+
+		initView();
+		homeFragment = new HomeFragment();
+		classifyFragment = new ClassifyFragment();
+		cartFragment = new CartFragment();
+		memberFragment = new MemberFragment();
+		mycenterFragment = new MycenterFragment();
+		fragments = new Fragment[] { homeFragment, classifyFragment,
+				cartFragment, memberFragment, mycenterFragment };
+		// 添加fragment
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.fragment_container, homeFragment)
+				/*
+				 * .add(R.id.fragment_container, classifyFragment)
+				 * .add(R.id.fragment_container, memberFragment)
+				 * .add(R.id.fragment_container, mycenterFragment)
+				 * .hide(classifyFragment
+				 * ).hide(memberFragment).hide(mycenterFragment)
+				 */
+				.show(homeFragment).commit();
+
+		// 初始化广播
+		receiver = new ChangeReceiver();
+		LocalBroadcastManager broadcastManager = LocalBroadcastManager
+				.getInstance(MainActivity.this);
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("changeallmoney");
+		broadcastManager.registerReceiver(receiver, intentFilter);
+	}
+
+	/**
+	 * 初始化底部按钮
+	 */
+	private void initView() {
+		rel_home = (RelativeLayout) findViewById(R.id.rel_home);
+		rel_classify = (RelativeLayout) findViewById(R.id.rel_classify);
+		rel_cart = (RelativeLayout) findViewById(R.id.rel_cart);
+		num_rel = (RelativeLayout) findViewById(R.id.num_rel);
+		item_count = (TextView) findViewById(R.id.item_count);
+		rel_member = (RelativeLayout) findViewById(R.id.rel_member);
+		rel_mycenter = (RelativeLayout) findViewById(R.id.rel_mycenter);
+
+		rel_home.setOnClickListener(viewclick);
+		rel_classify.setOnClickListener(viewclick);
+		rel_cart.setOnClickListener(viewclick);
+		rel_member.setOnClickListener(viewclick);
+		rel_mycenter.setOnClickListener(viewclick);
+		switch (flag) {
+		case 3:
+			rel_member .setSelected(true);
+			Message message3 = mHandler.obtainMessage();
+			message3.what = 3;
+			mHandler.sendMessage(message3);
+			break;
+		case 4:
+			rel_mycenter.setSelected(true);
+			Message message = mHandler.obtainMessage();
+			message.what = 4;
+			mHandler.sendMessage(message);
+			break;
+		default:
+			rel_home.setSelected(true);
+			break;
+		}
+
+	}
+
+	public Handler mHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case 0:
+				rel_home.performClick();
+				break;
+			case 1:
+				rel_classify.performClick();
+				break;
+			case 2:
+				rel_cart.performClick();
+				break;
+			case 3:
+				rel_member.performClick();
+				break;
+			case 4:
+				rel_mycenter.performClick();
+				break;
+			default:
+				break;
+			}
+			super.handleMessage(msg);
+		}
+	};
+	OnClickListener viewclick = new OnClickListener() {
+
+		@Override
+		public void onClick(View view) {
+			switch (view.getId()) {
+			case R.id.rel_home:
+				index = FLAG_HOME;
+				break;
+			case R.id.rel_classify:
+				index = FLAG_CLASSIFY;
+				break;
+			case R.id.rel_cart:
+				index = FLAG_CART;
+				break;
+			case R.id.rel_member:
+				index = FLAG_MEMBER;
+				break;
+			case R.id.rel_mycenter:
+				index = FLAG_MYCENTER;
+				break;
+			}
+			if (currentTabIndex != index) {
+				FragmentTransaction trx = getSupportFragmentManager()
+						.beginTransaction();
+				trx.hide(fragments[currentTabIndex]);
+				if (!fragments[index].isAdded()) {
+					trx.add(R.id.fragment_container, fragments[index]);
+					if (index == FLAG_MYCENTER) {
+						/* 创建一个Bundle用来存储数据，传递到Fragment中 */
+						Bundle bundle = new Bundle();
+						/* 往bundle中添加数据 */
+						bundle.putString("imgurl", imgurl);
+						bundle.putString("name", username);
+						/* 把数据设置到Fragment中 */
+						fragments[index].setArguments(bundle);
+					}
+				}
+				trx.show(fragments[index]).commit();
+			}
+			switch (currentTabIndex) {
+			case 0:
+				rel_home.setSelected(false);
+				break;
+			case 1:
+				rel_classify.setSelected(false);
+				break;
+			case 2:
+				rel_cart.setSelected(false);
+				break;
+			case 3:
+				rel_member.setSelected(false);
+				break;
+			case 4:
+				rel_mycenter.setSelected(false);
+				break;
+
+			default:
+				break;
+			}
+			// 当前的菜单按钮设为选中状态
+			switch (index) {
+			case 0:
+				ShopApplication.mainflag=0;
+				rel_home.setSelected(true);
+				break;
+			case 1:
+				ShopApplication.mainflag=1;
+				rel_classify.setSelected(true);
+				break;
+			case 2:
+				ShopApplication.mainflag=2;
+				rel_cart.setSelected(true);
+				break;
+			case 3:
+				ShopApplication.mainflag=3;
+				rel_member.setSelected(true);
+				break;
+			case 4:
+				ShopApplication.mainflag=4;
+				rel_mycenter.setSelected(true);
+				break;
+
+			default:
+				break;
+			}
+			currentTabIndex = index;
+		}
+	};
+
+	@Override
+	public void onBackPressed() {
+		if (currentTabIndex != 0) {
+			Message message = mHandler.obtainMessage();
+			message.what = 0;
+			mHandler.sendMessage(message);
+		} else {
+			isExit();
+		}
+	}
+
+	public void isExit() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("提示");
+		builder.setMessage("您确定要退出么？");
+		builder.setNegativeButton("取消", null);
+		builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				AppManager.getAppManager().AppExit();
+				dialog.dismiss();// 取消dialog，或dismiss掉
+			}
+		});
+		if (!isFinishing()) {
+			builder.create().show();
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		AppManager.getAppManager().finishActivity(this);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 01 && resultCode == 01) {
+			if (homeFragment != null) {
+				homeFragment.onActivityResult(requestCode, resultCode, data);
+			}
+		}
+		if (requestCode == 02 && resultCode == 02) {
+			if (cartFragment != null) {
+				cartFragment.onActivityResult(requestCode, resultCode, data);
+			}
+		}
+		if (requestCode == 03 && resultCode == 03) {
+			if (memberFragment != null) {
+				memberFragment.onActivityResult(requestCode, resultCode, data);
+			}
+		}
+		if (requestCode == 04 && resultCode == 04) {
+			if (mycenterFragment != null) {
+				mycenterFragment
+						.onActivityResult(requestCode, resultCode, data);
+			}
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		// TODO 根据登录状态 查询当前购物车的数量
+		if (ShopApplication.isLogin) {
+			// 登录情况下 走接口调用查询当前购物车内商品的数量
+			getAllcartnum();
+		} else {
+			// 未登录 查询本地数据库 查询出所有商品数量的 总数
+			int goodnum = CartDao.getInstance().queryNumAll();
+			if (goodnum > 0) {
+				num_rel.setVisibility(View.VISIBLE);
+				item_count.setText("" + goodnum);
+			} else {
+				num_rel.setVisibility(View.GONE);
+			}
+		}
+	}
+    
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+
+	/**
+	 * 登录情况下查询用户购物车商品总数量
+	 */
+	private void getAllcartnum() {
+		int userid = 0;
+		if (ShopApplication.loginflag == 1) {
+			userid = ShopApplication.userid;
+		}
+		if (ShopApplication.loginflag == 2) {
+			userid = ShopApplication.useridother;
+		}
+		VolleyUtil.sendStringRequestByGetToString(
+				CommonVariable.CartGetGoodNumURL + userid, null, null,
+				new HttpBackBaseListener() {
+
+					@Override
+					public void onSuccess(String string) {
+						int goodnum = StrToNumber.strToint(string);
+						if (goodnum > 0) {
+							num_rel.setVisibility(View.VISIBLE);
+							item_count.setText("" + goodnum);
+						} else {
+							num_rel.setVisibility(View.GONE);
+						}
+					}
+
+					@Override
+					public void onFail(String failstring) {
+						num_rel.setVisibility(View.GONE);
+					}
+
+					@Override
+					public void onError(VolleyError error) {
+						num_rel.setVisibility(View.GONE);
+					}
+				}, false, null);
+	}
+
+	private class ChangeReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if ("changeallmoney".equals(action)) {
+				if (ShopApplication.isLogin) {
+					// 登录情况下 走接口调用查询当前购物车内商品的数量
+					getAllcartnum();
+				} else {
+					// 未登录 查询本地数据库 查询出所有商品数量的 总数
+					int goodnum = CartDao.getInstance().queryNumAll();
+					if (goodnum > 0) {
+						num_rel.setVisibility(View.VISIBLE);
+						item_count.setText("" + goodnum);
+					} else {
+						num_rel.setVisibility(View.GONE);
+					}
+				}
+			}
+		}
+	}
+}

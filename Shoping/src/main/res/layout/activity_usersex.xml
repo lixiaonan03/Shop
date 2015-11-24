@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/sex_men"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="12dp"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize"
+                android:text="男" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/listView_line_color" />
+
+            <RadioButton
+                android:id="@+id/sex_women"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                  android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="12dp"
+                android:text="女" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/listView_line_color" />
+
+            <RadioButton
+                android:id="@+id/sex_secret"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                  android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="12dp"
+                android:text="保密" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/listView_line_color" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+    </RelativeLayout>
+
+</LinearLayout>

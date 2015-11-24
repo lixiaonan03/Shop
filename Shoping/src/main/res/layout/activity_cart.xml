@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color" >
+         <ImageView
+            android:id="@+id/top_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/top_back" />  
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="购物车"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cart_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"
+            android:text="编辑"
+            android:textSize="12sp"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/listview_line_height"
+            android:layout_alignParentBottom="true"
+            android:background="@color/listView_line_color" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/yeslogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/bottom_rel"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentTop="true"
+                android:background="#999999" />
+
+            <CheckBox
+                android:id="@+id/checkBoxall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:button="@drawable/radiobutton"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/textcolor"
+                android:text="全选" />
+
+            <TextView
+                android:id="@+id/allmoneytextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/checkBoxall"
+                android:layout_marginLeft="3dp"
+                android:text="合计：￥ "
+                android:textSize="12sp"
+                android:textColor="@color/logo_color" />
+
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="76dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/login_button"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="去结算"
+                android:textSize="14sp"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_rel"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/listView_line_color"
+            android:dividerHeight="@dimen/listview_line_height"
+            android:fadingEdge="none"
+            android:paddingBottom="10dp"
+            android:scrollbars="none" >
+        </ListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout 
+            android:id="@+id/nodata"
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+            <ImageView
+            android:id="@+id/nodataimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/search_nodata" />
+
+        <TextView
+            android:id="@+id/nodatatext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:text="您的购物车当前没有任何商品。"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</LinearLayout>

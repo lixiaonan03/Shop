@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <CheckBox
+            android:id="@+id/one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周一"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+
+        <CheckBox
+            android:id="@+id/two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周二"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+
+        <CheckBox
+            android:id="@+id/three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周三"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+
+        <CheckBox
+            android:id="@+id/four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周四"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <CheckBox
+            android:id="@+id/five"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周五"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+
+        <CheckBox
+            android:id="@+id/six"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周六"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+
+        <CheckBox
+            android:id="@+id/seven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@drawable/radiobutton"
+            android:paddingLeft="5dp"
+            android:text="周日"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/textsize" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+    </RelativeLayout>
+
+</LinearLayout>

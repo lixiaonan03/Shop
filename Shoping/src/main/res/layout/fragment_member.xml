@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color" >
+
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="新侬会员卡"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listview_line_height"
+        android:background="@color/listView_line_color" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#ffffff" >
+
+                <RelativeLayout
+                    android:id="@+id/gobuymemberLin"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" >
+
+                    <ImageView
+                        android:id="@+id/buymember_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/member_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/buymember_img"
+                        android:text="购买会员卡"
+                        android:textColor="@color/logo_color"
+                        android:textSize="@dimen/textsize" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mycenter_jiantou" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp" >
+
+                <ImageView
+                    android:id="@+id/mymember_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/member_user" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/mymember_img"
+                    android:text="我的会员卡"
+                    android:textColor="@color/logo_color"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/login_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:visibility="gone"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <FrameLayout
+                android:id="@+id/yeslogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <com.xyyy.shop.view.MyListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="20dp"
+                    android:listSelector="#FFFFFF"
+                    android:cacheColorHint="#00000000"
+                    android:divider="#ffffff"
+                    android:dividerHeight="17dp"
+                    android:fadingEdge="none"
+                    android:visibility="gone"
+                    android:paddingBottom="20dp"
+                    android:scrollbars="none" >
+                </com.xyyy.shop.view.MyListView>
+
+                <LinearLayout
+                    android:id="@+id/nodata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="12dp"
+                        android:text="您尚未购买会员卡!"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/textsize" />
+                </LinearLayout>
+            </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+            <RelativeLayout
+                android:id="@+id/gobindmemberLin"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                >
+
+                <ImageView
+                    android:id="@+id/bind_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/member_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/bind_img"
+                    android:text="绑定会员卡"
+                    android:textColor="@color/logo_color"
+                    android:textSize="@dimen/textsize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mycenter_jiantou" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                 android:layout_marginBottom="@dimen/buttomarginBottom"
+                android:background="@color/listView_line_color" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/buysomemore"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp" >
+
+            <ImageView
+                android:id="@+id/buysomemoreimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/main_cart_nochecked" />
+
+            <ImageView
+                android:id="@+id/buysomemoreimggo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/mycenter_jiantou" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@id/buysomemoreimggo"
+                android:layout_toRightOf="@id/buysomemoreimg"
+                android:text="再买点，您本次购买的商品与下次菜箱一起配送，免运费"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/listview_line_height"
+            android:layout_above="@id/buysomemore"
+            android:background="@color/listView_line_color" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_above="@id/line"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+
+        <LinearLayout
+            android:id="@+id/yesdata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/submit"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/deliverytime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/logo_color"
+                        android:textSize="@dimen/textsize" />
+
+                    <TextView
+                        android:id="@+id/msgTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="12sp"
+                        android:layout_marginRight="12sp"
+                        android:layout_marginTop="3dp"
+                        android:text="   亲，请您于配送日前2天选择喜欢的菜品。因会员较多，按选菜会员顺序优先发送。如遇产能不足无法满足每位会员的要求，请您谅解。"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/textsizesmall" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:background="@color/listView_line_color" />
+
+            <ExpandableListView
+                android:id="@+id/expand_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:childDivider="@color/listView_line_color"
+                android:divider="@color/listView_line_color"
+                android:dividerHeight="@dimen/listview_line_height"
+                android:listSelector="#00000000"
+                android:overScrollMode="never"
+                android:scrollbars="none" >
+            </ExpandableListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" 
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/nodataimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/search_nodata" />
+
+            <TextView
+                android:id="@+id/nodatatext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="当前没有配送预告"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

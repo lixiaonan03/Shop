@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+     <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!-- �߿� -->
+        <item name="android:windowIsFloating">true</item><!--�Ƿ�����activity֮��-->
+        <!-- <item name="android:windowIsTranslucent">true</item>��͸�� -->
+        <item name="android:windowNoTitle">true</item><!--�ޱ���-->
+        <item name="android:windowBackground">@color/translate_background</item><!--����͸��   ȥ������ɫ�߿�Ҳ��ȥ����-->
+        <item name="android:backgroundDimEnabled">false</item><!--ģ��-->
+        <!-- <item name="android:windowContentOverlay">@null</item> -->
+        <item name="android:backgroundDimAmount">0.5</item><!-- android:backgroundDimAmount�����������ƻҶȵ�ֵ����Ϊ1ʱ������������ǵ�dialog�����Ǹ�����ʾ�ģ�dialog����������Ǻ�ɫ�ģ���ȫ�������������ݣ�ϵͳ��Ĭ��ֵ��0.5�����Ѹ����Լ�����Ҫ����
+         --> 
+    </style>
+    <style name="edittext">
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:textColor">@color/textcolor</item>
+        <item name="android:textColorHint">@color/textcolorhint</item>
+        <item name="android:textSize">@dimen/textsizesmall</item>
+    </style>
+     <!-- animation ��ʽ -->  
+    <style name="activityAnimation" parent="@android:style/Animation">  
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>  
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>  
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>  
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>  
+    </style>  
+</resources>

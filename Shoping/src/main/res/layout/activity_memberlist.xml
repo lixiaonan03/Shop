@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="#FAFAFA"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/card_year"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_checked"
+            android:gravity="center"
+            android:text="年卡"
+            android:textColor="@color/order_textcolor_checked"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/card_halfyear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_nochecked"
+            android:gravity="center"
+            android:text="半年卡"
+            android:textColor="@color/order_textcolor_nochecked"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/card_season"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_nochecked"
+            android:gravity="center"
+            android:text="季卡"
+            android:textColor="@color/order_textcolor_nochecked"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/card_month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_nochecked"
+            android:gravity="center"
+            android:text="月卡"
+            android:visibility="gone"
+            android:textColor="@color/order_textcolor_nochecked"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/card_experience"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_nochecked"
+            android:gravity="center"
+            android:text="体验卡"
+            android:visibility="gone"
+            android:textColor="@color/order_textcolor_nochecked"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal" >
+
+        <View
+            android:id="@+id/lineyear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/order_linecolor_checked" />
+
+        <View
+            android:id="@+id/linehalfyear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/order_linecolor_nochecked" />
+
+        <View
+            android:id="@+id/lineseason"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/order_linecolor_nochecked" />
+
+        <View
+            android:id="@+id/linemonth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+             android:visibility="gone"
+            android:background="@color/order_linecolor_nochecked" />
+
+        <View
+            android:id="@+id/lineexperience"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+             android:visibility="gone"
+            android:background="@color/order_linecolor_nochecked" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/listView_line_color"
+        android:dividerHeight="@dimen/listview_line_height"
+        android:fadingEdge="none"
+        android:paddingBottom="12dp"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/nocard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/search_nodata" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="没有相关会员卡"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

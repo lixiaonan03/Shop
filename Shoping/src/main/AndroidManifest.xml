@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xyyy.shop"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="22" />
+
+    <!-- 访问Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- - 访问网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问联系人 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />-->
+    <!-- 允许访问摄像头进行拍照 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许访问闪光灯 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- 允许振动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 挂载、反挂载外部文件系统 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 允许程序写入外部存储，如SD卡上写文件 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 二维码所需要的功能 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+
+    <!-- 微信登录需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 百度统计需要申明的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+
+    <application
+        android:name=".ShopApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- 欢迎页 -->
+        <activity
+            android:name="com.xyyy.shop.activity.Welcome"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 引导页 -->
+        <activity
+            android:name="com.xyyy.shop.activity.GuideActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 主activity -->
+        <activity
+            android:name="com.xyyy.shop.activity.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 登录的 -->
+        <activity
+            android:name="com.xyyy.shop.activity.LoginActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 注册 -->
+        <activity
+            android:name="com.xyyy.shop.activity.RegisterActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 微信登录完之后完善用户资料 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MemberCompleteActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员注册协议 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MemberAgreementActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 找回密码 -->
+        <activity
+            android:name="com.xyyy.shop.activity.FindPasswordActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 活动详情 -->
+        <activity
+            android:name="com.xyyy.shop.activity.OtherWebviewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!--商品评价 -->
+        <activity
+            android:name="com.xyyy.shop.activity.OrderEvaluateActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 商品详情 -->
+        <activity
+            android:name="com.xyyy.shop.activity.ProductdeatilActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 商品详情 图文介绍-->
+        <activity
+            android:name="com.xyyy.shop.activity.ProductdetailIntroduceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 商品详情 商品评价-->
+        <activity
+            android:name="com.xyyy.shop.activity.ProductdetailEvaluateActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 搜索 -->
+        <activity
+            android:name="com.xyyy.shop.activity.SearchActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 分类的activity -->
+        <activity
+            android:name="com.xyyy.shop.activity.ClassifyActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 购物车activity -->
+        <activity
+            android:name="com.xyyy.shop.activity.CartActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 支付activity -->
+        <activity
+            android:name="com.xyyy.shop.activity.PayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购物车订单详情的 -->
+        <activity
+            android:name="com.xyyy.shop.activity.CartOrderDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购物车订单详情中我的发票列表的 -->
+        <activity
+            android:name="com.xyyy.shop.activity.UserinvoiceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购物车订单详情中我的会员卡支付列表的 -->
+        <activity
+            android:name="com.xyyy.shop.activity.UserMembercardPayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购物车订单详情中添加发票抬头的 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.AdduserinvoiceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购物车订单详情中添加备注的 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.AdduserremarkActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 我的会员卡 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MyCardActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的会员卡详情界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MemberCardDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡消费列表界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardRecordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡消费密码设置 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardPayPasswordSetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡消费密码找回  -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardPayPasswordFindActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡消费密码修改  -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardPayPasswordchangeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡充值界面  -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardPayrechargeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 会员卡商品列表 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MemberListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 修改会员卡配送时间 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MembercardTimeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 绑定会员卡 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.BindMemberActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 赠送会员卡 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.PresentMembercardActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 我的个人信息 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MyInformationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 修改用户昵称 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.UsernameActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 修改会员姓名 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.MembernameActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 修改用户性别 -->
+        <activity
+            android:name="com.xyyy.shop.activity.UsersexActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 修改用户头像 -->
+        <activity
+            android:name="com.xyyy.shop.activity.PhotoPickActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <!-- 用户账户安全 -->
+        <activity
+            android:name="com.xyyy.shop.activity.UseracountsafeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 更换手机号 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.UserchangephoneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 更换手机号 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.UserchangephoneTwoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 修改密码 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.UserchangepasswordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 用户收货地址 -->
+        <activity
+            android:name="com.xyyy.shop.activity.UseradressActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 添加用户收货地址 -->
+        <activity
+            android:name="com.xyyy.shop.activity.AdduseradressActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的订单 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MyorderActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的订单详情 -->
+        <activity
+            android:name="com.xyyy.shop.activity.OrderDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的订单支付详情界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.OrderPayDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 我的口味 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MytasteActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 添加我的口味 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MytasteAddActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 配送预告 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MydeliverynoticeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 近日配送清单 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MythisdeliveryActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 近日配送清单详情菜谱界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.CookbookActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 近日配送清单详情追溯界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.TraceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 近日配送清单详情物流界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.LogisticsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 配送清单详情界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.DeliverydetatilActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的礼品卡界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MygiftActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的礼品卡界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.GiftDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 购买礼品卡界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.GiftListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 绑定礼品卡界面 -->
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.xyyy.shop.activity.BindGiftActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的优惠券界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.MycouponActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 逛农场界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.GuangnongchangActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 二维码界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.ErweimaActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 二维码扫描界面 -->
+        <activity
+            android:name="com.zbar.lib.CaptureActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 帮助中心界面 -->
+        <activity
+            android:name="com.xyyy.shop.activity.HelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 微信回调的 -->
+        <activity
+            android:name="com.xyyy.shop.wxapi.WXEntryActivity"
+            android:label="@string/app_name"
+            android:exported="true">
+        </activity>
+
+        <!-- 微信支付回调的 -->
+        <activity
+            android:name="com.xyyy.shop.wxapi.WXPayEntryActivity"
+            android:label="@string/app_name"
+            android:exported="true">
+        </activity>
+
+        <!-- 支付宝集成 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <!-- alipay sdk end -->
+
+
+        <!--百度统计开始 您从百度网站获取的APP KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="70fa7b3bff" /> <!-- abcd1234 -->
+        <!-- 渠道商编号 -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="官网" />
+
+        <!-- 是否开启错误日志统计，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_EXCEPTION_LOG"
+            android:value="false" />
+        <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+        <meta-data
+            android:name="BaiduMobAd_SEND_STRATEGY"
+            android:value="APP_START" />
+        <!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔(取消下行注释)。取值为1-24的整数，默认为1 -->
+        <!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="2" /> -->
+        <!-- 日志仅在wifi网络下发送，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_ONLY_WIFI"
+            android:value="false" />
+        <!-- 是否获取基站位置信息 ,默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_CELL_LOCATION"
+            android:value="true" />
+        <!-- 是否获取GPS位置信息，默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_GPS_LOCATION"
+            android:value="false" />
+        <!-- 是否获取WIFI位置信息，默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_WIFI_LOCATION"
+            android:value="false" />
+        <!-- 百度统计结束 -->
+    </application>
+
+</manifest>

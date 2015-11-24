@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/catalog"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#E0E0E0"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text=""
+        android:textColor="#454545"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp" >
+
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            android:id="@+id/item_name_Lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_img"
+            android:orientation="vertical"
+            android:paddingLeft="8dp" >
+
+            <TextView
+                android:id="@+id/item_childername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textSize="@dimen/textsizesmall" />
+
+            <TextView
+                android:id="@+id/item_parentname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:textColor="#999999"
+                android:textSize="@dimen/textsizesmall" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/item_radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/item_radiobuttonyes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="5dp"
+                android:text="喜欢"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize" />
+
+            <RadioButton
+                android:id="@+id/item_radiobuttonno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="5dp"
+                android:text="忌口"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize" />
+
+            <RadioButton
+                android:id="@+id/item_radiobuttonnocare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:button="@drawable/radiobutton"
+                android:paddingLeft="5dp"
+                android:text="无所谓"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize" />
+        </RadioGroup>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:id="@+id/yesdata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/submit"
+            android:layout_marginBottom="3dp" >
+
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:divider="@color/listView_line_color"
+                android:dividerHeight="@dimen/listview_line_height"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <TextView
+                android:id="@+id/dialog"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@color/logo_color"
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textSize="30sp"
+                android:visibility="gone" />
+
+            <com.xyyy.shop.view.SideBar
+                android:id="@+id/sidebar"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/nodata_lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/search_nodata" />
+
+            <TextView
+                android:id="@+id/nodata_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="没有相关菜品"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="#FAFAFA"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/older_member"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_checked"
+            android:gravity="center"
+            android:text="老会员卡"
+            android:textColor="@color/order_textcolor_checked"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/new_member"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/order_background_nochecked"
+            android:gravity="center"
+            android:text="新会员卡"
+            android:textColor="@color/order_textcolor_nochecked"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:orientation="horizontal" >
+
+        <View
+            android:id="@+id/lineolder"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/order_linecolor_checked" />
+
+        <View
+            android:id="@+id/linenew"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/order_linecolor_nochecked" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/older_rel"
+              android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/edittextcardnum"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:hint="请输入卡号"
+                 android:background="@drawable/bg_edittext"
+                android:textColor="#999999"
+                android:textCursorDrawable="@null"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edittextphone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/edittextcardnum"
+                android:layout_margin="18dp"
+                 android:background="@drawable/bg_edittext"
+                android:hint="请输入您注册微商城的手机号"
+                android:phoneNumber="true"
+                android:textColor="#999999"
+                android:textCursorDrawable="@null"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edittextphone"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/edittextcode"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.9"
+                    android:hint="请输入短信验证码"
+                     android:background="@drawable/bg_edittext"
+                    android:phoneNumber="true"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/getcodebutton"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/login_button"
+                    android:gravity="center"
+                    android:text="获取验证码"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="45dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/login_button"
+                android:gravity="center"
+                android:text="确认绑定"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/new_rel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" >
+
+            <EditText
+                android:id="@+id/edittextcardnum_new"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:hint="请输入卡号"
+                android:textCursorDrawable="@null"
+                 style="@style/edittext" />
+
+            <EditText
+                android:id="@+id/edittextcode_new"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/edittextcardnum_new"
+                android:layout_margin="12dp"
+                android:hint="请输入密码"
+                android:phoneNumber="true"
+                android:password="true"
+                 style="@style/edittext"
+                android:textCursorDrawable="@null"
+              />
+
+            <Button
+                android:id="@+id/submit_new"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttonheight"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/buttomarginBottom"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/login_button"
+                android:gravity="center"
+                android:text="确认绑定"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/buttomtextsize" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

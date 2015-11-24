@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+        
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/submit"
+            android:layout_below="@id/prompt"
+            android:layout_margin="12dp"
+            android:cacheColorHint="#00000000"
+            android:overScrollMode="never"
+            android:fadingEdge="none"
+            android:divider="@color/listView_line_color"
+            android:dividerHeight="@dimen/listview_line_height"
+            android:scrollbars="none" >
+        </ListView>
+       
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/sort_default"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/order_background_checked"
+                android:gravity="center"
+                android:text="默认"
+                android:textColor="@color/order_textcolor_checked"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:id="@+id/sort_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/order_background_nochecked" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/sort_price_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="价格"
+                        android:textColor="@color/order_textcolor_nochecked"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/sort_price_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/sort_price" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/sort_salesvolume"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/order_background_nochecked"
+                android:gravity="center"
+                android:text="销量"
+                android:textColor="@color/order_textcolor_nochecked"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sort_goodevaluate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/order_background_nochecked"
+                android:gravity="center"
+                android:text="好评"
+                android:textColor="@color/order_textcolor_nochecked"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal" >
+
+            <View
+                android:id="@+id/linedefault"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/order_linecolor_checked" />
+
+            <View
+                android:id="@+id/lineprice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/order_linecolor_nochecked" />
+
+            <View
+                android:id="@+id/linesales"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/order_linecolor_nochecked" />
+
+            <View
+                android:id="@+id/lineevaluate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/order_linecolor_nochecked" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/listview_line_height"
+            android:background="@color/listView_line_color" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/listView_line_color"
+        android:dividerHeight="@dimen/listview_line_height"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:paddingBottom="12dp"
+        android:scrollbars="none" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/nocard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/search_nodata" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:text="没有相关礼品卡"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

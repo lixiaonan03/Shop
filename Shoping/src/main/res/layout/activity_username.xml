@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <EditText
+            android:id="@+id/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:hint="请输入昵称"
+             android:textCursorDrawable='@null'
+             style="@style/edittext"/>
+
+        <TextView
+            android:id="@+id/texthint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edittext"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/textcolor"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/submit"
+             android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+    </RelativeLayout>
+
+</LinearLayout>

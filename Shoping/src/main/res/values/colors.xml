@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <color name="logo_color">#45A63A</color>
+     <color name="red">#FF0000</color>
+     
+     <!-- 商品分类 -->
+     <color name="classify_menu_bgwhite">#FFFFFF</color>
+     <color name="classify_menu_bg">#F2F2F2</color>
+     <color name="classify_menu_textcolorcheck">#45A63A</color>
+     <color name="classify_menu_textcolornocheck">#666666</color>
+     
+     
+     
+     <color name="common_bottom_btn_normal_bg">#FFFFFF</color>
+     <color name="common_bottom_btn_selected_bg">#FFFFFF</color>
+     
+     <color name="common_bottom_btn_blue">#45A63A</color>
+     <color name="common_bottom_btn_black">#999999</color>
+     
+     <color name="translate_background">#FF000000</color>
+     
+     <color name="order_textcolor_checked">#45A63A</color>
+     <color name="order_textcolor_nochecked">#666666</color>
+     <color name="order_linecolor_checked">#45A63A</color>
+     <color name="order_linecolor_nochecked">#CCCCCC</color>
+     <color name="order_background_checked">#FFFFFF</color>
+     <color name="order_background_nochecked">#F2F2F2</color>
+     
+      <color name="mymember_buttonbackground_flag1">#FF0000</color>
+      <color name="mymember_buttonbackground_flag2">#0000FF</color>
+      <color name="mymember_buttonbackground_flag3">#C9C9C9</color>
+      <color name="mymember_buttonbackground_flag4">#C9C9C9</color>
+      
+      
+    <color name="holo_green_light">#ff99cc00</color>  
+    <!-- A light Holo shade of red -->  
+    <color name="holo_red_light">#ffff4444</color>  
+    <color name="holo_orange_light">#ffffbb33</color>  
+    <!-- A really bright Holo shade of blue -->  
+    <color name="holo_blue_bright">#ff00ddff</color> 
+    
+    <!-- 我的个人中心 -->
+    <color name="mycenter_item_textcolor">#666666</color> 
+    
+    <!-- 获取短信验证码的 -->
+    <color name="getcode_onbackground">#999999</color> 
+    
+     <!-- 通用的 -->
+    <color name="listView_line_color">#cccccc</color> 
+    <color name="textcolor">#666666</color> 
+    <color name="textcolorhint">#dddddd</color> 
+</resources>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/recharge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonheight"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/buttomarginBottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="立即充值"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/buttomtextsize" />
+        <ScrollView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/recharge"
+            android:layout_alignParentTop="true"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            >
+             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/member_state"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp" >
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/membertype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/memberid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="账户余额："
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+
+                <TextView
+                    android:id="@+id/remainmoneytextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/logo_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <EditText
+                android:id="@+id/moneyedittext"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:gravity="center_vertical"
+                android:hint="请输入充值金额"
+                android:inputType="numberDecimal"
+                android:textCursorDrawable="@null"
+                 style="@style/edittext" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/pay_weixin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:button="@drawable/radiobutton"
+                    android:paddingLeft="12dp"
+                    android:checked="true"
+                    android:clickable="false"
+                    android:text="微信支付"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/listview_line_height"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/listView_line_color" />
+
+                <RadioButton
+                    android:id="@+id/pay_zhifubao"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:button="@drawable/radiobutton"
+                    android:paddingLeft="12dp"
+                    android:text="支付宝支付"
+                    android:visibility="gone"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/listview_line_height"
+                    android:layout_marginLeft="12dp"
+                     android:visibility="gone"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/listView_line_color" />
+            </RadioGroup>
+            <com.xyyy.shop.view.MyGridView 
+                android:id="@+id/gridview"
+                  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:numColumns="2"
+                android:horizontalSpacing="20dp"
+                android:verticalSpacing="15dp"
+                android:listSelector="@drawable/login_button"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                >
+                
+            </com.xyyy.shop.view.MyGridView>
+            
+            
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+             
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:text="发票信息"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/textsize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+
+            <RelativeLayout
+                android:id="@+id/invoice_rel"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp" >
+
+                <TextView
+                    android:id="@+id/cart_invoice_textview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="50dp"
+                    android:text="无 "
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsizesmall" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="6dp"
+                    android:src="@drawable/mycenter_jiantou" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
+        </LinearLayout>
+        </ScrollView>
+       
+    </RelativeLayout>
+
+</LinearLayout>

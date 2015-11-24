@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="注：会员卡赠送后且被赠送人未绑定前，该卡处于暂停状态，如果被赠送人一个月内未绑定会员卡，则此次赠送失效，此卡会返回本人账户。"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="18dp"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/presentimg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/presentmember_img" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@id/presentimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="63dp"
+                android:layout_marginRight="63dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/presentmembercard_input" >
+
+                <ImageView
+                    android:id="@+id/people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/presentmember_people" />
+
+                <EditText
+                    android:id="@+id/editTextCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/people"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入赠送人手机号"
+                    android:paddingLeft="2dp"
+                    android:phoneNumber="true"
+                    android:singleLine="true"
+                    android:textColor="@color/textcolor"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="45dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>
