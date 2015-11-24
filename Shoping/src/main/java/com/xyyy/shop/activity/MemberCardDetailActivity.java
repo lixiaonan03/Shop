@@ -195,26 +195,26 @@ public class MemberCardDetailActivity extends BaseActivity {
 				.setBackgroundResource(R.drawable.membercard_detail_tabbackgroudnocheck);
 
 		switch (flag) {
-		case 1:
-			membercard_money.setTextColor(getResources().getColor(
-					R.color.order_textcolor_checked));
-			membercard_money
-					.setBackgroundResource(R.drawable.membercard_detail_tabbackgroudcheck);
+			case 1:
+				membercard_money.setTextColor(getResources().getColor(
+						R.color.order_textcolor_checked));
+				membercard_money
+						.setBackgroundResource(R.drawable.membercard_detail_tabbackgroudcheck);
 
-			money_rel.setVisibility(View.VISIBLE);
-			setmal_rel.setVisibility(View.GONE);
-			break;
-		case 2:
-			membercard_setmeal.setTextColor(getResources().getColor(
-					R.color.order_textcolor_checked));
-			membercard_setmeal
-					.setBackgroundResource(R.drawable.membercard_detail_tabbackgroudcheck);
+				money_rel.setVisibility(View.VISIBLE);
+				setmal_rel.setVisibility(View.GONE);
+				break;
+			case 2:
+				membercard_setmeal.setTextColor(getResources().getColor(
+						R.color.order_textcolor_checked));
+				membercard_setmeal
+						.setBackgroundResource(R.drawable.membercard_detail_tabbackgroudcheck);
 
-			setmal_rel.setVisibility(View.VISIBLE);
-			money_rel.setVisibility(View.GONE);
-			break;
-		default:
-			break;
+				setmal_rel.setVisibility(View.VISIBLE);
+				money_rel.setVisibility(View.GONE);
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -230,148 +230,148 @@ public class MemberCardDetailActivity extends BaseActivity {
 			 * Intent(MemberCardDetailActivity.this,PresentMembercardActivity
 			 * .class); startActivity(intent); } break;
 			 */
-			case R.id.membercard_money:
-				// 卡详情
-				if (flag == 1) {
-					return;
-				}
-				flag = 1;
-				changetab();
+				case R.id.membercard_money:
+					// 卡详情
+					if (flag == 1) {
+						return;
+					}
+					flag = 1;
+					changetab();
 
-				break;
-			case R.id.membercard_setmeal:
-				// 卡套餐
-				if (flag == 2) {
-					return;
-				}
-				flag = 2;
-				changetab();
-				break;
-			case R.id.money_recharge:
-				// 卡充值
-				if (isfreezeflag == 0) {
-					Intent intentrecharge = new Intent(
-							MemberCardDetailActivity.this,
-							MembercardPayrechargeActivity.class);
-					intentrecharge.putExtra("cardflag", cardflag);
-					intentrecharge.putExtra("cardcode", cardcode);
-					intentrecharge.putExtra("cardid", memberid.getText()
-							.toString().trim());
-					intentrecharge.putExtra("cardname", membertype.getText()
-							.toString().trim());
-					intentrecharge.putExtra("cardremainmoney", card_remainmoney
-							.getText().toString().trim().substring(1));
-					startActivity(intentrecharge);
-				}
-				break;
-			case R.id.money_gobuy:
-				// 去购买
-				Intent money_gobuy = new Intent(MemberCardDetailActivity.this,
-						ClassifyActivity.class);
-				startActivity(money_gobuy);
-				break;
-			case R.id.money_consumelist:
-				// 卡消费列表
-				if (isfreezeflag == 0) {
-					Intent intent = new Intent(MemberCardDetailActivity.this,
-							MembercardRecordActivity.class);
-					intent.putExtra("cardid", cradid + "");
-					intent.putExtra("isfuwu", isfuwu);
-					startActivity(intent);
-				}
-
-				break;
-			case R.id.card_time_rel:
-				if (isfreezeflag == 0) {
-					if (cardflag != 3) {
-						// 配送时间的布局
-						Intent intenttime = new Intent(
+					break;
+				case R.id.membercard_setmeal:
+					// 卡套餐
+					if (flag == 2) {
+						return;
+					}
+					flag = 2;
+					changetab();
+					break;
+				case R.id.money_recharge:
+					// 卡充值
+					if (isfreezeflag == 0) {
+						Intent intentrecharge = new Intent(
 								MemberCardDetailActivity.this,
-								MembercardTimeActivity.class);
-						intenttime.putExtra("size", size);
-						startActivityForResult(intenttime, 01);
+								MembercardPayrechargeActivity.class);
+						intentrecharge.putExtra("cardflag", cardflag);
+						intentrecharge.putExtra("cardcode", cardcode);
+						intentrecharge.putExtra("cardid", memberid.getText()
+								.toString().trim());
+						intentrecharge.putExtra("cardname", membertype.getText()
+								.toString().trim());
+						intentrecharge.putExtra("cardremainmoney", card_remainmoney
+								.getText().toString().trim().substring(1));
+						startActivity(intentrecharge);
 					}
-				}
-
-				break;
-			case R.id.recevice_address_rel:
-				if (isfreezeflag == 0) {
-					if (cardflag != 3) {
-						// 收货地址
-						List<Integer> goodidlist = new ArrayList<Integer>();
-						goodidlist.add(goodid);
-						VolleyUtil.sendObjectByPostToList(
-								CommonVariable.GetAdressBygoodidURL, null,
-								goodidlist, EnnSysArea.class,
-								new HttpBackListListener<EnnSysArea>() {
-
-									@Override
-									public void onSuccess(List<EnnSysArea> t) {
-										// TODO Auto-generated method stub
-										Intent intentaddress = new Intent(
-												MemberCardDetailActivity.this,
-												UseradressActivity.class);
-										intentaddress.putExtra("flag", 2);
-										intentaddress.putExtra("addresslist",
-												(Serializable) t);
-										startActivityForResult(intentaddress,
-												02);
-									}
-
-									@Override
-									public void onFail(String failstring) {
-										Toast.makeText(
-												MemberCardDetailActivity.this,
-												"加载配送信息失败！", Toast.LENGTH_SHORT)
-												.show();
-									}
-
-									@Override
-									public void onError(VolleyError error) {
-										Toast.makeText(
-												MemberCardDetailActivity.this,
-												"加载配送信息失败！", Toast.LENGTH_SHORT)
-												.show();
-									}
-								}, false, null);
-
+					break;
+				case R.id.money_gobuy:
+					// 去购买
+					Intent money_gobuy = new Intent(MemberCardDetailActivity.this,
+							ClassifyActivity.class);
+					startActivity(money_gobuy);
+					break;
+				case R.id.money_consumelist:
+					// 卡消费列表
+					if (isfreezeflag == 0) {
+						Intent intent = new Intent(MemberCardDetailActivity.this,
+								MembercardRecordActivity.class);
+						intent.putExtra("cardid", cradid + "");
+						intent.putExtra("isfuwu", isfuwu);
+						startActivity(intent);
 					}
 
-				}
-				break;
-			case R.id.submit:
-				// 底部按钮
+					break;
+				case R.id.card_time_rel:
+					if (isfreezeflag == 0) {
+						if (cardflag != 3) {
+							// 配送时间的布局
+							Intent intenttime = new Intent(
+									MemberCardDetailActivity.this,
+									MembercardTimeActivity.class);
+							intenttime.putExtra("size", size);
+							startActivityForResult(intenttime, 01);
+						}
+					}
 
-				if (cardflag == 0) {
-					// 尚未使用
-					submit.setText("启用");
-					
-					currentobject.getEnnCard().setCardState("01");
-					currentobject.getEnnCard().setStartTime(new java.sql.Timestamp(new java.util.Date().getTime()));
-				}
+					break;
+				case R.id.recevice_address_rel:
+					if (isfreezeflag == 0) {
+						if (cardflag != 3) {
+							// 收货地址
+							List<Integer> goodidlist = new ArrayList<Integer>();
+							goodidlist.add(goodid);
+							VolleyUtil.sendObjectByPostToList(
+									CommonVariable.GetAdressBygoodidURL, null,
+									goodidlist, EnnSysArea.class,
+									new HttpBackListListener<EnnSysArea>() {
 
-				goupateCurrent();
-				break;
-			case R.id.update:
-				// 使用中和暂停状态下的 保存按钮
-				goupateCurrent();
-				break;
-			case R.id.useing:
-				// 使用和暂停状态下的 修改状态的按钮
-				if (cardflag == 1) {
-					//暂停
-					currentobject.getEnnCard().setPauseTime(new java.sql.Timestamp(new java.util.Date().getTime()));
-					currentobject.getEnnCard().setPauseTimeEnd(null);
-					currentobject.getEnnCard().setCardState("02");
-				}
-				if (cardflag == 2) {
-					currentobject.getEnnCard().setCardState("01");
-				}
-				goupateCurrent();
-				break;
+										@Override
+										public void onSuccess(List<EnnSysArea> t) {
+											// TODO Auto-generated method stub
+											Intent intentaddress = new Intent(
+													MemberCardDetailActivity.this,
+													UseradressActivity.class);
+											intentaddress.putExtra("flag", 2);
+											intentaddress.putExtra("addresslist",
+													(Serializable) t);
+											startActivityForResult(intentaddress,
+													02);
+										}
 
-			default:
-				break;
+										@Override
+										public void onFail(String failstring) {
+											Toast.makeText(
+													MemberCardDetailActivity.this,
+													"加载配送信息失败！", Toast.LENGTH_SHORT)
+													.show();
+										}
+
+										@Override
+										public void onError(VolleyError error) {
+											Toast.makeText(
+													MemberCardDetailActivity.this,
+													"加载配送信息失败！", Toast.LENGTH_SHORT)
+													.show();
+										}
+									}, false, null);
+
+						}
+
+					}
+					break;
+				case R.id.submit:
+					// 底部按钮
+
+					if (cardflag == 0) {
+						// 尚未使用
+						submit.setText("启用");
+
+						currentobject.getEnnCard().setCardState("01");
+						currentobject.getEnnCard().setStartTime(new java.sql.Timestamp(new java.util.Date().getTime()));
+					}
+
+					goupateCurrent();
+					break;
+				case R.id.update:
+					// 使用中和暂停状态下的 保存按钮
+					goupateCurrent();
+					break;
+				case R.id.useing:
+					// 使用和暂停状态下的 修改状态的按钮
+					if (cardflag == 1) {
+						//暂停
+						currentobject.getEnnCard().setPauseTime(new java.sql.Timestamp(new java.util.Date().getTime()));
+						currentobject.getEnnCard().setPauseTimeEnd(null);
+						currentobject.getEnnCard().setCardState("02");
+					}
+					if (cardflag == 2) {
+						currentobject.getEnnCard().setCardState("01");
+					}
+					goupateCurrent();
+					break;
+
+				default:
+					break;
 			}
 		}
 	};
@@ -420,14 +420,14 @@ public class MemberCardDetailActivity extends BaseActivity {
 				.getReceAddress())) {
 			recevice_address.setText("请选择配送地址");
 			Toast.makeText(MemberCardDetailActivity.this,
-					"请选择配送地址！", 0).show();
+					"请选择配送地址！", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		if (StringUtils.isBlank(currentobject.getEnnCardConfig()
 				.getDeliveWeek())) {
 			recevice_address.setText("请选择配送时间");
 			Toast.makeText(MemberCardDetailActivity.this,
-					"请选择配送时间！", 0).show();
+					"请选择配送时间！",Toast.LENGTH_SHORT).show();
 			return;
 		}
 		/*if (null != currentobject.getEnnCardConfig().getCity()
@@ -442,14 +442,14 @@ public class MemberCardDetailActivity extends BaseActivity {
 		}*/
 		customProgressDialog.setContent("......正在提交");
 		customProgressDialog.show();
-		
+
 		VolleyUtil.sendObjectByPostToString(
 				CommonVariable.UpdateMembercardDetailURL, null, currentobject,
 				new HttpBackBaseListener() {
 
 					@Override
 					public void onSuccess(String string) {
-						
+
 						if (saveflag == 1) {
 							customProgressDialog.dismiss();
 							AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -478,101 +478,146 @@ public class MemberCardDetailActivity extends BaseActivity {
 
 						}
 						if (saveflag == 0) {
-							if(cardflag==0){
-								int userid = 0;
-								if (ShopApplication.isLogin) {
-									if (ShopApplication.loginflag == 1) {
-										userid = ShopApplication.userid;
-									}
-									if (ShopApplication.loginflag == 2) {
-										userid = ShopApplication.useridother;
-									}
-								}
-								VolleyUtil.sendStringRequestByGetToBean(CommonVariable.IsDelivenNoticeURL+userid, null, null, IsDeliveNoticeDTO.class, new HttpBackListener<IsDeliveNoticeDTO>() {
-
-									@Override
-									public void onSuccess(IsDeliveNoticeDTO t) {
-										customProgressDialog.dismiss();
-										if(t.getIsEnable()){
-											AlertDialog.Builder builder = new AlertDialog.Builder(
-													MemberCardDetailActivity.this);
-											builder.setTitle("提示");
-											builder.setCancelable(false);
-												builder.setMessage("会员卡启动成功,现在还在选菜阶段,您可以去配送预告选菜了!");
-											builder.setPositiveButton("去选择",
-													new DialogInterface.OnClickListener() {
-														@Override
-														public void onClick(
-																DialogInterface dialog,
-																int which) {
-															Intent intent=new Intent();
-															intent.setClass(MemberCardDetailActivity.this, MydeliverynoticeActivity.class);
-															startActivity(intent);
-															finish();
-														}
-													});
-											builder.setNegativeButton("关闭", 
-													new DialogInterface.OnClickListener() {
-														@Override
-														public void onClick(
-																DialogInterface dialog,
-																int which) {
-															dialog.dismiss();//取消dialog，或dismiss掉
-															finish();
-														}
-													});
-											if (!isFinishing()) {
-												builder.create().show();
-											}
-										}else{
-											AlertDialog.Builder builder = new AlertDialog.Builder(
-													MemberCardDetailActivity.this);
-											builder.setTitle("提示");
-											builder.setCancelable(false);
-												builder.setMessage("会员卡启动成功，现在不在本周选菜阶段请您关注下周的选菜预告!");
-										
-											builder.setPositiveButton("关闭", 
-													new DialogInterface.OnClickListener() {
-														@Override
-														public void onClick(
-																DialogInterface dialog,
-																int which) {
-															dialog.dismiss();//取消dialog，或dismiss掉
-															finish();
-														}
-													});
-											if (!isFinishing()) {
-												builder.create().show();
-											}
+							if(null!=currentobject&&null!=currentobject.getEnnCardType()&&currentobject.getEnnCardType().getCardKind().equals("01")){
+								//判断是否是蔬菜卡
+								if(cardflag==0||cardflag==2){
+									int userid = 0;
+									if (ShopApplication.isLogin) {
+										if (ShopApplication.loginflag == 1) {
+											userid = ShopApplication.userid;
+										}
+										if (ShopApplication.loginflag == 2) {
+											userid = ShopApplication.useridother;
 										}
 									}
+									VolleyUtil.sendStringRequestByGetToBean(CommonVariable.IsDelivenNoticeURL+userid, null, null, IsDeliveNoticeDTO.class, new HttpBackListener<IsDeliveNoticeDTO>() {
 
-									@Override
-									public void onFail(String failstring) {
-										customProgressDialog.dismiss();
-									}
+										@Override
+										public void onSuccess(IsDeliveNoticeDTO t) {
+											customProgressDialog.dismiss();
+											if(t.getIsEnable()){
+												AlertDialog.Builder builder = new AlertDialog.Builder(
+														MemberCardDetailActivity.this);
+												builder.setTitle("提示");
+												builder.setCancelable(false);
+												if(cardflag==0){
+													builder.setMessage("会员卡启动成功,现在还在选菜阶段,您可以去配送预告选菜了!");
+												}else if(cardflag==2){
+													builder.setMessage("亲，您的会员卡已恢复配送！现在还在选菜阶段您可以去配送预告选菜了!");
+												}
 
-									@Override
-									public void onError(VolleyError error) {
-										customProgressDialog.dismiss();
+												builder.setPositiveButton("去选择",
+														new DialogInterface.OnClickListener() {
+															@Override
+															public void onClick(
+																	DialogInterface dialog,
+																	int which) {
+																Intent intent=new Intent();
+																intent.setClass(MemberCardDetailActivity.this, MydeliverynoticeActivity.class);
+																startActivity(intent);
+																finish();
+															}
+														});
+												builder.setNegativeButton("关闭",
+														new DialogInterface.OnClickListener() {
+															@Override
+															public void onClick(
+																	DialogInterface dialog,
+																	int which) {
+																dialog.dismiss();//取消dialog，或dismiss掉
+																finish();
+															}
+														});
+												if (!isFinishing()) {
+													builder.create().show();
+												}
+											}else{
+												AlertDialog.Builder builder = new AlertDialog.Builder(
+														MemberCardDetailActivity.this);
+												builder.setTitle("提示");
+												builder.setCancelable(false);
+												if(cardflag==0){
+													builder.setMessage("会员卡启动成功，现在不在本周选菜阶段请您关注下周的选菜预告!");
+												}else if(cardflag==2){
+													builder.setMessage("亲，您的会员卡已恢复配送！现在不在本周选菜阶段请您关注下周的选菜预告!");
+												}
+
+
+												builder.setPositiveButton("关闭",
+														new DialogInterface.OnClickListener() {
+															@Override
+															public void onClick(
+																	DialogInterface dialog,
+																	int which) {
+																dialog.dismiss();//取消dialog，或dismiss掉
+																finish();
+															}
+														});
+												if (!isFinishing()) {
+													builder.create().show();
+												}
+											}
+										}
+
+										@Override
+										public void onFail(String failstring) {
+											customProgressDialog.dismiss();
+										}
+
+										@Override
+										public void onError(VolleyError error) {
+											customProgressDialog.dismiss();
+										}
+									}, false, null);
+								}else{
+									customProgressDialog.dismiss();
+									AlertDialog.Builder builder = new AlertDialog.Builder(
+											MemberCardDetailActivity.this);
+									builder.setTitle("提示");
+									builder.setCancelable(false);
+									switch (cardflag) {
+										case 1:
+											builder.setMessage("您的会员卡已暂停!");
+											break;
+
+
+										default:
+											break;
 									}
-								}, false, null);
+									builder.setPositiveButton("确定",
+											new DialogInterface.OnClickListener() {
+												@Override
+												public void onClick(
+														DialogInterface dialog,
+														int which) {
+													dialog.dismiss();// 取消dialog，或dismiss掉
+													finish();
+												}
+											});
+									if (!isFinishing()) {
+										builder.create().show();
+									}
+								}
 							}else{
+								//不是蔬菜卡
 								customProgressDialog.dismiss();
 								AlertDialog.Builder builder = new AlertDialog.Builder(
 										MemberCardDetailActivity.this);
 								builder.setTitle("提示");
 								builder.setCancelable(false);
 								switch (cardflag) {
-								case 1:
-									builder.setMessage("您的会员卡已暂停!");
-									break;
-								case 2:
-									builder.setMessage("您的会员卡已恢复!");
-									break;
+									case 0:
+										builder.setMessage("您的会员卡已启用!");
+										break;
+									case 1:
+										builder.setMessage("您的会员卡已暂停!");
+										break;
+									case 2:
+										builder.setMessage("您的会员卡已恢复!");
+										break;
 
-								default:
-									break;
+									default:
+										break;
 								}
 								builder.setPositiveButton("确定",
 										new DialogInterface.OnClickListener() {
@@ -588,6 +633,7 @@ public class MemberCardDetailActivity extends BaseActivity {
 									builder.create().show();
 								}
 							}
+
 						}
 					}
 
@@ -595,14 +641,14 @@ public class MemberCardDetailActivity extends BaseActivity {
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
 						Toast.makeText(MemberCardDetailActivity.this, "修改出错！",
-								0).show();
+								Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
 						Toast.makeText(MemberCardDetailActivity.this, "修改出错！",
-								0).show();
+								Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 
@@ -610,7 +656,7 @@ public class MemberCardDetailActivity extends BaseActivity {
 
 	/**
 	 * 根据数据结果 去更新界面
-	 * 
+	 *
 	 * @param t
 	 *            MemCardVODetail 对象的数据结果
 	 */
@@ -624,60 +670,60 @@ public class MemberCardDetailActivity extends BaseActivity {
 		if (null != t.getEnnCard() && null != t.getEnnCard().getCardRemain()) {
 			card_remainmoney.setText("￥ "
 					+ t.getEnnCard().getCardRemain()
-							.setScale(2, BigDecimal.ROUND_HALF_UP));
+					.setScale(2, BigDecimal.ROUND_HALF_UP));
 		} else {
 			card_remainmoney.setText("￥0.00");
 		}
 		int cardstate = StrToNumber.strToint(t.getEnnCard().getCardState());
 		cardflag = cardstate;
 		switch (cardstate) {
-		case 0:
-			// 待启用
-			top_text.setText("未启用");
-			submit.setText("启用");
-			userLin.setVisibility(View.GONE);
-			submit.setVisibility(View.VISIBLE);
-			member_state
-					.setBackgroundResource(R.drawable.membercard_detail_state01);
-			break;
-		case 1:
-			// 启用
-			top_text.setText("启用中");
-			update.setText("保存");
-			useing.setText("暂停");
-			update.setClickable(false);
-			userLin.setVisibility(View.VISIBLE);
-			submit.setVisibility(View.GONE);
-			member_state
-					.setBackgroundResource(R.drawable.membercard_detail_state02);
-			break;
-		case 2:
-			// 暂停
-			top_text.setText("暂停中");
-			update.setText("保存");
-			useing.setText("恢复配送");
-			update.setClickable(false);
-			userLin.setVisibility(View.VISIBLE);
-			submit.setVisibility(View.GONE);
-			member_state
-					.setBackgroundResource(R.drawable.membercard_detail_state03);
-			break;
-		case 3:
-			// 注销
-			top_text.setText("已注销");
-			userLin.setVisibility(View.GONE);
-			submit.setVisibility(View.GONE);
-			break;
-		case 4:
-			// 已完成
-			top_text.setText("已用完");
-			userLin.setVisibility(View.GONE);
-			submit.setVisibility(View.GONE);
-			member_state
-					.setBackgroundResource(R.drawable.membercard_detail_state04);
-			break;
-		default:
-			break;
+			case 0:
+				// 待启用
+				top_text.setText("未启用");
+				submit.setText("启用");
+				userLin.setVisibility(View.GONE);
+				submit.setVisibility(View.VISIBLE);
+				member_state
+						.setBackgroundResource(R.drawable.membercard_detail_state01);
+				break;
+			case 1:
+				// 启用
+				top_text.setText("启用中");
+				update.setText("保存");
+				useing.setText("暂停");
+				update.setClickable(false);
+				userLin.setVisibility(View.VISIBLE);
+				submit.setVisibility(View.GONE);
+				member_state
+						.setBackgroundResource(R.drawable.membercard_detail_state02);
+				break;
+			case 2:
+				// 暂停
+				top_text.setText("暂停中");
+				update.setText("保存");
+				useing.setText("恢复配送");
+				update.setClickable(false);
+				userLin.setVisibility(View.VISIBLE);
+				submit.setVisibility(View.GONE);
+				member_state
+						.setBackgroundResource(R.drawable.membercard_detail_state03);
+				break;
+			case 3:
+				// 注销
+				top_text.setText("已注销");
+				userLin.setVisibility(View.GONE);
+				submit.setVisibility(View.GONE);
+				break;
+			case 4:
+				// 已完成
+				top_text.setText("已用完");
+				userLin.setVisibility(View.GONE);
+				submit.setVisibility(View.GONE);
+				member_state
+						.setBackgroundResource(R.drawable.membercard_detail_state04);
+				break;
+			default:
+				break;
 		}
 		// 判断是不是服务型会员卡
 		if (null != t.getEnnCardType().getServiceType()
@@ -686,7 +732,7 @@ public class MemberCardDetailActivity extends BaseActivity {
 			tab_linview.setVisibility(View.GONE);
 			setmal_rel.setVisibility(View.GONE);
 			top_text.setText("启用中");
-			
+
 		}
 		// 判断是不是服务型会员卡
 		if (null != t.getEnnCardType().getServiceType()
@@ -723,29 +769,29 @@ public class MemberCardDetailActivity extends BaseActivity {
 			int cardkind = StrToNumber.strToint(t.getEnnCardType()
 					.getCardKind());
 			switch (cardkind) {
-			case 1:
-				membertypestring.append("安全蔬菜");
-				break;
-			case 2:
-				membertypestring.append("生态柴鸡蛋");
-				break;
-			case 3:
-				membertypestring.append("生态猪肉");
-				break;
-			case 4:
-				membertypestring.append("生态散养柴鸡");
-				break;
-			case 5:
-				membertypestring.append("生态大米");
-				break;
-			case 6:
-				membertypestring.append("生态杂粮");
-				break;
-			case 10:
-				membertypestring.append("礼品卡");
-				break;
-			default:
-				break;
+				case 1:
+					membertypestring.append("安全蔬菜");
+					break;
+				case 2:
+					membertypestring.append("生态柴鸡蛋");
+					break;
+				case 3:
+					membertypestring.append("生态猪肉");
+					break;
+				case 4:
+					membertypestring.append("生态散养柴鸡");
+					break;
+				case 5:
+					membertypestring.append("生态大米");
+					break;
+				case 6:
+					membertypestring.append("生态杂粮");
+					break;
+				case 10:
+					membertypestring.append("礼品卡");
+					break;
+				default:
+					break;
 			}
 		}
 		if (null != t.getEnnCardType()
@@ -753,31 +799,31 @@ public class MemberCardDetailActivity extends BaseActivity {
 			int cardtype = StrToNumber.strToint(t.getEnnCardType()
 					.getCardType());
 			switch (cardtype) {
-			case 1:
-				membertypestring.append("年卡");
-				break;
-			case 2:
-				membertypestring.append("半年卡");
-				break;
-			case 3:
-				membertypestring.append("季卡");
-				break;
-			default:
-				break;
+				case 1:
+					membertypestring.append("年卡");
+					break;
+				case 2:
+					membertypestring.append("半年卡");
+					break;
+				case 3:
+					membertypestring.append("季卡");
+					break;
+				default:
+					break;
 			}
 		}
 		if (null != t.getEnnCardType()
 				&& null != t.getEnnCardType().getIsElect()) {
 			int iselect = StrToNumber.strToint(t.getEnnCardType().getIsElect());
 			switch (iselect) {
-			case 0:
-				membertypestring.append("(实体)");
-				break;
-			case 1:
-				membertypestring.append("(电子)");
-				break;
-			default:
-				break;
+				case 0:
+					membertypestring.append("(实体)");
+					break;
+				case 1:
+					membertypestring.append("(电子)");
+					break;
+				default:
+					break;
 			}
 		}
 		if (null != t.getEnnCardType().getServiceType()
@@ -847,11 +893,17 @@ public class MemberCardDetailActivity extends BaseActivity {
 
 	}
 
+	/**
+	 *
+	 * @param requestCode
+	 * @param resultCode
+	 * @param data
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == 01 && resultCode == 01) {
+		if (requestCode == 1 && resultCode == 1) {
 			String timestrs = data.getStringExtra("timestrs");
 			currentobject.getEnnCardConfig().setDeliveWeek(timestrs);
 			card_time.setText(changetimes(timestrs));
@@ -945,14 +997,14 @@ public class MemberCardDetailActivity extends BaseActivity {
 	}
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 		StatService.onResume(this);
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+
 		super.onPause();
 		/**
 		 * 页面起始（每个Activity中都需要添加，如果有继承的父Activity中已经添加了该调用，那么子Activity中务必不能添加）
