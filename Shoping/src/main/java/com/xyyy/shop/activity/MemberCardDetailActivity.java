@@ -915,7 +915,7 @@ public class MemberCardDetailActivity extends BaseActivity {
 			useing.setBackgroundResource(R.drawable.login_buttonap);
 			useing.setClickable(false);
 		}
-		if (requestCode == 02 && resultCode == 02) {
+		if (requestCode == 2 && resultCode == 2) {
 			String province = data.getStringExtra("province");
 			String city = data.getStringExtra("city");
 			String country = data.getStringExtra("country");
