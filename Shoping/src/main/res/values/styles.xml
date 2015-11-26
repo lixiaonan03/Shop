@@ -2,25 +2,37 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
+        <!-- 设置activity切换动画  -->
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-     <style name="dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item><!-- �߿� -->
-        <item name="android:windowIsFloating">true</item><!--�Ƿ�����activity֮��-->
-        <!-- <item name="android:windowIsTranslucent">true</item>��͸�� -->
-        <item name="android:windowNoTitle">true</item><!--�ޱ���-->
-        <item name="android:windowBackground">@color/translate_background</item><!--����͸��   ȥ������ɫ�߿�Ҳ��ȥ����-->
-        <item name="android:backgroundDimEnabled">false</item><!--ģ��-->
+    <!-- Application theme. -->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否浮现在activity之上-->
+        <!-- <item name="android:windowIsTranslucent">true</item>半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--无标题-->
+        <item name="android:windowBackground">@color/translate_background</item>
+        <!--背景透明   去掉背景色边框也就去掉了-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--模糊-->
         <!-- <item name="android:windowContentOverlay">@null</item> -->
-        <item name="android:backgroundDimAmount">0.5</item><!-- android:backgroundDimAmount�����������ƻҶȵ�ֵ����Ϊ1ʱ������������ǵ�dialog�����Ǹ�����ʾ�ģ�dialog����������Ǻ�ɫ�ģ���ȫ�������������ݣ�ϵͳ��Ĭ��ֵ��0.5�����Ѹ����Լ�����Ҫ����
-         --> 
+        <item name="android:backgroundDimAmount">0.5</item>
+        <!-- android:backgroundDimAmount就是用来控制灰度的值，当为1时，界面除了我们的dialog内容是高亮显示的，dialog以外的区域是黑色的，完全看不到其他内容，系统的默认值是0.5，而已根据自己的需要调整
+                 -->
     </style>
+
     <style name="edittext">
         <item name="android:background">@drawable/bg_edittext</item>
         <item name="android:paddingLeft">12dp</item>
@@ -29,11 +41,11 @@
         <item name="android:textColorHint">@color/textcolorhint</item>
         <item name="android:textSize">@dimen/textsizesmall</item>
     </style>
-     <!-- animation ��ʽ -->  
-    <style name="activityAnimation" parent="@android:style/Animation">  
-        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>  
-        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>  
-        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>  
-        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>  
-    </style>  
+    <!-- animation 样式 -->
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
 </resources>
