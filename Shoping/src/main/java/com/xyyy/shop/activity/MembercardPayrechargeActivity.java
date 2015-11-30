@@ -271,26 +271,26 @@ public class MembercardPayrechargeActivity extends BaseActivity {
 					Toast.makeText(MembercardPayrechargeActivity.this, "请输入充值金额！",Toast.LENGTH_SHORT).show();
 					return;
 				}
-			    BigDecimal money=new BigDecimal(moneystr);
-			    if(money.compareTo(new BigDecimal(1000))==-1){
+				BigDecimal money=new BigDecimal(moneystr);
+			 /*   if(money.compareTo(new BigDecimal(1000))==-1){
 			    	Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能低于1000！",Toast.LENGTH_SHORT).show();
 			    	return;
 			    }
 			    if(money.compareTo(new BigDecimal(20000))==1){
 			    	Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能高于20000！",Toast.LENGTH_SHORT).show();
 			    	return;
-			    }
-			    //根据在线数据比较的
-			    if(rulelist.size()>0){
-			    	if(money.compareTo(rulelist.get(0).getLowAmount())==-1){
-				    	Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能低于"+rulelist.get(0).getLowAmount() +"！",Toast.LENGTH_SHORT).show();
-				    	return;
-				    }
-				    if(money.compareTo(rulelist.get(rulelist.size()-1).getHighAmount())==1){
-				    	Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能高于"+rulelist.get(rulelist.size()-1).getHighAmount()+"！",Toast.LENGTH_SHORT).show();
-				    	return;
-				    }
-			    }
+			    }*/
+				//根据在线数据比较的
+				if(rulelist.size()>0){
+					if(money.compareTo(rulelist.get(0).getLowAmount())==-1){
+						Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能低于"+rulelist.get(0).getLowAmount() +"！",Toast.LENGTH_SHORT).show();
+						return;
+					}
+					if((money.compareTo(rulelist.get(rulelist.size()-1).getHighAmount())==1)||(money.compareTo(rulelist.get(rulelist.size()-1).getHighAmount())==0)){
+						Toast.makeText(MembercardPayrechargeActivity.this, "充值金额不能高于"+rulelist.get(rulelist.size()-1).getHighAmount()+"！",Toast.LENGTH_SHORT).show();
+						return;
+					}
+				}
 			    
 			    
 				int userid = 0;
