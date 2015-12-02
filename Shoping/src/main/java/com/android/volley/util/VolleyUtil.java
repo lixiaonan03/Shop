@@ -50,8 +50,8 @@ public class VolleyUtil {
 
 	private final static int TIME_OUT = 15000;
     
-	private final static String appid="AD.sunyard@163.com";
-	private final static String apppwd="sunyardAD";
+	public final static String appid="AD.sunyard@163.com";
+	public final static String apppwd="sunyardAD";
 	/**
 	 * 解析返回json的节点字段
 	 */
