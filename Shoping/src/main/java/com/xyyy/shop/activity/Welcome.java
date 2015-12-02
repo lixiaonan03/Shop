@@ -62,7 +62,7 @@ public class Welcome extends BaseActivity {
 				break;
 			case 2:
 				// 不更新
-				/*int guideInit = PreferencesUtil
+				int guideInit = PreferencesUtil
 						.getValue(PreferencesUtil.GUIDE_INIT);
 				if (guideInit != 1) {
 					// 跳转到引导页面
@@ -75,18 +75,16 @@ public class Welcome extends BaseActivity {
 					Intent intent = new Intent(Welcome.this, MainActivity.class);
 					startActivity(intent);
 					finish();
-					
-					 * Timer timer = new Timer(); TimerTask task = new
+					/*
+					 * * Timer timer = new Timer(); TimerTask task = new
 					 * TimerTask() {
 					 * 
 					 * @Override public void run() {
 					 * 
 					 * } }; timer.schedule(task, 1000 * 1);
-					 
-				}*/
-				Intent intent = new Intent(Welcome.this, MainActivity.class);
-				startActivity(intent);
-				finish();
+					 */
+
+				}
 				break;
 
 			default:
@@ -104,7 +102,7 @@ public class Welcome extends BaseActivity {
 		setContentView(R.layout.activity_welcome);
 		// TODO 加载版本更新的内容
 		intcurrent = getVersion();
-		
+
 		new Thread(new Runnable() { // 开启线程上传文件
 
 					@Override
@@ -124,9 +122,10 @@ public class Welcome extends BaseActivity {
 	 * 获取服务器上apk版本号(其他信息)
 	 */
 	public void getServerVerCode() {
-		
+
 		try {
-			String verjson = readContent(CommonVariable.IP+"/mallService/soft/update.json");
+			String verjson = readContent(CommonVariable.IP
+					+ "/mallService/soft/update.json");
 			if (StringUtils.isNotBlank(verjson)) {
 				JSONObject obj = new JSONObject(verjson);
 				newVerCode = Integer.parseInt(obj.getString("verCode"));
@@ -198,7 +197,7 @@ public class Welcome extends BaseActivity {
 				// 更新
 				int i = progressBar_update.getProgress();
 				if (i == 0) {
-					if(null==downSoft){
+					if (null == downSoft) {
 						downSoft = new DownSoft();
 						downSoft.execute();
 					}
@@ -219,18 +218,17 @@ public class Welcome extends BaseActivity {
 				dialog.dismiss();
 				int guideInit = PreferencesUtil
 						.getValue(PreferencesUtil.GUIDE_INIT);
-				/*if (guideInit != 1) {
+				if (guideInit != 1) {
 					// 跳转到引导页面
 					Intent intent = new Intent(Welcome.this,
 							GuideActivity.class);
 					startActivity(intent);
 					finish();
 				} else {
-					
-				}*/
-				Intent intent = new Intent(Welcome.this, MainActivity.class);
-				startActivity(intent);
-				finish();
+					Intent intent = new Intent(Welcome.this, MainActivity.class);
+					startActivity(intent);
+					finish();
+				}
 			}
 		});
 		dialog.show();
@@ -312,6 +310,7 @@ public class Welcome extends BaseActivity {
 
 	/**
 	 * 获取应用版本号
+	 * 
 	 * @return
 	 */
 	public int getVersion() {
@@ -325,6 +324,7 @@ public class Welcome extends BaseActivity {
 			return 0;
 		}
 	}
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

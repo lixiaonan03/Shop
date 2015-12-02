@@ -97,6 +97,9 @@ public class GuideActivity extends  BaseActivity{
 				button.setVisibility(View.GONE);
 			}
 			if (arg0 == 3) {
+				button.setVisibility(View.GONE);
+			}
+			if (arg0 == 4) {
 				button.setVisibility(View.VISIBLE);
 			}
 		}
