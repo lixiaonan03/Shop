@@ -308,14 +308,30 @@ public class MemberCardDetailActivity extends BaseActivity {
 										@Override
 										public void onSuccess(List<EnnSysArea> t) {
 											// TODO Auto-generated method stub
-											Intent intentaddress = new Intent(
-													MemberCardDetailActivity.this,
-													UseradressActivity.class);
-											intentaddress.putExtra("flag", 2);
-											intentaddress.putExtra("addresslist",
-													(Serializable) t);
-											startActivityForResult(intentaddress,
-													02);
+											if(null!=t&&t.size()==1){
+												if (t.get(0).getAreaId()==111111){
+													//配送范围是全国
+													Intent intentaddress = new Intent(
+															MemberCardDetailActivity.this,
+															UseradressActivity.class);
+													intentaddress.putExtra("flag", 2);
+													List<EnnSysArea>  all=new ArrayList<EnnSysArea>();
+													intentaddress.putExtra("addresslist",
+															(Serializable) all);
+													startActivityForResult(intentaddress,
+															02);
+												}
+											}else{
+												Intent intentaddress = new Intent(
+														MemberCardDetailActivity.this,
+														UseradressActivity.class);
+												intentaddress.putExtra("flag", 2);
+												intentaddress.putExtra("addresslist",
+														(Serializable) t);
+												startActivityForResult(intentaddress,
+														02);
+											}
+
 										}
 
 										@Override
