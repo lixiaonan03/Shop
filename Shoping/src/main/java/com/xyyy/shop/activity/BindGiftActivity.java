@@ -1,5 +1,7 @@
 package com.xyyy.shop.activity;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -111,7 +113,14 @@ public class BindGiftActivity extends BaseActivity {
 								BindGiftActivity.this);
 						builder.setTitle("提示");
 						builder.setMessage("绑定成功");
-						builder.setNegativeButton("确定", null);
+						builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface arg0, int arg1) {
+								arg0.dismiss();
+								finish();
+							}
+						});
 						if (!isFinishing()) {
 							builder.create().show();
 						}

@@ -1,5 +1,6 @@
 package com.xyyy.shop.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
@@ -280,7 +281,14 @@ public class BindMemberActivity extends BaseActivity {
 				AlertDialog.Builder builder = new AlertDialog.Builder(BindMemberActivity.this);
 				builder.setTitle("提示");
 				builder.setMessage("绑定成功");
-				builder.setNegativeButton("确定", null);
+				builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						arg0.dismiss();
+						finish();
+					}
+				});
 				if (!isFinishing()) {
 					builder.create().show();
 				}
