@@ -238,6 +238,7 @@ public class MycenterFragment extends Fragment {
 				break;
 			case R.id.logout:
 				// 退出登录的
+				StatService.onEvent(getActivity(),"logout" ,"退出登录");
 				if (ShopApplication.isLogin) {
 					ShopApplication.isLogin = false;
 					logout.setVisibility(View.GONE);

@@ -26,6 +26,7 @@ import com.baidu.mobstat.StatService;
 import com.xyyy.shop.R;
 import com.xyyy.shop.ShopApplication;
 import com.xyyy.shop.activity.BindMemberActivity;
+import com.xyyy.shop.activity.CartActivity;
 import com.xyyy.shop.activity.LoginActivity;
 import com.xyyy.shop.activity.MemberCardDetailActivity;
 import com.xyyy.shop.activity.MemberListActivity;
@@ -107,6 +108,7 @@ public class MemberFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				StatService.onEvent(getActivity(), "member_detail" , "进入会员卡详情界面");
 				// TODO 点击进入我的会员卡详情界面
 				Intent intent = new Intent(getActivity(),
 						MemberCardDetailActivity.class);
@@ -220,6 +222,7 @@ public class MemberFragment extends Fragment {
 			switch (arg0.getId()) {
 			case R.id.gobuymemberLin:
 				// 购买会员卡
+				StatService.onEvent(getActivity(), "member_gobuy" , "购买会员卡条目点击");
 				Intent intent = new Intent(getActivity(),
 						MemberListActivity.class);
 				getActivity().startActivity(intent);

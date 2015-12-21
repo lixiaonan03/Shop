@@ -101,12 +101,12 @@ public class MyInformationActivity extends BaseActivity {
 		usersex = (TextView) findViewById(R.id.usersex);
 		userbirthRel = (RelativeLayout) findViewById(R.id.userbirthRel);
 		userbirth = (TextView) findViewById(R.id.userbirth);
-		
+
 		membernameRel = (RelativeLayout) findViewById(R.id.membernameRel);
 		membername = (TextView) findViewById(R.id.membername);
 		memberphoneRel = (RelativeLayout) findViewById(R.id.memberphoneRel);
 		memberphone = (TextView) findViewById(R.id.memberphone);
-		
+
 		useraccountRel = (RelativeLayout) findViewById(R.id.useraccountRel);
 		useraddressRel = (RelativeLayout) findViewById(R.id.useraddressRel);
 
@@ -116,7 +116,7 @@ public class MyInformationActivity extends BaseActivity {
 		userbirthRel.setOnClickListener(new ViewOnClickListener());
 		useraccountRel.setOnClickListener(new ViewOnClickListener());
 		useraddressRel.setOnClickListener(new ViewOnClickListener());
-		
+
 		membernameRel.setOnClickListener(new ViewOnClickListener());
 		memberphoneRel.setOnClickListener(new ViewOnClickListener());
 
@@ -133,12 +133,12 @@ public class MyInformationActivity extends BaseActivity {
 			if (ShopApplication.loginflag == 1) {
 				// 原生登录
 				if (null != ShopApplication.userimgurlrlogin) {
-					 DisplayImageOptions options = new DisplayImageOptions.Builder()  
-			            .showImageOnLoading(R.drawable.user_img)         // 设置图片下载期间显示的图片  
-			            .showImageForEmptyUri(R.drawable.user_img)  // 设置图片Uri为空或是错误的时候显示的图片  
-			            .showImageOnFail(R.drawable.user_img)       // 设置图片加载或解码过程中发生错误显示的图片      
-			            //.cacheInMemory(true)                        // 设置下载的图片是否缓存在内存中  
-			            .build();                                   // 创建配置过得DisplayImageOption对象  
+					DisplayImageOptions options = new DisplayImageOptions.Builder()
+							.showImageOnLoading(R.drawable.user_img)         // 设置图片下载期间显示的图片
+							.showImageForEmptyUri(R.drawable.user_img)  // 设置图片Uri为空或是错误的时候显示的图片
+							.showImageOnFail(R.drawable.user_img)       // 设置图片加载或解码过程中发生错误显示的图片
+									//.cacheInMemory(true)                        // 设置下载的图片是否缓存在内存中
+							.build();                                   // 创建配置过得DisplayImageOption对象
 					ImageLoader.getInstance().displayImage(ShopApplication.userimgurlrlogin, userimg,options);
 				}
 				//设置昵称
@@ -148,6 +148,38 @@ public class MyInformationActivity extends BaseActivity {
 				//设置性别
 				if(null!=ShopApplication.userinfo&&null!=ShopApplication.userinfo.getMembSex()){
 					switch (StrToNumber.strToint(ShopApplication.userinfo.getMembSex())) {
+						case 0:
+							usersex.setText("保密");
+							break;
+						case 1:
+							usersex.setText("男");
+							break;
+						case 2:
+							usersex.setText("女");
+							break;
+
+						default:
+							break;
+					}
+				}else{
+					usersex.setText("保密");
+				}
+
+			}
+			if (ShopApplication.loginflag == 2) {
+				DisplayImageOptions options = new DisplayImageOptions.Builder()
+						.showImageOnLoading(R.drawable.user_img)         // 设置图片下载期间显示的图片
+						.showImageForEmptyUri(R.drawable.user_img)  // 设置图片Uri为空或是错误的时候显示的图片
+						.showImageOnFail(R.drawable.user_img)       // 设置图片加载或解码过程中发生错误显示的图片
+						.cacheInMemory(true)                        // 设置下载的图片是否缓存在内存中
+						.build();                                   // 创建配置过得DisplayImageOption对象
+				ImageLoader.getInstance().displayImage(ShopApplication.userimgurlOtherlogin, userimg,options);
+
+
+				if (StringUtils.isNotBlank(ShopApplication.usernameOtherlogin)) {
+					username.setText(ShopApplication.usernameOtherlogin);
+				}
+				switch (ShopApplication.usersexOtherlogin) {
 					case 0:
 						usersex.setText("保密");
 						break;
@@ -160,32 +192,6 @@ public class MyInformationActivity extends BaseActivity {
 
 					default:
 						break;
-					}
-				}else{
-					usersex.setText("保密");
-				}
-				
-			}
-			if (ShopApplication.loginflag == 2) {
-				VolleyUtil.disPlayImage(userimg,
-						ShopApplication.userimgurlOtherlogin,
-						R.drawable.user_img, R.drawable.user_img);
-				if (StringUtils.isNotBlank(ShopApplication.usernameOtherlogin)) {
-					username.setText(ShopApplication.usernameOtherlogin);
-				}
-				switch (ShopApplication.usersexOtherlogin) {
-				case 0:
-					usersex.setText("保密");
-					break;
-				case 1:
-					usersex.setText("男");
-					break;
-				case 2:
-					usersex.setText("女");
-					break;
-
-				default:
-					break;
 				}
 			}
 			//设置出生日期
@@ -220,140 +226,140 @@ public class MyInformationActivity extends BaseActivity {
 			Intent intent = new Intent();
 
 			switch (id) {
-			case R.id.userimgRel:
-				// 用户头像
-				if(ShopApplication.loginflag==1){
-					onClick_Img();
-				}
-				break;
-			case R.id.usernameRel:
-				// 用户昵称
-				if(ShopApplication.loginflag==1){
-					intent.setClass(MyInformationActivity.this,
-							UsernameActivity.class);
-					startActivityForResult(intent, 2);
-				}
-				break;
-			case R.id.usersexRel:
-				// 用户性别
-				if(ShopApplication.loginflag==1){
-					intent.setClass(MyInformationActivity.this,
-							UsersexActivity.class);
-					//TODO 用户性别传入数据
-					startActivityForResult(intent, 3);
-				}
-				break;
-			case R.id.membernameRel:
-				//会员姓名
+				case R.id.userimgRel:
+					// 用户头像
+					if(ShopApplication.loginflag==1){
+						onClick_Img();
+					}
+					break;
+				case R.id.usernameRel:
+					// 用户昵称
+					if(ShopApplication.loginflag==1){
+						intent.setClass(MyInformationActivity.this,
+								UsernameActivity.class);
+						startActivityForResult(intent, 2);
+					}
+					break;
+				case R.id.usersexRel:
+					// 用户性别
+					if(ShopApplication.loginflag==1){
+						intent.setClass(MyInformationActivity.this,
+								UsersexActivity.class);
+						//TODO 用户性别传入数据
+						startActivityForResult(intent, 3);
+					}
+					break;
+				case R.id.membernameRel:
+					//会员姓名
 					intent.setClass(MyInformationActivity.this,
 							MembernameActivity.class);
 					//TODO 用户性别传入数据
 					startActivityForResult(intent, 4);
-				break;
-			case R.id.memberphoneRel:
-				// 会员手机
+					break;
+				case R.id.memberphoneRel:
+					// 会员手机
 					intent.setClass(MyInformationActivity.this,
 							UserchangephoneTwoActivity.class);
 					startActivityForResult(intent, 5);
-				break;
-			case R.id.userbirthRel:
-				// 用户出生日期
-				Calendar calendar = Calendar.getInstance();
-				final DatePickerDialog dialog = new DatePickerDialog(
-						MyInformationActivity.this, null,
-						calendar.get(Calendar.YEAR),
-						calendar.get(Calendar.MONTH),
-						calendar.get(Calendar.DAY_OF_MONTH));
-				dialog.setCanceledOnTouchOutside(true);
-				//手动设置按钮  
-				dialog.setButton(DialogInterface.BUTTON_POSITIVE, "完成", new DialogInterface.OnClickListener() {  
-		            @SuppressLint("NewApi")
-					@Override  
-		            public void onClick(DialogInterface dialoginter, int which) {  
-		                //通过mDialog.getDatePicker()获得dialog上的DatePicker组件，然后可以获取日期信息  
-		                DatePicker datePicker = dialog.getDatePicker();  
-		                int year = datePicker.getYear();  
-		                int month = datePicker.getMonth();  
-		                int day = datePicker.getDayOfMonth();  
-		                // Calendar月份是从0开始,所以month要加1
-		    			EnnMember user = new EnnMember();
-		    			int userid = 0;
-		    			if (ShopApplication.isLogin) {
-		    				if (ShopApplication.loginflag == 1) {
-		    					userid = ShopApplication.userid;
-		    				} 
-		    				if(ShopApplication.loginflag == 2){
-		    					userid = ShopApplication.useridother;
-		    				}
-		    			}
-		    			user.setMembId(userid);
-		    			final String str = "" + year + "-" + (month + 1) + "-" + day;
-		    			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		    			java.util.Date d = null;
-		    			try {
-		    				d = format.parse(str);
-		    			} catch (Exception e) {
-		    				e.printStackTrace();
-		    			}
-		    			final java.sql.Timestamp time = new java.sql.Timestamp(d.getTime());
-		    			user.setMembBirth(time);
-		    			customProgressDialog.show();
-		    			VolleyUtil.sendObjectByPostToString(
-		    					CommonVariable.UpdateMemberinfoURL, null, user,
-		    					new HttpBackBaseListener() {
+					break;
+				case R.id.userbirthRel:
+					// 用户出生日期
+					Calendar calendar = Calendar.getInstance();
+					final DatePickerDialog dialog = new DatePickerDialog(
+							MyInformationActivity.this, null,
+							calendar.get(Calendar.YEAR),
+							calendar.get(Calendar.MONTH),
+							calendar.get(Calendar.DAY_OF_MONTH));
+					dialog.setCanceledOnTouchOutside(true);
+					//手动设置按钮
+					dialog.setButton(DialogInterface.BUTTON_POSITIVE, "完成", new DialogInterface.OnClickListener() {
+						@SuppressLint("NewApi")
+						@Override
+						public void onClick(DialogInterface dialoginter, int which) {
+							//通过mDialog.getDatePicker()获得dialog上的DatePicker组件，然后可以获取日期信息
+							DatePicker datePicker = dialog.getDatePicker();
+							int year = datePicker.getYear();
+							int month = datePicker.getMonth();
+							int day = datePicker.getDayOfMonth();
+							// Calendar月份是从0开始,所以month要加1
+							EnnMember user = new EnnMember();
+							int userid = 0;
+							if (ShopApplication.isLogin) {
+								if (ShopApplication.loginflag == 1) {
+									userid = ShopApplication.userid;
+								}
+								if(ShopApplication.loginflag == 2){
+									userid = ShopApplication.useridother;
+								}
+							}
+							user.setMembId(userid);
+							final String str = "" + year + "-" + (month + 1) + "-" + day;
+							SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+							java.util.Date d = null;
+							try {
+								d = format.parse(str);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							final java.sql.Timestamp time = new java.sql.Timestamp(d.getTime());
+							user.setMembBirth(time);
+							customProgressDialog.show();
+							VolleyUtil.sendObjectByPostToString(
+									CommonVariable.UpdateMemberinfoURL, null, user,
+									new HttpBackBaseListener() {
 
-		    						@Override
-		    						public void onSuccess(String string) {
-		    							customProgressDialog.dismiss();
-		    							userbirth.setText(str);
-		    							if(ShopApplication.loginflag==1){
-		    								ShopApplication.userinfo.setMembBirth(time);
-		    							}
-		    							if(ShopApplication.loginflag==2){
-		    								ShopApplication.userbirthother=str;
-		    							}
-		    							
-		    						}
+										@Override
+										public void onSuccess(String string) {
+											customProgressDialog.dismiss();
+											userbirth.setText(str);
+											if(ShopApplication.loginflag==1){
+												ShopApplication.userinfo.setMembBirth(time);
+											}
+											if(ShopApplication.loginflag==2){
+												ShopApplication.userbirthother=str;
+											}
 
-		    						@Override
-		    						public void onFail(String failstring) {
-		    							customProgressDialog.dismiss();
-		    							Toast.makeText(MyInformationActivity.this, "修改失败！",
-		    									0).show();
-		    						}
+										}
 
-		    						@Override
-		    						public void onError(VolleyError error) {
-		    							customProgressDialog.dismiss();
-		    							Toast.makeText(MyInformationActivity.this, "修改失败！",
-		    									0).show();
-		    						}
-		    					}, false, null);  
-		            }  
-		        });  
-		        //取消按钮，如果不需要直接不设置即可  
-				dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {  
-		            @Override  
-		            public void onClick(DialogInterface dialog, int which) {  
-		            }  
-		        });  
-				dialog.show();
-				break;
-			case R.id.useraccountRel:
-				// 用户账户安全
-				intent.setClass(MyInformationActivity.this,
-						UseracountsafeActivity.class);
-				startActivity(intent);
-				break;
-			case R.id.useraddressRel:
-				// 用户收货地址
-				intent.setClass(MyInformationActivity.this,
-						UseradressActivity.class);
-				startActivity(intent);
-				break;
+										@Override
+										public void onFail(String failstring) {
+											customProgressDialog.dismiss();
+											Toast.makeText(MyInformationActivity.this, "修改失败！",
+													0).show();
+										}
 
-			default:
-				break;
+										@Override
+										public void onError(VolleyError error) {
+											customProgressDialog.dismiss();
+											Toast.makeText(MyInformationActivity.this, "修改失败！",
+													0).show();
+										}
+									}, false, null);
+						}
+					});
+					//取消按钮，如果不需要直接不设置即可
+					dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+					dialog.show();
+					break;
+				case R.id.useraccountRel:
+					// 用户账户安全
+					intent.setClass(MyInformationActivity.this,
+							UseracountsafeActivity.class);
+					startActivity(intent);
+					break;
+				case R.id.useraddressRel:
+					// 用户收货地址
+					intent.setClass(MyInformationActivity.this,
+							UseradressActivity.class);
+					startActivity(intent);
+					break;
+
+				default:
+					break;
 			}
 		}
 
@@ -362,7 +368,7 @@ public class MyInformationActivity extends BaseActivity {
 	DatePickerDialog.OnDateSetListener dateListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker datePicker, final int year,
-				final int month, final int dayOfMonth) {
+							  final int month, final int dayOfMonth) {
 		}
 	};
 
@@ -439,13 +445,13 @@ public class MyInformationActivity extends BaseActivity {
 		intent.putExtras(mBundle);
 		startActivityForResult(intent, PhotoPickActivity.PHOTO_REQ_CAPTURE);
 	}
-	
+
 	Bitmap bitmap = null;
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == PhotoPickActivity.PHOTO_REQ_ALBUM
 				|| requestCode == PhotoPickActivity.PHOTO_REQ_CAPTURE) {
-			
+
 			if (resultCode == PhotoPickActivity.PHOTO_BACK_URI) {
 				Uri uri = (Uri) data.getExtras().get("data");
 				bitmap = BitmapUtil.getRotateBitmap(MyInformationActivity.this,
@@ -455,43 +461,43 @@ public class MyInformationActivity extends BaseActivity {
 				bitmap = (Bitmap) data.getExtras().get("data");
 			}
 			if(null!=bitmap){
-			
-			UploadUtil uploadUtil = UploadUtil.getInstance();
-			uploadUtil
-					.setOnUploadProcessListener(new OnUploadProcessListener() {
 
-						@Override
-						public void onUploadProcess(int uploadSize) {
-						}
+				UploadUtil uploadUtil = UploadUtil.getInstance();
+				uploadUtil
+						.setOnUploadProcessListener(new OnUploadProcessListener() {
 
-						@Override
-						public void onUploadDone(int responseCode,
-								String message) {
-							Message msg = Message.obtain();
-							msg.what = 10;
-							msg.arg1 = responseCode;
-							msg.obj = message;
-							handler.sendMessage(msg);
-						}
+							@Override
+							public void onUploadProcess(int uploadSize) {
+							}
 
-						@Override
-						public void initUpload(int fileSize) {
-						}
-					}); // 设置监听器监听上传状态
-			Map<String, String> params = new HashMap<String, String>();
-			int userid = 0;
-			if (ShopApplication.isLogin) {
-				if (ShopApplication.loginflag == 1) {
-					userid = ShopApplication.userid;
-				} 
-				if(ShopApplication.loginflag == 2){
-					userid = ShopApplication.useridother;
+							@Override
+							public void onUploadDone(int responseCode,
+													 String message) {
+								Message msg = Message.obtain();
+								msg.what = 10;
+								msg.arg1 = responseCode;
+								msg.obj = message;
+								handler.sendMessage(msg);
+							}
+
+							@Override
+							public void initUpload(int fileSize) {
+							}
+						}); // 设置监听器监听上传状态
+				Map<String, String> params = new HashMap<String, String>();
+				int userid = 0;
+				if (ShopApplication.isLogin) {
+					if (ShopApplication.loginflag == 1) {
+						userid = ShopApplication.userid;
+					}
+					if(ShopApplication.loginflag == 2){
+						userid = ShopApplication.useridother;
+					}
 				}
-			}
-			params.put("membId", userid+"");
-			uploadUtil.uploadFile(bitmap, "file",
-					CommonVariable.UpdateMemberinfoImgURL, params);
-			
+				params.put("membId", userid+"");
+				uploadUtil.uploadFile(bitmap, "file",
+						CommonVariable.UpdateMemberinfoImgURL, params);
+
 			}
 		}
 		if (requestCode == 2 && resultCode == 1) {
@@ -522,46 +528,46 @@ public class MyInformationActivity extends BaseActivity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case 10:
-				
-				if (1 == msg.arg1) {
-					userimg.setImageBitmap(bitmap);
-					JSONObject object = JSON.parseObject((String) msg.obj);
-					String code = (String) object.get("retCode");
-					if ("200".equals(code)) {
-						if (object.containsKey("responseBody")) {
-							JSONObject response = (JSONObject) object
-									.get("responseBody");
-							if (response.containsKey("membImg")) {
-								String userimgurl = (String) response
-										.get("membImg");
-								if (null != userimgurl) {
-									ShopApplication.userimgurlrlogin = userimgurl;
-									Intent intent = new Intent("changeuserinfo");
-									LocalBroadcastManager.getInstance(MyInformationActivity.this).sendBroadcast(intent);
+				case 10:
+
+					if (1 == msg.arg1) {
+						userimg.setImageBitmap(bitmap);
+						JSONObject object = JSON.parseObject((String) msg.obj);
+						String code = (String) object.get("retCode");
+						if ("200".equals(code)) {
+							if (object.containsKey("responseBody")) {
+								JSONObject response = (JSONObject) object
+										.get("responseBody");
+								if (response.containsKey("membImg")) {
+									String userimgurl = (String) response
+											.get("membImg");
+									if (null != userimgurl) {
+										ShopApplication.userimgurlrlogin = userimgurl;
+										Intent intent = new Intent("changeuserinfo");
+										LocalBroadcastManager.getInstance(MyInformationActivity.this).sendBroadcast(intent);
+									}
 								}
 							}
+						}else {
+							Toast.makeText(MyInformationActivity.this,
+									"头像上传失败！", 0).show();
 						}
-					}else {
+					} else {
 						Toast.makeText(MyInformationActivity.this,
 								"头像上传失败！", 0).show();
 					}
-				} else {
-					Toast.makeText(MyInformationActivity.this,
-							"头像上传失败！", 0).show();
-				}
-				break;
-			default:
-				break;
+					break;
+				default:
+					break;
 			}
 			super.handleMessage(msg);
 		}
-		
+
 	};
 	@Override
 	protected void onResume() {

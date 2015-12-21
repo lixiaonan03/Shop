@@ -172,6 +172,7 @@ public class CartFragment extends Fragment {
 			case R.id.cart_edit:
 				if(null!=list&&list.size()>0){
 					//编辑按钮
+					StatService.onEvent(getActivity(), "cart_edit" , "购物车编辑按钮点击");
 					if (flag == 1) {
 						// 当前是支付状态 点击后变成编辑状态
 						cart_edit.setText("完成");
@@ -204,6 +205,7 @@ public class CartFragment extends Fragment {
 				break;
 			case R.id.pay:
 				if (flag == 1) {
+					StatService.onEvent(getActivity(), "cart_pay" , "购物车去结算按钮");
 					//TODO  当前是支付状态 根据登录状态判断点击事件 订单详情界面
 					if (ShopApplication.isLogin) {
 						//登录状态下

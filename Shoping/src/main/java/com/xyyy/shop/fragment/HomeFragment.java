@@ -218,12 +218,23 @@ public class HomeFragment extends Fragment {
 			intent.putExtra("id", StrToNumber.strTolong(goodid));
 			startActivity(intent);
 		}
+		@JavascriptInterface
+		public void gooddetailRecommend(String goodid) {
+			// 跳转推荐商品详情的
+			StatService.onEvent(getActivity(),"home_recommend" , "首页推荐商品详情");
+			Intent intent = new Intent();
+			intent.setClass(getActivity(), ProductdeatilActivity.class);
+			intent.putExtra("flag", 2);
+			intent.putExtra("id", StrToNumber.strTolong(goodid));
+			startActivity(intent);
+		}
 
 		@JavascriptInterface
 		public void getShortcutNav(String gowhere) {
 			// 中间快捷菜单的链接 订单 order 预告 advance 口味 taste
 			Intent intent = new Intent();
 			if (gowhere.equals("order")) {
+				StatService.onEvent(getActivity(),"home_order" , "首页快捷订单");
 				if (ShopApplication.isLogin) {
 					intent.setClass(getActivity(), MyorderActivity.class);
 					intent.putExtra("inflag", 1);
@@ -235,6 +246,7 @@ public class HomeFragment extends Fragment {
 				}
 			}
 			if (gowhere.equals("advance")) {
+				StatService.onEvent(getActivity(),"home_advance" , "首页快捷预告");
 				if (ShopApplication.isLogin) {
 					intent.setClass(getActivity(),
 							MydeliverynoticeActivity.class);
@@ -247,6 +259,7 @@ public class HomeFragment extends Fragment {
 				}
 			}
 			if (gowhere.equals("taste")) {
+				StatService.onEvent(getActivity(),"home_taste" , "首页快捷口味");
 				if (ShopApplication.isLogin) {
 					intent.setClass(getActivity(), MytasteActivity.class);
 					intent.putExtra("inflag", 1);
@@ -260,7 +273,11 @@ public class HomeFragment extends Fragment {
 		}
 
 		@JavascriptInterface
-		public void goodlist(String id) {
+		public void goodlist(String id,String name) {
+			if(StringUtils.isBlank(name)){
+				name="";
+			}
+			StatService.onEvent(getActivity(),"home_classify" , name);
 			// 跳转分类详情的
 			int classifyid = 0;
 			if (StringUtils.isBlank(id)) {
@@ -276,6 +293,7 @@ public class HomeFragment extends Fragment {
 
 		@JavascriptInterface
 		public void gobuy(String id) {
+			StatService.onEvent(getActivity(),"home_gobuy" , "首页推荐立即购买");
 			// 立即购买
 			if (StringUtils.isBlank(id)) {
 				goodid = 0;
@@ -389,6 +407,7 @@ public class HomeFragment extends Fragment {
 
 		@JavascriptInterface
 		public void imgtop(String valname, String valfrom) {
+			StatService.onEvent(getActivity(),"home_topimg" , "首页轮播图点击");
 			if (valname.equals("playimage--")) {
 				// 商品详情
 				Intent intent = new Intent();

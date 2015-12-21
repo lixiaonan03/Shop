@@ -31,6 +31,7 @@ import com.xyyy.shop.adapter.ClassifyMenuContentItemAdapter;
 import com.xyyy.shop.adapter.ClassifyMenuItemAdapter;
 import com.xyyy.shop.model.EnnGoodsCat;
 import com.xyyy.shop.toolUtil.CommonVariable;
+import com.xyyy.shop.toolUtil.StringUtils;
 import com.xyyy.shop.view.CustomProgressDialog;
 
 /**
@@ -89,6 +90,11 @@ public class ClassifyFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				String baiduevent=menulist.get(arg2).getCatName();
+				if(StringUtils.isBlank(baiduevent)){
+					baiduevent="分类条目点击";
+				}
+				StatService.onEvent(getActivity(),"classify_menu" ,baiduevent);
 				smoothScroollListView(arg2);
 				menuadapter.setViewBackGround(arg2);
 				menuadapter.notifyDataSetChanged();

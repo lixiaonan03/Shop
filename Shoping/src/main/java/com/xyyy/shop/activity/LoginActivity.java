@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity {
 	private CustomProgressDialog customProgressDialog;
 	private ImageView login_wx;
 	private TextView top_text;
-    
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,42 +80,43 @@ public class LoginActivity extends BaseActivity {
 		public void onClick(View v) {
 			int viewid = v.getId();
 			switch (viewid) {
-			case R.id.top_back:
-				// 回退
-				finish();
-				break;
-			case R.id.login_submit:
-				// 登录
-				goLogin();
+				case R.id.top_back:
+					// 回退
+					finish();
+					break;
+				case R.id.login_submit:
+					// 登录
+					goLogin();
 
-				break;
-			case R.id.goregister:
-				// 去注册
-				Intent intent = new Intent(LoginActivity.this,
-						RegisterActivity.class);
-				startActivity(intent);
-				break;
-			case R.id.forgetpassword:
-				// 忘记密码
-				Intent intentfind = new Intent(LoginActivity.this,
-						FindPasswordActivity.class);
-				startActivity(intentfind);
-				break;
-			case R.id.login_wx:
-				// 微信登录的方式
-				if(!(ShopApplication.api.isWXAppInstalled()&&ShopApplication.api.isWXAppSupportAPI())){
-					Toast.makeText(LoginActivity.this, "请安装最新版本的微信客户端！", 0).show();
-					return;
-				}
-				customProgressDialog.show();
-				SendAuth.Req req = new SendAuth.Req();
-				req.scope = "snsapi_userinfo";
-				req.state = "shop_wx_login";
-				ShopApplication.api.sendReq(req);
-				break;
+					break;
+				case R.id.goregister:
+					// 去注册
+					Intent intent = new Intent(LoginActivity.this,
+							RegisterActivity.class);
+					startActivity(intent);
+					break;
+				case R.id.forgetpassword:
+					// 忘记密码
+					Intent intentfind = new Intent(LoginActivity.this,
+							FindPasswordActivity.class);
+					startActivity(intentfind);
+					break;
+				case R.id.login_wx:
+					// 微信登录的方式
+					if(!(ShopApplication.api.isWXAppInstalled()&&ShopApplication.api.isWXAppSupportAPI())){
+						Toast.makeText(LoginActivity.this, "请安装最新版本的微信客户端！", 0).show();
+						return;
+					}
+					customProgressDialog.show();
+					StatService.onEvent(LoginActivity.this,"loginactivity_wx" ,"微信登录");
+					SendAuth.Req req = new SendAuth.Req();
+					req.scope = "snsapi_userinfo";
+					req.state = "shop_wx_login";
+					ShopApplication.api.sendReq(req);
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 		}
 	}
@@ -138,6 +139,7 @@ public class LoginActivity extends BaseActivity {
 					Toast.LENGTH_SHORT).show();
 		} else {
 			customProgressDialog.show();
+			StatService.onEvent(LoginActivity.this,"loginactivity_phone" ,"原生登录");
 			String encryptStr = MD5Util.encryptStr("name=" + username
 					+ "&crypted_password=" + password);
 			// String url=CommonVariable.LoginURL+encryptStr;
@@ -193,7 +195,7 @@ public class LoginActivity extends BaseActivity {
 
 	/**
 	 * 把本地购物车的信息同步到服务器
-	 * 
+	 *
 	 * @param userid
 	 *            用户id
 	 */
@@ -238,34 +240,34 @@ public class LoginActivity extends BaseActivity {
 	void logingofor() {
 		int flag = getIntent().getIntExtra("flag", 0);
 		switch (flag) {
-		case 01:
-			// 要回到主界面的
-			setResult(01);
-			finish();
-			break;
-		case 02:
-			// 要回到购物车的
-			setResult(02);
-			finish();
-			break;
-		case 03:
-			// 要回到会员卡的
-			setResult(03);
-			finish();
-			break;
-		case 04:
-			// 要回到个人中心
-			setResult(04);
-			finish();
-			break;
-		case 06:
-			// 要回到商品详情的
-			setResult(06);
-			finish();
-			break;
+			case 01:
+				// 要回到主界面的
+				setResult(01);
+				finish();
+				break;
+			case 02:
+				// 要回到购物车的
+				setResult(02);
+				finish();
+				break;
+			case 03:
+				// 要回到会员卡的
+				setResult(03);
+				finish();
+				break;
+			case 04:
+				// 要回到个人中心
+				setResult(04);
+				finish();
+				break;
+			case 06:
+				// 要回到商品详情的
+				setResult(06);
+				finish();
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 

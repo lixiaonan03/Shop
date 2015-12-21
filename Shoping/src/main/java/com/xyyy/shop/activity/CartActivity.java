@@ -43,10 +43,10 @@ import com.xyyy.shop.view.CustomProgressDialog;
  * 购物车activity的界面
  */
 public class CartActivity extends BaseActivity {
-	
+
 	private ImageView top_back;
 	private TextView top_text;
-    
+
 	private TextView cart_edit;// 编辑按钮
 	private CheckBox checkBoxall;
 	private TextView allmoneytextview;
@@ -63,7 +63,7 @@ public class CartActivity extends BaseActivity {
 	private ImageView nodataimg;
 	private int cartgoodflag=0;//购物车中的商品标记   0是无电子类商品 1有电子类商品
 	private ChangeReceiver receiver;
-	
+
 	private boolean isclick=false;//底部全选按钮 是否是通过广播接收处理的 false不是  true 是
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class CartActivity extends BaseActivity {
 		top_text=(TextView)findViewById(R.id.top_text);
 		top_text.setText("购物车");
 		top_back.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
@@ -83,7 +83,7 @@ public class CartActivity extends BaseActivity {
 		initview();
 		customProgressDialog = new CustomProgressDialog(CartActivity.this,
 				"正在加载......");
-		
+
 		// 初始化广播
 		receiver = new ChangeReceiver();
 		LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(CartActivity.this);
@@ -91,10 +91,10 @@ public class CartActivity extends BaseActivity {
 		intentFilter.addAction("changeallmoney");
 		intentFilter.addAction("changeallmoneyand");
 		broadcastManager.registerReceiver(receiver, intentFilter);
-				
-		
+
+
 	}
-	
+
 
 	private void initview() {
 		yeslogin = (RelativeLayout)findViewById(R.id.yeslogin);
@@ -102,7 +102,7 @@ public class CartActivity extends BaseActivity {
 		nodata.setOnClickListener(viewclick);
 		nodatatext=(TextView)findViewById(R.id.nodatatext);
 		nodataimg=(ImageView)findViewById(R.id.nodataimg);
-		
+
 		cart_edit = (TextView)findViewById(R.id.cart_edit);
 		checkBoxall = (CheckBox)findViewById(R.id.checkBoxall);
 		checkBoxall.setChecked(true);
@@ -138,7 +138,7 @@ public class CartActivity extends BaseActivity {
 
 		changeallmoney();
 	}
-	
+
 	/**
 	 * 根据登录状态改变view
 	 */
@@ -174,210 +174,212 @@ public class CartActivity extends BaseActivity {
 		@Override
 		public void onClick(View arg0) {
 			switch (arg0.getId()) {
-			case R.id.cart_edit:
-				if(null!=list&&list.size()>0){
-					//编辑按钮
-					if (flag == 1) {
-						// 当前是支付状态 点击后变成编辑状态
-						cart_edit.setText("完成");
-						flag = 2;
-						adapter.setFlag(flag);
-						allmoneytextview.setVisibility(View.GONE);
-						pay.setText("删除");
-						
-						checkBoxall.setChecked(false);
-						for (Cart mycart : adapter.get_list()) {
-							mycart.setFlag(1);
-						}
-						adapter.notifyDataSetChanged();
-						changeallmoney();
-					} else {
-						flag = 1;
-						cart_edit.setText("编辑");
-						adapter.setFlag(flag);
-						allmoneytextview.setVisibility(View.VISIBLE);
-						pay.setText("去结算");
-						checkBoxall.setChecked(true);
-						for (Cart mycart : adapter.get_list()) {
-							mycart.setFlag(0);
-						}
-						adapter.notifyDataSetChanged();
-						changeallmoney();
-					}
-				}
-				break;
-			case R.id.pay:
-				if (flag == 1) {
-					//TODO  当前是支付状态 根据登录状态判断点击事件 订单详情界面
-					if (ShopApplication.isLogin) {
-						//登录状态下
-						if(null!=adapter.get_list()&&adapter.get_list().size()>0){
-							List<Cart> listgo=new ArrayList<Cart>();
-							for (Cart cart : adapter.get_list()) {
-								if(cart.getFlag()==0){
-									listgo.add(cart);
-								}
-							}
-							if(listgo.size()>0){
-								for (Cart cart : listgo) {
-									if(cart.getIselectron()==1){
-										cartgoodflag=1;//有电子类商品了
-									}
-								}
-								for (Cart cart : listgo) {
-									if(cartgoodflag==1){
-										//如果有电子卡的情况下 再有实体类商品就提示
-										if(cart.getIselectron()==0){
-											Toast.makeText(CartActivity.this, "亲，您的购物车里包含电子商品,电子商品需和实体物品分开结算!", 1).show();
-											cartgoodflag=0;
-											return;
-										}
-									}
-								}
-								Intent intentgo=new Intent(CartActivity.this,CartOrderDetailActivity.class);
-								intentgo.putExtra("list",(Serializable)listgo);
-								startActivity(intentgo);
-							}else{
-								Toast.makeText(CartActivity.this, "请选择要结算的商品！", 0).show();
-							}
-						}
-					}else{
-						Toast.makeText(CartActivity.this, "请先登录！", 0).show();
-						Intent intent = new Intent(CartActivity.this, LoginActivity.class);
-						intent.putExtra("flag", 02);
-						startActivityForResult(intent, 03);
-					}
-					
-				} else {
-					final StringBuilder url=new StringBuilder("/");
-					for (Cart goodCarVO : adapter.get_list()) {
-						if(goodCarVO.getFlag()==0){
-							url.append("---");
-							url.append(goodCarVO.getGoodid());
-						}
-					}
-					if(url.length()>=5){
-						
-					}else{
-						Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
-						return;
-					}
-					
-					
-					// 购物车删除
-					if (ShopApplication.isLogin) {
-						//登录状态下
-						AlertDialog.Builder builder = new AlertDialog.Builder(
-								CartActivity.this);
-						builder.setTitle("提示");
-						builder.setMessage("您确定要删除么？");
-						builder.setNegativeButton("取消", null);
-						builder.setPositiveButton("删除",
-								new DialogInterface.OnClickListener() {
-									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
-										//走提交接口
-									
-										int memberid=0;
-										if(ShopApplication.loginflag==1){
-											memberid=ShopApplication.userid;
-										}
-										if(ShopApplication.loginflag==2){
-											memberid=ShopApplication.useridother;
-										}
-										String delurl=CommonVariable.CartDeleteGoodURL+memberid+url.toString();
-										customProgressDialog.show();
-										VolleyUtil.sendStringRequestByGetToList(delurl, null, null, GoodCarVO.class,new HttpBackListListener<GoodCarVO>(){
+				case R.id.cart_edit:
+					if(null!=list&&list.size()>0){
+						StatService.onEvent(CartActivity.this, "cart_edit" , "购物车编辑按钮点击");
+						//编辑按钮
+						if (flag == 1) {
+							// 当前是支付状态 点击后变成编辑状态
+							cart_edit.setText("完成");
+							flag = 2;
+							adapter.setFlag(flag);
+							allmoneytextview.setVisibility(View.GONE);
+							pay.setText("删除");
 
-											@Override
-											public void onSuccess(List<GoodCarVO> t) {
-												customProgressDialog.dismiss();
-												Intent intent = new Intent("changeallmoney");
-												LocalBroadcastManager.getInstance(CartActivity.this).sendBroadcast(intent);
-												if(null!=t&&t.size()>0){
-													yeslogin.setVisibility(View.VISIBLE);
-													nodata.setVisibility(View.GONE);
-													list=changeGoodCarVOToCart(t);
-													for (Cart mycart : list) {
-														mycart.setFlag(1);
+							checkBoxall.setChecked(false);
+							for (Cart mycart : adapter.get_list()) {
+								mycart.setFlag(1);
+							}
+							adapter.notifyDataSetChanged();
+							changeallmoney();
+						} else {
+							flag = 1;
+							cart_edit.setText("编辑");
+							adapter.setFlag(flag);
+							allmoneytextview.setVisibility(View.VISIBLE);
+							pay.setText("去结算");
+							checkBoxall.setChecked(true);
+							for (Cart mycart : adapter.get_list()) {
+								mycart.setFlag(0);
+							}
+							adapter.notifyDataSetChanged();
+							changeallmoney();
+						}
+					}
+					break;
+				case R.id.pay:
+					if (flag == 1) {
+						StatService.onEvent(CartActivity.this, "cart_pay" , "购物车去结算按钮");
+						//TODO  当前是支付状态 根据登录状态判断点击事件 订单详情界面
+						if (ShopApplication.isLogin) {
+							//登录状态下
+							if(null!=adapter.get_list()&&adapter.get_list().size()>0){
+								List<Cart> listgo=new ArrayList<Cart>();
+								for (Cart cart : adapter.get_list()) {
+									if(cart.getFlag()==0){
+										listgo.add(cart);
+									}
+								}
+								if(listgo.size()>0){
+									for (Cart cart : listgo) {
+										if(cart.getIselectron()==1){
+											cartgoodflag=1;//有电子类商品了
+										}
+									}
+									for (Cart cart : listgo) {
+										if(cartgoodflag==1){
+											//如果有电子卡的情况下 再有实体类商品就提示
+											if(cart.getIselectron()==0){
+												Toast.makeText(CartActivity.this, "亲，您的购物车里包含电子商品,电子商品需和实体物品分开结算!", 1).show();
+												cartgoodflag=0;
+												return;
+											}
+										}
+									}
+									Intent intentgo=new Intent(CartActivity.this,CartOrderDetailActivity.class);
+									intentgo.putExtra("list",(Serializable)listgo);
+									startActivity(intentgo);
+								}else{
+									Toast.makeText(CartActivity.this, "请选择要结算的商品！", 0).show();
+								}
+							}
+						}else{
+							Toast.makeText(CartActivity.this, "请先登录！", 0).show();
+							Intent intent = new Intent(CartActivity.this, LoginActivity.class);
+							intent.putExtra("flag", 02);
+							startActivityForResult(intent, 03);
+						}
+
+					} else {
+						final StringBuilder url=new StringBuilder("/");
+						for (Cart goodCarVO : adapter.get_list()) {
+							if(goodCarVO.getFlag()==0){
+								url.append("---");
+								url.append(goodCarVO.getGoodid());
+							}
+						}
+						if(url.length()>=5){
+
+						}else{
+							Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
+							return;
+						}
+
+
+						// 购物车删除
+						if (ShopApplication.isLogin) {
+							//登录状态下
+							AlertDialog.Builder builder = new AlertDialog.Builder(
+									CartActivity.this);
+							builder.setTitle("提示");
+							builder.setMessage("您确定要删除么？");
+							builder.setNegativeButton("取消", null);
+							builder.setPositiveButton("删除",
+									new DialogInterface.OnClickListener() {
+										@Override
+										public void onClick(DialogInterface dialog,
+															int which) {
+											//走提交接口
+
+											int memberid=0;
+											if(ShopApplication.loginflag==1){
+												memberid=ShopApplication.userid;
+											}
+											if(ShopApplication.loginflag==2){
+												memberid=ShopApplication.useridother;
+											}
+											String delurl=CommonVariable.CartDeleteGoodURL+memberid+url.toString();
+											customProgressDialog.show();
+											VolleyUtil.sendStringRequestByGetToList(delurl, null, null, GoodCarVO.class,new HttpBackListListener<GoodCarVO>(){
+
+												@Override
+												public void onSuccess(List<GoodCarVO> t) {
+													customProgressDialog.dismiss();
+													Intent intent = new Intent("changeallmoney");
+													LocalBroadcastManager.getInstance(CartActivity.this).sendBroadcast(intent);
+													if(null!=t&&t.size()>0){
+														yeslogin.setVisibility(View.VISIBLE);
+														nodata.setVisibility(View.GONE);
+														list=changeGoodCarVOToCart(t);
+														for (Cart mycart : list) {
+															mycart.setFlag(1);
+														}
+														adapter.set_list(list);
+														adapter.notifyDataSetChanged();
+														changeallmoney();
+													}else{
+														nodatatext.setText("您的购物车当前没有任何商品。");
+														yeslogin.setVisibility(View.GONE);
+														nodata.setVisibility(View.VISIBLE);
 													}
-													adapter.set_list(list);
-													adapter.notifyDataSetChanged();
-													changeallmoney();
-												}else{
-													nodatatext.setText("您的购物车当前没有任何商品。");
+												}
+
+												@Override
+												public void onFail(String failstring) {
+													customProgressDialog.dismiss();
 													yeslogin.setVisibility(View.GONE);
 													nodata.setVisibility(View.VISIBLE);
 												}
-											}
 
-											@Override
-											public void onFail(String failstring) {
-												customProgressDialog.dismiss();
-												yeslogin.setVisibility(View.GONE);
-												nodata.setVisibility(View.VISIBLE);
-											}
-
-											@Override
-											public void onError(VolleyError error) {
-												customProgressDialog.dismiss();
-												yeslogin.setVisibility(View.GONE);
-												nodata.setVisibility(View.VISIBLE);
-											}}, false, null);
-										dialog.dismiss();// 取消dialog，或dismiss掉
-									}
-								});
-						builder.create().show();
-					}else{
-						//TODO 在未登录的情况下删除 本地数据库中数据
-						List<Cart> listdel=new ArrayList<Cart>();
-						for (Cart cart : adapter.get_list()) {
-							if(cart.getFlag()==0){
-								listdel.add(cart);
-							}
-						}
-						if(listdel.size()==0){
-							Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
-							return;
+												@Override
+												public void onError(VolleyError error) {
+													customProgressDialog.dismiss();
+													yeslogin.setVisibility(View.GONE);
+													nodata.setVisibility(View.VISIBLE);
+												}}, false, null);
+											dialog.dismiss();// 取消dialog，或dismiss掉
+										}
+									});
+							builder.create().show();
 						}else{
-							CartDao.getInstance().deleteCarts(listdel);
-							list=CartDao.getInstance().queryAllGood();
-							Intent intent = new Intent("changeallmoney");
-							LocalBroadcastManager.getInstance(CartActivity.this).sendBroadcast(intent);
-							if(null!=list&&list.size()>0){
-								yeslogin.setVisibility(View.VISIBLE);
-								nodata.setVisibility(View.GONE);
-								for (Cart mycart : list) {
-									mycart.setFlag(1);
+							//TODO 在未登录的情况下删除 本地数据库中数据
+							List<Cart> listdel=new ArrayList<Cart>();
+							for (Cart cart : adapter.get_list()) {
+								if(cart.getFlag()==0){
+									listdel.add(cart);
 								}
-								adapter.set_list(list);
-								adapter.notifyDataSetChanged();
-								changeallmoney();
-								
-								
+							}
+							if(listdel.size()==0){
+								Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
+								return;
 							}else{
-								nodatatext.setText("您的购物车当前没有任何商品。");
-								yeslogin.setVisibility(View.GONE);
-								nodata.setVisibility(View.VISIBLE);
-								adapter.notifyDataSetChanged();
-								
+								CartDao.getInstance().deleteCarts(listdel);
+								list=CartDao.getInstance().queryAllGood();
+								Intent intent = new Intent("changeallmoney");
+								LocalBroadcastManager.getInstance(CartActivity.this).sendBroadcast(intent);
+								if(null!=list&&list.size()>0){
+									yeslogin.setVisibility(View.VISIBLE);
+									nodata.setVisibility(View.GONE);
+									for (Cart mycart : list) {
+										mycart.setFlag(1);
+									}
+									adapter.set_list(list);
+									adapter.notifyDataSetChanged();
+									changeallmoney();
+
+
+								}else{
+									nodatatext.setText("您的购物车当前没有任何商品。");
+									yeslogin.setVisibility(View.GONE);
+									nodata.setVisibility(View.VISIBLE);
+									adapter.notifyDataSetChanged();
+
+								}
 							}
 						}
 					}
-				}
-				break;
-			case R.id.nodata:
-				
-				break;
-			default:
-				break;
+					break;
+				case R.id.nodata:
+
+					break;
+				default:
+					break;
 			}
 		}
 	};
-    /**
-     * 登录情况下 查询购物车的数据
-     */
+	/**
+	 * 登录情况下 查询购物车的数据
+	 */
 	private void initdata() {
 		customProgressDialog.show();
 		int memberid = 0;
@@ -443,7 +445,7 @@ public class CartActivity extends BaseActivity {
 				allmoney += (mycart.getGoodprice().multiply(new BigDecimal(mycart.getNum())).setScale(2, BigDecimal.ROUND_HALF_UP)).doubleValue();
 			}
 		}
-		BigDecimal   f1   =   new BigDecimal(allmoney).setScale(2,   BigDecimal.ROUND_HALF_UP); 
+		BigDecimal   f1   =   new BigDecimal(allmoney).setScale(2,   BigDecimal.ROUND_HALF_UP);
 		allmoneytextview.setText("合计：￥" + f1);
 	}
 	/**
@@ -473,7 +475,7 @@ public class CartActivity extends BaseActivity {
 			}
 			if(null!=goodcarvo&&null!=goodcarvo.getGoodImgs()&&goodcarvo.getGoodImgs().size()>0){
 				if(null!=goodcarvo.getGoodImgs().get(0).getImgPath())
-				cart.setGoodimgurl(goodcarvo.getGoodImgs().get(0).getImgPath());
+					cart.setGoodimgurl(goodcarvo.getGoodImgs().get(0).getImgPath());
 			}
 			//TODO  是否是电子卡
 			if(null!=goodcarvo&&null!=goodcarvo.getIsElect()){
@@ -490,50 +492,50 @@ public class CartActivity extends BaseActivity {
 		}
 		return cartlist;
 	}
-	
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == 03 && resultCode == 02) {
-		    changeviewbylogin();
+			changeviewbylogin();
 		}
 	}
-    
+
 	private class ChangeReceiver extends BroadcastReceiver {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			if ("changeallmoney".equals(action)) {
-                changeallmoney();
+				changeallmoney();
 			}
 			if ("changeallmoneyand".equals(action)) {
 				changeallmoney();
-				 if(checkBoxall.isChecked()){
-				    	isclick=true;
-				    }
+				if(checkBoxall.isChecked()){
+					isclick=true;
+				}
 				checkBoxall.setChecked(false);
 			}
 		}
 	}
-	
-	
+
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		changeviewbylogin();
-		 StatService.onResume(this);
+		StatService.onResume(this);
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		  /**
-         * 页面起始（每个Activity中都需要添加，如果有继承的父Activity中已经添加了该调用，那么子Activity中务必不能添加）
-         * 不能与StatService.onPageStart一级onPageEnd函数交叉使用
-         */
-        StatService.onPause(this);
+		/**
+		 * 页面起始（每个Activity中都需要添加，如果有继承的父Activity中已经添加了该调用，那么子Activity中务必不能添加）
+		 * 不能与StatService.onPageStart一级onPageEnd函数交叉使用
+		 */
+		StatService.onPause(this);
 	}
 }
