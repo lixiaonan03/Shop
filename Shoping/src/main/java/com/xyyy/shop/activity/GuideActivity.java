@@ -54,6 +54,7 @@ public class GuideActivity extends  BaseActivity{
 		listViews.add(mInflater.inflate(R.layout.guide_two, null));
 		listViews.add(mInflater.inflate(R.layout.guide_three, null));
 		listViews.add(mInflater.inflate(R.layout.guide_four, null));
+		listViews.add(mInflater.inflate(R.layout.guide_five, null));
 		mPager.setAdapter(new GuideViewPagerAdapter(context, listViews));
 		mPager.setCurrentItem(0);
 		mPager.setOnPageChangeListener(new PageChangeListener());
