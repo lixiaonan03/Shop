@@ -1,6 +1,5 @@
 package com.xyyy.shop.activity;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,9 @@ import com.xyyy.shop.db.Cart;
 import com.xyyy.shop.db.CartDao;
 import com.xyyy.shop.model.EnnCart;
 import com.xyyy.shop.model.EnnCartDTO;
+import com.xyyy.shop.model.EnnMember;
+import com.xyyy.shop.model.EnnSmsCode;
+import com.xyyy.shop.model.PerfectDataDTO;
 import com.xyyy.shop.toolUtil.CommonVariable;
 import com.xyyy.shop.toolUtil.RegularExpression;
 import com.xyyy.shop.toolUtil.StringUtils;
@@ -43,7 +45,7 @@ public class MemberCompleteActivity extends BaseActivity {
 	private EditText edittextcode;
 	private Button getcodebutton;
 	private int yzm = 1;//1 验证码超时或无效  2 有效 
-    private int memberid;
+	private int memberid;
 	private CustomProgressDialog customProgressDialog;
 	private EditText edittextname;
 	private CheckBox checkBox;
@@ -73,7 +75,7 @@ public class MemberCompleteActivity extends BaseActivity {
 		checkBox = (CheckBox) findViewById(R.id.checkBox);
 		agreement = (TextView) findViewById(R.id.agreement);
 		agreement.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				Intent intent=new Intent(MemberCompleteActivity.this, MemberAgreementActivity.class);
@@ -89,16 +91,16 @@ public class MemberCompleteActivity extends BaseActivity {
 				String phone = edittextphone.getText().toString().trim();
 				String check = RegularExpression.checkRegularExpression(phone,
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
-				
+
 				if (StringUtils.isNotBlank(check)) {
 					Toast.makeText(MemberCompleteActivity.this, check, 0).show();
 					return;
 				}
 				getcodebutton.setClickable(false);
 				String codefalg="";
-					codefalg=CommonVariable.SMSCodeForChangePhone;
+				codefalg=CommonVariable.SMSCodeForChangePhone;
 				VolleyUtil.sendStringRequestByGetToString(CommonVariable.GetCodeURL+phone+"/"+codefalg, null, null, new HttpBackBaseListener() {
-					
+
 					@Override
 					public void onSuccess(String string) {
 						getcodebutton.setBackgroundResource(R.drawable.getcode_onbutton);
@@ -106,14 +108,14 @@ public class MemberCompleteActivity extends BaseActivity {
 						yzm = 2;
 						new MyCount(120000,1000).start();
 					}
-					
+
 					@Override
 					public void onFail(String failstring) {
 						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！", 0).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
-					
+
 					@Override
 					public void onError(VolleyError error) {
 						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！", 0).show();
@@ -128,88 +130,95 @@ public class MemberCompleteActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View paramView) {
-				    if(!checkBox.isChecked()){
-				    	Toast.makeText(MemberCompleteActivity.this,"请同意协议！", 0).show();
-						return;
-				    }
-				    final String name = edittextname.getText().toString().trim();
-				    final String phone = edittextphone.getText().toString().trim();
-					String code = edittextcode.getText().toString().trim();
-					if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)||StringUtils.isBlank(name)){
-						Toast.makeText(MemberCompleteActivity.this,"请输入相关信息！", 0).show();
-						return;
-					}
-					if(yzm==1){
-						Toast.makeText(MemberCompleteActivity.this,"验证码失效！", 0).show();
-						return;
-					}
-					customProgressDialog.show();
-					
-					VolleyUtil.sendStringRequestByGetToString(CommonVariable.MemberCompleteURL+phone
-						    + "/" + URLEncoder.encode(name) + "/" + code + "/" + memberid, null, null, new HttpBackBaseListener() {
-								
-								@Override
-								public void onSuccess(String string) {
-									// TODO Auto-generated method stub
-									customProgressDialog.dismiss();
-									Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-									intent.putExtra("flag", 4);
-									ShopApplication.loginflag=2;
-									ShopApplication.isLogin=true;
-									ShopApplication.useridother=memberid;
-									if(null!=ShopApplication.userinfo){
-										ShopApplication.userinfo.setMembName(name);
-										ShopApplication.userinfo.setMembPhone(phone);
-									}
-									sendcart(memberid);
-									startActivity(intent);
-									finish();
-								}
-								
-								@Override
-								public void onFail(String failstring) {
-									customProgressDialog.dismiss();
-									Toast.makeText(MemberCompleteActivity.this,"完善资料失败！"+failstring, 0).show();
-									getcodebutton.setBackgroundResource(R.drawable.login_button);
-									getcodebutton.setClickable(true);
-								}
-								
-								@Override
-								public void onError(VolleyError error) {
-									customProgressDialog.dismiss();
-									Toast.makeText(MemberCompleteActivity.this,"完善资料失败！", 0).show();
-									getcodebutton.setBackgroundResource(R.drawable.login_button);
-									getcodebutton.setClickable(true);
-								}
-							}, false, null);
+				if(!checkBox.isChecked()){
+					Toast.makeText(MemberCompleteActivity.this,"请同意协议！", 0).show();
+					return;
 				}
+				final String name = edittextname.getText().toString().trim();
+				final String phone = edittextphone.getText().toString().trim();
+				String code = edittextcode.getText().toString().trim();
+				if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)||StringUtils.isBlank(name)){
+					Toast.makeText(MemberCompleteActivity.this,"请输入相关信息！", 0).show();
+					return;
+				}
+				if(yzm==1){
+					Toast.makeText(MemberCompleteActivity.this,"验证码失效！", 0).show();
+					return;
+				}
+				customProgressDialog.show();
+				PerfectDataDTO dto=new PerfectDataDTO();
+				EnnSmsCode smscode=new EnnSmsCode();
+				smscode.setVerifyCode(code);
+				EnnMember ennmember=new EnnMember();
+				ennmember.setMembId(memberid);
+				ennmember.setMembName(name);
+				ennmember.setMembPhone(phone);
+				dto.setEnnSmsCode(smscode);
+				dto.setEnnMember(ennmember);
+				VolleyUtil.sendObjectByPostToString(CommonVariable.MemberCompleteURL, null, dto, new HttpBackBaseListener() {
+
+					@Override
+					public void onSuccess(String string) {
+						// TODO Auto-generated method stub
+						customProgressDialog.dismiss();
+						Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+						intent.putExtra("flag", 4);
+						ShopApplication.loginflag=2;
+						ShopApplication.isLogin=true;
+						ShopApplication.useridother=memberid;
+						if(null!=ShopApplication.userinfo){
+							ShopApplication.userinfo.setMembName(name);
+							ShopApplication.userinfo.setMembPhone(phone);
+						}
+						sendcart(memberid);
+						startActivity(intent);
+						finish();
+					}
+
+					@Override
+					public void onFail(String failstring) {
+						customProgressDialog.dismiss();
+						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！"+failstring, 0).show();
+						getcodebutton.setBackgroundResource(R.drawable.login_button);
+						getcodebutton.setClickable(true);
+					}
+
+					@Override
+					public void onError(VolleyError error) {
+						customProgressDialog.dismiss();
+						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！", 0).show();
+						getcodebutton.setBackgroundResource(R.drawable.login_button);
+						getcodebutton.setClickable(true);
+					}
+				}, false, null);
+			}
 		});
 	}
-	class MyCount extends CountDownTimer {  
-		  
-        public MyCount(long millisInFuture, long countDownInterval) {  
-            super(millisInFuture, countDownInterval);  
-        }  
-  
-        @Override  
-        public void onFinish() {  
-        	//倒计时完要做的事情
-        	getcodebutton.setClickable(true);
-        	edittextphone.setEnabled(true);
-        	
-        	
-        	getcodebutton.setBackgroundResource(R.drawable.login_button);
-        	getcodebutton.setText("获取验证码");
-        	yzm = 1;
-        }  
-  
-        @Override  
-        public void onTick(long millisUntilFinished) {  
-        	getcodebutton.setText(millisUntilFinished / 1000+"秒");  
-        }  
-  
-    }  
-	
+	class MyCount extends CountDownTimer {
+
+		public MyCount(long millisInFuture, long countDownInterval) {
+			super(millisInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onFinish() {
+			//倒计时完要做的事情
+			getcodebutton.setClickable(true);
+			edittextphone.setEnabled(true);
+
+
+			getcodebutton.setBackgroundResource(R.drawable.login_button);
+			getcodebutton.setText("获取验证码");
+			yzm = 1;
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			getcodebutton.setText(millisUntilFinished / 1000+"秒");
+		}
+
+	}
+
 	/**
 	 * 把本地购物车的信息同步到服务器
 	 * @param userid 用户id
@@ -229,24 +238,24 @@ public class MemberCompleteActivity extends BaseActivity {
 			}
 			cartdao.setEnnCart(list);
 			VolleyUtil.sendObjectByPostToString(CommonVariable.CartLoginUpdateAllGoodURL, null, cartdao, new HttpBackBaseListener() {
-				
+
 				@Override
 				public void onSuccess(String string) {
 					CartDao.getInstance().deleteAllCart();
 				}
-				
+
 				@Override
 				public void onFail(String failstring) {
-					
+
 				}
-				
+
 				@Override
 				public void onError(VolleyError error) {
 				}
 			}, false, null);
 		}
 	}
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

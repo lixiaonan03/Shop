@@ -5,27 +5,22 @@ package com.xyyy.shop.toolUtil;
  */
 public class CommonVariable {
 
-	// public static String IP = "http://192.168.1.121";
-	// public static String IP="http://192.168.1.117:8080";
-	//public static String IP="http://192.168.1.104";
-	//public static String IP1="http://192.168.1.163";
+	//爱华的
+	//public static String IP1="http://192.168.10.27";
+	//公网开发所用的
 	public static String IP1="http://test.sun-yard.com";
 	//正式服务器的嵌套页地址
 	//public static String IP1="http://weixin.sun-yard.com";
-	// 强哥的
-	// public static String IP="http://192.168.1.150:8080";
-	// 公网地址
-	// public static String IP="http://101.200.236.106:8080";
-	// 测试服务器地址
-	 public static String IP = "http://101.200.228.203:8181";
-	 //正式服务器地址
-	 //public static String IP = "http://weixin.sun-yard.com:51";
+	// 开发测试服务器地址
+	//public static String IP = "http://101.200.228.203:8181";
+	// 产品测试环境下服务器地址
+	public static String IP = "http://101.200.228.203:81";
+	//正式服务器地址
+	//public static String IP = "http://weixin.sun-yard.com:51";
 	/**
 	 * 嵌套的首页的地址
 	 */
 	public static String HomeURL =IP1+ "/mall/new/home?device=android";
-	// public static String HomeURL =
-	// "http://192.168.1.163/mall/new/home?device=android";
 	/**
 	 * 嵌套的订单商品评价地址
 	 */
@@ -34,20 +29,14 @@ public class CommonVariable {
 	 * 商品详情url
 	 */
 	public static String GoodDeatilURL = IP1+"/mall/cat/goodInfo?id=";
-	// public static String
-	// GoodDeatilURL="http://192.168.1.163/mall/cat/goodInfo?id=";
 	/**
 	 * 商品详情 图文介绍 mall/goods/goodsDesc?id=%@&device=ios 商品详情
 	 */
 	public static String GoodDeatilIntroduceURL = IP1+"/mall/goods/goodsDesc?id=";
-	// public static String
-	// GoodDeatilIntroduceURL="http://192.168.1.163/mall/goods/goodsDesc?id=";
 	/**
 	 * 商品详情 评价列表的url mall/cat/getAllEval?goodsId=%@&fivePec=%@&device=ios
 	 */
 	public static String GoodDeatilEvaluateURL = IP1+"/mall/cat/getAllEval?goodsId=";
-	// public static String
-	// GoodDeatilEvaluateURL="http://192.168.1.163/mall/cat/getAllEval?goodsId=";
 	/**
 	 *  帮助中心url
 	 */
@@ -166,11 +155,6 @@ public class CommonVariable {
 			+ "/mallService/api/EnnOrder/createOrder/v2";
 
 	/**
-	 * 购物车模块 创建发票的url
-	 */
-	public static String CartCreatInvocieURL = IP
-			+ "/mallService/api/EnnMemberInvoice/create/v1";
-	/**
 	 * 购物车模块 获取发票列表的url 参数 人员id
 	 */
 	public static String CartGetInvociesURL = IP
@@ -212,10 +196,10 @@ public class CommonVariable {
 	public static String FindMemberPasswordURL = IP
 			+ "/mallService/api/EnnUserLoginfo/getBackPass/v1/";
 	/**
-	 * 完善用户资料  手机号+姓名+验证码+memberid
+	 * 完善用户资料
 	 */
 	public static String MemberCompleteURL = IP
-			+ "/mallService/api/EnnMember/changeUserPhoneAndName/v1/";
+			+ "/mallService/api/EnnMember/perfectData/v1";
 	/**
 	 * 修改用户手机号的 {phone}/{verifiCode} 返回member对象
 	 */
@@ -424,15 +408,14 @@ public class CommonVariable {
 	 * 通过商品id获取收货地址列表
 	 */
 	public static String GetAdressBygoodidURL = IP
-			+ "/mallService/api/EnnGoods/getDistributions/v1";
-	
-	
-	
+			+ "/mallService/api/EnnGoods/getDistributions/v2";
+
+
 	/**
-	 * 微信登录完成之后获取memberid 的问题
+	 * 微信获取用户信息
 	 */
-	public static String WXGetMemberURL = IP
-			+ "/mallService/api/EnnMember/saveAppWeiXinInfo/v1";
+	public static String GetMemberInfoForWxURL = IP
+			+ "/mallService/api/EnnMember/getweixinUserInfo/v1/";
 	/**
 	 * 微信下单的url api/EnnPay/payad/v1/
 	 */
