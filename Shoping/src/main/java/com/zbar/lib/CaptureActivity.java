@@ -15,11 +15,13 @@ import android.os.Vibrator;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mobstat.StatService;
@@ -57,7 +59,9 @@ public class CaptureActivity extends BaseActivity implements Callback {
 	private RelativeLayout mContainer = null;//全局布局
 	private RelativeLayout mCropLayout = null;//中间扫描的那块
 	private boolean isNeedCapture = false;//是否需要截图的标记
-	
+	private ImageView top_back;
+	private TextView top_text;
+
 	public boolean isNeedCapture() {
 		return isNeedCapture;
 	}
@@ -104,6 +108,18 @@ public class CaptureActivity extends BaseActivity implements Callback {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_qr_scan);
+
+		top_back = (ImageView) findViewById(R.id.top_back);
+		top_text = (TextView) findViewById(R.id.top_text);
+		top_text.setText("二维码扫描");
+		top_back.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				finish();
+			}
+		});
+		
 		// 初始化 CameraManager
 		CameraManager.init(getApplication());
 		hasSurface = false;

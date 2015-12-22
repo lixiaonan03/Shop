@@ -50,13 +50,13 @@ public class CommonVariable {
 	/**
 	 * 物流信息的url嵌套
 	 */
-	//public static String MemberAgreementURL = IP1+"/mall/memb/goMembProtocol?device=android";
-	public static String OrderGetLogisticsURL = "http://192.168.10.27/mall/logistics/getLogistics?orderId=";
+	public static String OrderGetLogisticsURL = IP1+"/mall/logistics/getLogistics?orderId=";
+	//public static String OrderGetLogisticsURL = "http://192.168.10.27/mall/logistics/getLogistics?orderId=";
 	/**
 	 * 近日配送清单 菜谱的页面
 	 */
-	//public static String GetCookbookURL = IP1+"/mall/memb/goMembProtocol?device=android";
-	public static String GetCookbookURL = "http://192.168.10.27/mall/detail/getCookBook?menuId=";
+	public static String GetCookbookURL = IP1+"/mall/detail/getCookBook?menuId=";
+	//public static String GetCookbookURL = "http://192.168.10.27/mall/detail/getCookBook?menuId=";
 	
 	
 	/**

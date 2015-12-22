@@ -1,10 +1,5 @@
 package com.xyyy.shop.fragment;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -44,6 +39,11 @@ import com.xyyy.shop.model.GoodCarVO;
 import com.xyyy.shop.toolUtil.CommonVariable;
 import com.xyyy.shop.toolUtil.StrToNumber;
 import com.xyyy.shop.view.CustomProgressDialog;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 购物车模块

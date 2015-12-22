@@ -241,7 +241,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/mycenter_item_textmarginleft"
                             android:layout_toRightOf="@id/thisdeliveryimg"
-                            android:text="今日配送清单"
+                            android:text="近日配送清单"
                             android:textColor="@color/mycenter_item_textcolor"
                             android:textSize="@dimen/mycenter_item_textsize" />
 
