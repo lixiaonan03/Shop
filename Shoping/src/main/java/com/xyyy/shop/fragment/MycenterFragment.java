@@ -299,7 +299,7 @@ public class MycenterFragment extends Fragment {
      */
 	private void changeuserinfo() {
 		if (ShopApplication.isLogin) {
-			logout.setVisibility(View.VISIBLE);
+			logout.setVisibility(View.GONE);
 			// 设置登录完成的信息
 			if(ShopApplication.loginflag==1){
 				//原生登录

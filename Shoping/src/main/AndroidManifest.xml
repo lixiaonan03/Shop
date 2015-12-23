@@ -177,10 +177,6 @@
         </activity>
 
         <!-- 我的会员卡 -->
-        <activity
-            android:name="com.xyyy.shop.activity.MyCardActivity"
-            android:screenOrientation="portrait" >
-        </activity>
         <!-- 我的会员卡详情界面 -->
         <activity
             android:name="com.xyyy.shop.activity.MemberCardDetailActivity"
@@ -393,6 +389,12 @@
         <!-- 二维码扫描界面 -->
         <activity
             android:name="com.zbar.lib.CaptureActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+         <!-- zxing二维码扫描界面 -->
+        <activity
+            android:name="com.mining.app.zxing.activity.MipcaActivityCapture"
             android:screenOrientation="portrait" >
         </activity>
 

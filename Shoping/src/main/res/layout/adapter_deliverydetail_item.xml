@@ -57,7 +57,7 @@
             android:gravity="center"
             android:paddingTop="25dp"
             android:paddingRight="5dp"
-            android:text="查看菜谱、追溯>>"
+            android:text="查看菜谱>>"
             android:textColor="#333333"
             android:textSize="14sp" />
     </RelativeLayout>

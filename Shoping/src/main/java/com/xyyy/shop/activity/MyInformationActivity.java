@@ -72,6 +72,7 @@ public class MyInformationActivity extends BaseActivity {
 	private TextView membername;
 	private RelativeLayout memberphoneRel;
 	private TextView memberphone;
+	private Button logout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +111,9 @@ public class MyInformationActivity extends BaseActivity {
 		useraccountRel = (RelativeLayout) findViewById(R.id.useraccountRel);
 		useraddressRel = (RelativeLayout) findViewById(R.id.useraddressRel);
 
+
+		logout=(Button)findViewById(R.id.logout);
+
 		userimgRel.setOnClickListener(new ViewOnClickListener());
 		usernameRel.setOnClickListener(new ViewOnClickListener());
 		usersexRel.setOnClickListener(new ViewOnClickListener());
@@ -119,6 +123,8 @@ public class MyInformationActivity extends BaseActivity {
 
 		membernameRel.setOnClickListener(new ViewOnClickListener());
 		memberphoneRel.setOnClickListener(new ViewOnClickListener());
+
+		logout.setOnClickListener(new ViewOnClickListener());
 
 		changeuserinfo();
 	}
@@ -325,14 +331,14 @@ public class MyInformationActivity extends BaseActivity {
 										public void onFail(String failstring) {
 											customProgressDialog.dismiss();
 											Toast.makeText(MyInformationActivity.this, "修改失败！",
-													0).show();
+													Toast.LENGTH_SHORT).show();
 										}
 
 										@Override
 										public void onError(VolleyError error) {
 											customProgressDialog.dismiss();
 											Toast.makeText(MyInformationActivity.this, "修改失败！",
-													0).show();
+													Toast.LENGTH_SHORT).show();
 										}
 									}, false, null);
 						}
@@ -356,6 +362,29 @@ public class MyInformationActivity extends BaseActivity {
 					intent.setClass(MyInformationActivity.this,
 							UseradressActivity.class);
 					startActivity(intent);
+					break;
+				case R.id.logout:
+					// 退出登录
+					StatService.onEvent(MyInformationActivity.this, "logout", "退出登录");
+					if (ShopApplication.isLogin) {
+						ShopApplication.isLogin = false;
+						if(ShopApplication.loginflag==1){
+							ShopApplication.userid=0;
+							ShopApplication.usernamelogin="";
+							ShopApplication.userimgurlrlogin="";
+							ShopApplication.userinfo=null;
+						}
+						if(ShopApplication.loginflag==2){
+							ShopApplication.usernameOtherlogin=null;
+							ShopApplication.userimgurlOtherlogin=null;
+							ShopApplication.usersexOtherlogin=0;
+							ShopApplication.userbirthother="";
+							ShopApplication.api.unregisterApp();
+						}
+						intent.setClass(MyInformationActivity.this, LoginActivity.class);
+						intent.putExtra("flag", 07);
+						startActivity(intent);
+					}
 					break;
 
 				default:
@@ -393,12 +422,14 @@ public class MyInformationActivity extends BaseActivity {
 		menu_capture_r1.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				dialog.dismiss();
+				//拍照的方法
 				onClick_Capture();
 			}
 		});
 		menu_capture_r2.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				dialog.dismiss();
+				//从图库中选择的
 				onClick_Pick();
 			}
 		});
@@ -411,7 +442,7 @@ public class MyInformationActivity extends BaseActivity {
 	}
 
 	/**
-	 * 点击选择本地文件
+	 * 点击选择本地文件选择头像
 	 */
 	void onClick_Pick() {
 		PhotoCrop crop = new PhotoCrop(1, 1, 150, 150);
@@ -429,7 +460,7 @@ public class MyInformationActivity extends BaseActivity {
 	}
 
 	/**
-	 * 点击拍照
+	 * 点击拍照获取图片
 	 */
 	void onClick_Capture() {
 		PhotoCrop crop = new PhotoCrop(1, 1, 150, 150);
@@ -555,11 +586,11 @@ public class MyInformationActivity extends BaseActivity {
 							}
 						}else {
 							Toast.makeText(MyInformationActivity.this,
-									"头像上传失败！", 0).show();
+									"头像上传失败！", Toast.LENGTH_SHORT).show();
 						}
 					} else {
 						Toast.makeText(MyInformationActivity.this,
-								"头像上传失败！", 0).show();
+								"头像上传失败！",Toast.LENGTH_SHORT).show();
 					}
 					break;
 				default:

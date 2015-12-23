@@ -48,5 +48,10 @@
      <!-- 通用的 -->
     <color name="listView_line_color">#cccccc</color> 
     <color name="textcolor">#666666</color> 
-    <color name="textcolorhint">#dddddd</color> 
+    <color name="textcolorhint">#dddddd</color>
+
+    <!--二维码扫描界面的-->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
 </resources>

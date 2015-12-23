@@ -11,4 +11,7 @@
     <string name="auth_cancel">授权操作已取消</string>
     <string name="auth_error">授权操作遇到错误，请阅读Logcat输出</string>
     <string name="auth_complete">授权成功，正在跳转登录操作…</string>
+
+
+    <string name="scan_text">将二维码图片对准扫描框即可自动扫描</string>
 </resources>

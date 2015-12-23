@@ -7,6 +7,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -358,6 +359,7 @@ public class CartOrderDetailActivity extends BaseActivity {
 			@Override
 			public void onError(VolleyError error) {
 				customProgressDialog.dismiss();
+				Log.i("lixiaonan", "==error=");
 				Toast.makeText(CartOrderDetailActivity.this,"加载相关信息失败！",Toast.LENGTH_SHORT).show();
 			}}, false, null);
 		VolleyUtil.sendStringRequestByGetToList(CommonVariable.CartOrderMemberURL+personid, null, null, MemCardVODetail.class,new HttpBackListListener<MemCardVODetail>() {
@@ -528,13 +530,13 @@ public class CartOrderDetailActivity extends BaseActivity {
 	protected void goCreatOrder() {
 		if(flagaddress==0){
 			if(addressid==-1){
-				Toast.makeText(CartOrderDetailActivity.this, "请选择收货地址！", 0).show();
+				Toast.makeText(CartOrderDetailActivity.this, "请选择收货地址！",Toast.LENGTH_SHORT).show();
 				return;
 			}
 		}
 		if(flagaddress==1){
 			if(adaptermembaer.flagposition==-1){
-				Toast.makeText(CartOrderDetailActivity.this, "请选择一起配送的会员卡！", 0).show();
+				Toast.makeText(CartOrderDetailActivity.this, "请选择一起配送的会员卡！",Toast.LENGTH_SHORT).show();
 				return;
 			}
 		}
@@ -581,12 +583,12 @@ public class CartOrderDetailActivity extends BaseActivity {
 			orderItemVOs.add(one);
 		}
 		if(orderItemVOs.size()==0){
-			Toast.makeText(CartOrderDetailActivity.this, "当前配送地址下没有可购买的商品,请重新选择收货地址！", 0).show();
+			Toast.makeText(CartOrderDetailActivity.this, "当前配送地址下没有可购买的商品,请重新选择收货地址！", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		if(membercardpayflag==2){
 			if(ishasmembercard==1){
-				Toast.makeText(CartOrderDetailActivity.this, "您所选的商品中包含会员卡，不能使用会员卡支付！", 0).show();
+				Toast.makeText(CartOrderDetailActivity.this, "您所选的商品中包含会员卡，不能使用会员卡支付！",Toast.LENGTH_SHORT).show();
 				return;
 			}
 			create.setPayCardIds(membercardpaylist);
@@ -616,13 +618,13 @@ public class CartOrderDetailActivity extends BaseActivity {
 				@Override
 				public void onFail(String failstring) {
 					customProgressDialog.dismiss();
-					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！"+failstring, 0).show();
+					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！"+failstring,Toast.LENGTH_SHORT).show();
 				}
 				
 				@Override
 				public void onError(VolleyError error) {
 					customProgressDialog.dismiss();
-					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！", 0).show();
+					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！",Toast.LENGTH_SHORT).show();
 				}
 			}, false, null);
 		}
@@ -652,13 +654,13 @@ public class CartOrderDetailActivity extends BaseActivity {
 				@Override
 				public void onFail(String failstring) {
 					customProgressDialog.dismiss();
-					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！"+failstring, 0).show();
+					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！"+failstring, Toast.LENGTH_SHORT).show();
 				}
 				
 				@Override
 				public void onError(VolleyError error) {
 					customProgressDialog.dismiss();
-					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！", 0).show();
+					Toast.makeText(CartOrderDetailActivity.this,"提交订单失败！",Toast.LENGTH_SHORT).show();
 				}
 			}, false, null);
 		}

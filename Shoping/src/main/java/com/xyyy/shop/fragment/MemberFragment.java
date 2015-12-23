@@ -163,11 +163,14 @@ public class MemberFragment extends Fragment {
 							listview.setVisibility(View.VISIBLE);
 							 List<MemCardVO> listcurrent = new ArrayList<MemCardVO>();
 								for (MemCardVO memCardVO : t) {
-									if(null!=memCardVO.getEnnCardType().getCardType()&&memCardVO.getEnnCardType().getCardType().equals("10")){
-										
-									}else{
-										listcurrent.add(memCardVO);
+									if(null!=memCardVO&&null!=memCardVO.getEnnCardType()&&null!=memCardVO.getEnnCardType().getCardType()){
+										if(memCardVO.getEnnCardType().getCardType().equals("10")){
+
+										}else{
+											listcurrent.add(memCardVO);
+										}
 									}
+
 								}
 							list = listcurrent;
 							Collections.sort(list, new Comparator<MemCardVO>() {
@@ -198,7 +201,7 @@ public class MemberFragment extends Fragment {
 					@Override
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！",Toast.LENGTH_SHORT).show();
 						nodata.setVisibility(View.VISIBLE);
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();
@@ -207,7 +210,7 @@ public class MemberFragment extends Fragment {
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！",Toast.LENGTH_SHORT).show();
 						nodata.setVisibility(View.VISIBLE);
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();

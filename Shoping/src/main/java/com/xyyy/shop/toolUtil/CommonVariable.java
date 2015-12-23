@@ -7,6 +7,7 @@ public class CommonVariable {
 
 	//爱华的
 	//public static String IP1="http://192.168.10.27";
+	//public static String IP1="http://192.168.10.13";
 	//公网开发所用的
 	public static String IP1="http://test.sun-yard.com";
 	//正式服务器的嵌套页地址
@@ -15,6 +16,8 @@ public class CommonVariable {
 	//public static String IP = "http://101.200.228.203:8181";
 	// 产品测试环境下服务器地址
 	public static String IP = "http://101.200.228.203:81";
+	// 王龙的
+	//public static String IP = "http://192.168.10.21";
 	//正式服务器地址
 	//public static String IP = "http://weixin.sun-yard.com:51";
 	/**
@@ -137,7 +140,7 @@ public class CommonVariable {
 	 * 人员点击购物车去结算按钮需要的订单信息
 	 */
 	public static String CartOrderURL = IP
-			+ "/mallService/api/EnnOrder/orderInfo/v1/";
+			+ "/mallService/api/EnnOrder/orderInfo/v2/";
 	/**
 	 * 人员点击购物车去结算按钮需要的会员卡配送信息 参数人员id
 	 */

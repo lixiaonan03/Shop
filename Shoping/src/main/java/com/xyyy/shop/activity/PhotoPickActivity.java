@@ -1,9 +1,5 @@
 package com.xyyy.shop.activity;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.Serializable;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,8 +9,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 
 import com.baidu.mobstat.StatService;
-import com.xyyy.shop.activity.BaseActivity;
 import com.xyyy.shop.toolUtil.DateUtil;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 
 public class PhotoPickActivity extends BaseActivity {

@@ -267,6 +267,10 @@ public class LoginActivity extends BaseActivity {
 				break;
 
 			default:
+				Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+				intent.putExtra("flag", 4);
+				startActivity(intent);
+				finish();
 				break;
 		}
 	}

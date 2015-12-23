@@ -6,320 +6,352 @@
     android:orientation="vertical" >
 
     <include layout="@layout/top_back" />
-
-    <RelativeLayout
-        android:id="@+id/userimgRel"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:background="#ffffff" >
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/userimgRel"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="头像"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="头像"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/userimg_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/userimg_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <com.xyyy.shop.view.RoundImageView
-            android:id="@+id/userimg"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@id/userimg_jiantou"
-            android:src="@drawable/user_img" />
-    </RelativeLayout>
+                <com.xyyy.shop.view.RoundImageView
+                    android:id="@+id/userimg"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/userimg_jiantou"
+                    android:src="@drawable/user_img" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/usernameRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/usernameRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="昵称"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="昵称"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/username_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/username_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/username_jiantou"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/username_jiantou"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/usersexRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/usersexRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="性别"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="性别"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/usersex_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/usersex_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <TextView
-            android:id="@+id/usersex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/usersex_jiantou"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/usersex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/usersex_jiantou"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/userbirthRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/userbirthRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="出生日期"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="出生日期"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/userbirth_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/userbirth_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <TextView
-            android:id="@+id/userbirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/userbirth_jiantou"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/userbirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/userbirth_jiantou"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/membernameRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/membernameRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="会员姓名*"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="会员姓名*"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/membername_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/membername_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <TextView
-            android:id="@+id/membername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/membername_jiantou"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/membername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/membername_jiantou"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/memberphoneRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/memberphoneRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="会员手机*"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="会员手机*"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:id="@+id/memberphone_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
+                <ImageView
+                    android:id="@+id/memberphone_jiantou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
 
-        <TextView
-            android:id="@+id/memberphone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/memberphone_jiantou"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/memberphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/memberphone_jiantou"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/useraccountRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/useraccountRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="账户安全"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="账户安全"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:background="@color/listView_line_color" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:layout_marginTop="10dp"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:layout_marginTop="10dp"
+                android:background="@color/listView_line_color" />
 
-    <RelativeLayout
-        android:id="@+id/useraddressRel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mycenter_item_height"
-        android:background="#ffffff" >
+            <RelativeLayout
+                android:id="@+id/useraddressRel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mycenter_item_height"
+                android:background="#ffffff" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="收货地址"
-            android:textColor="@color/textcolor"
-            android:textSize="@dimen/textsize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="收货地址"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/textsize" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/mycenter_jiantou" />
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/mycenter_jiantou" />
+            </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listview_line_height"
-        android:background="@color/listView_line_color" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listview_line_height"
+                android:background="@color/listView_line_color" />
+            <LinearLayout
+                android:id="@+id/logoutlin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="20dp" >
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/login_button"
+                    android:gravity="center"
+                    android:text="退出登录"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 
 </LinearLayout>

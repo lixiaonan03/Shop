@@ -142,14 +142,14 @@ public class ClassifyFragment extends Fragment {
 					public void onFail(String failstring) {
 						// TODO 业务访问失败
 						customProgressDialog.dismiss();
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！",Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						// TODO 接口访问失败
 						customProgressDialog.dismiss();
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！",Toast.LENGTH_SHORT).show();
 					}
 
 				}, false, "");
@@ -158,7 +158,7 @@ public class ClassifyFragment extends Fragment {
 	/**
 	 * 加载右边条目中分类加载的数据
 	 * 
-	 * @param string
+	 * @param id
 	 */
 	private void loadContentData(Integer id) {
 		String url = CommonVariable.GetCatURL + id;
@@ -182,7 +182,7 @@ public class ClassifyFragment extends Fragment {
 					public void onFail(String failstring) {
 						// TODO 业务访问失败
 						customProgressDialog.dismiss();
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！", Toast.LENGTH_SHORT).show();
 						menucontentlist = new ArrayList<EnnGoodsCat>();
 				    	menucontentadapter.set_list(menucontentlist);
 				    	menucontentadapter.notifyDataSetChanged();
@@ -192,7 +192,7 @@ public class ClassifyFragment extends Fragment {
 					public void onError(VolleyError error) {
 						// TODO 接口访问失败
 						customProgressDialog.dismiss();
-						Toast.makeText(getActivity(), "加载数据失败！", 0).show();
+						Toast.makeText(getActivity(), "加载数据失败！", Toast.LENGTH_SHORT).show();
 						menucontentlist = new ArrayList<EnnGoodsCat>();
 				     	menucontentadapter.set_list(menucontentlist);
 				    	menucontentadapter.notifyDataSetChanged();

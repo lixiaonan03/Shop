@@ -226,7 +226,7 @@ public class CartFragment extends Fragment {
 									if(cartgoodflag==1){
 										//如果有电子卡的情况下 再有实体类商品就提示
 										if(cart.getIselectron()==0){
-											Toast.makeText(getActivity(), "亲，您的购物车里包含电子商品,电子商品需和实体物品分开结算!", 1).show();
+											Toast.makeText(getActivity(), "亲，您的购物车里包含电子商品,电子商品需和实体物品分开结算!",  Toast.LENGTH_LONG).show();
 											cartgoodflag=0;
 											return;
 										}
@@ -236,13 +236,13 @@ public class CartFragment extends Fragment {
 								intentgo.putExtra("list",(Serializable)listgo);
 								startActivity(intentgo);
 							}else{
-								Toast.makeText(getActivity(), "请选择要结算的商品！", 0).show();
+								Toast.makeText(getActivity(), "请选择要结算的商品！", Toast.LENGTH_SHORT).show();
 							}
 						}
 						
 						
 					}else{
-						Toast.makeText(getActivity(), "请先登录！", 0).show();
+						Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
 						Intent intent = new Intent(getActivity(), LoginActivity.class);
 						intent.putExtra("flag", 02);
 						startActivityForResult(intent, 02);
@@ -259,7 +259,7 @@ public class CartFragment extends Fragment {
 					if(url.length()>=5){
 						
 					}else{
-						Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
+						Toast.makeText(ShopApplication.application, "请选择要删除的商品！",Toast.LENGTH_SHORT).show();
 						return;
 					}
 					// 购物车删除
@@ -338,7 +338,7 @@ public class CartFragment extends Fragment {
 							}
 						}
 						if(listdel.size()==0){
-							Toast.makeText(ShopApplication.application, "请选择要删除的商品！", 2).show();
+							Toast.makeText(ShopApplication.application, "请选择要删除的商品！", Toast.LENGTH_SHORT).show();
 							return;
 						}else{
 							CartDao.getInstance().deleteCarts(listdel);

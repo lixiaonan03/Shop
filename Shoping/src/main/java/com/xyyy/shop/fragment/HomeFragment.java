@@ -30,6 +30,7 @@ import com.android.volley.listener.HttpBackBaseListener;
 import com.android.volley.listener.HttpBackListener;
 import com.android.volley.util.VolleyUtil;
 import com.baidu.mobstat.StatService;
+import com.mining.app.zxing.activity.MipcaActivityCapture;
 import com.xyyy.shop.R;
 import com.xyyy.shop.ShopApplication;
 import com.xyyy.shop.activity.CartActivity;
@@ -92,7 +93,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View arg0) {
 				// TODO 跳转到二维码扫描界面
 				Intent intent = new Intent();
-				intent.setClass(getActivity(), CaptureActivity.class);
+				intent.setClass(getActivity(), MipcaActivityCapture.class);
 				startActivity(intent);
 			}
 		});
@@ -336,7 +337,7 @@ public class HomeFragment extends Fragment {
 														String string) {
 													Toast.makeText(
 															getActivity(),
-															"加入购物车成功！", 0)
+															"加入购物车成功！",Toast.LENGTH_SHORT)
 															.show();
 													Intent intent = new Intent(
 															getActivity(),
@@ -349,7 +350,7 @@ public class HomeFragment extends Fragment {
 														String failstring) {
 													Toast.makeText(
 															getActivity(),
-															"加入购物车失败！", 0)
+															"加入购物车失败！", Toast.LENGTH_SHORT)
 															.show();
 												}
 
@@ -358,7 +359,7 @@ public class HomeFragment extends Fragment {
 														VolleyError error) {
 													Toast.makeText(
 															getActivity(),
-															"加入购物车失败！", 0)
+															"加入购物车失败！",Toast.LENGTH_SHORT)
 															.show();
 												}
 											}, false, null);
@@ -385,7 +386,7 @@ public class HomeFragment extends Fragment {
 										CartDao.getInstance().insertGood(
 												cartinsert);
 									}
-									Toast.makeText(getActivity(), "加入购物车成功！", 0)
+									Toast.makeText(getActivity(), "加入购物车成功！",Toast.LENGTH_SHORT)
 											.show();
 									Intent intent = new Intent(getActivity(),
 											CartActivity.class);
