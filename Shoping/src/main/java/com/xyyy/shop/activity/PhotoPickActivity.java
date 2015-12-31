@@ -17,21 +17,23 @@ import java.io.Serializable;
 
 
 public class PhotoPickActivity extends BaseActivity {
-	public static final String PHOTO_TYPEKEY = "photo_typekey";
-	public static final String PHOTO_STORAGEKEY = "photo_storagekey";
+	public static final String PHOTO_TYPEKEY = "photo_typekey";//拍照或相册选取类型的intent传值的Key
+	public static final String PHOTO_STORAGEKEY = "photo_storagekey";//SD路劲intent传值的Key
 	public static final String PHOTO_STORAGE_FILENAMEKEY = "photo_storage_filenamekey";
-	public static final String PHOTO_CROPKEY = "photo_cropkey";
+	public static final String PHOTO_CROPKEY = "photo_cropkey";//裁剪信息的intent传值的Key
 	public static final int PHOTO_BACK_NULL = 0;
 	public static final int PHOTO_BACK_URI = 10;
 	public static final int PHOTO_BACK_BMP = 11;
-	public static final int PHOTO_REQ_ALBUM = 1;
-	public static final int PHOTO_REQ_CAPTURE = 2;
-	private static final int PHOTO_REQ_CROP = 3;
+
+	public static final int PHOTO_REQ_ALBUM = 1;//从相册中选取标示 和请求码
+	public static final int PHOTO_REQ_CAPTURE = 2;//拍照获取 和请求码
+
+	private static final int PHOTO_REQ_CROP = 3;//裁剪图片的请求码
 	
-	private String photoName;
-	private int photo_type;
-	private String photo_storage,photo_storage_filename;
-	private PhotoCrop photo_crop;
+	private String photoName;//拍照完已当前日期作为文件名
+	private int photo_type;//选取图像的类型
+	private String photo_storage,photo_storage_filename;//SD的路劲名
+	private PhotoCrop photo_crop;//裁剪信息
 	private Uri uri;
 	private Uri output_uri;
 	
@@ -56,13 +58,18 @@ public class PhotoPickActivity extends BaseActivity {
 			initCapture();
 		}
 	}
-	
+
+	/**
+	 * 从相册中获取发送的intent
+	 */
 	private void initPick() {
 		Intent intent = new Intent(Intent.ACTION_PICK, null);
-		intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+		intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 		startActivityForResult(intent, PhotoPickActivity.PHOTO_REQ_ALBUM);
 	}
-	
+	/**
+	 * 拍照发送的intent
+	 */
 	private void initCapture() {
 		File vFile = new File(photo_storage,""+photoName+".jpg"); 
 		uri = Uri.fromFile(vFile); 
@@ -110,13 +117,20 @@ public class PhotoPickActivity extends BaseActivity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
+	/**
+	 * 拍照或从相册获取的东西为null或返回状态码不对
+	 */
 	private void backInforNull(){
         Intent resdata = new Intent();
         setResult(PhotoPickActivity.PHOTO_BACK_NULL, resdata);  
         finish();
 	}
-	
+
+	/**
+	 * 直接返回当前图片或裁剪完图片的uri
+	 * @param uri
+	 */
 	private void backInforUri(Uri uri){
 		if (uri != null){
 	        Intent resdata = new Intent();
@@ -127,7 +141,11 @@ public class PhotoPickActivity extends BaseActivity {
 			backInforNull();
 		}
 	}
-	
+
+	/**
+	 * 直接返回裁剪完的bitmap对象
+	 * @param photo
+	 */
 	private void backInforBitmap(Bitmap photo){
 		if (photo != null){
 	        Intent resdata = new Intent();
@@ -154,10 +172,10 @@ public class PhotoPickActivity extends BaseActivity {
 			// aspectX aspectY 是宽高的比例
 			intent.putExtra("aspectX", photo_crop.getAspectX());
 			intent.putExtra("aspectY", photo_crop.getAspectY());
-			// outputX outputY 是裁剪图片宽高
+			// outputX outputY 是裁剪图片区域的宽高
 			intent.putExtra("outputX", photo_crop.getOutputX());
 			intent.putExtra("outputY", photo_crop.getOutputY());
-			
+
 			String return_uri = photo_crop.getReturnOutput();
 			if(return_uri == null || return_uri.equals("")){
 				intent.putExtra("return-data", true);
@@ -183,7 +201,7 @@ public class PhotoPickActivity extends BaseActivity {
 		}
 		return bitmap;
 	}
-	
+	//裁剪信息的内部类
 	public static class PhotoCrop implements Serializable {
 		private static final long serialVersionUID = -305274577202017260L;
 		private int aspectX; //裁剪框 X方向的比例
