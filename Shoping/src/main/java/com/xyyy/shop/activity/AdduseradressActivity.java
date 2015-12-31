@@ -169,8 +169,7 @@ public class AdduseradressActivity extends BaseActivity {
 		if (StringUtils.isBlank(name) || StringUtils.isBlank(phone)
 				|| StringUtils.isBlank(province) || StringUtils.isBlank(city)
 				|| StringUtils.isBlank(country) || StringUtils.isBlank(detail)) {
-			Toast.makeText(AdduseradressActivity.this, "请填写相关信息！",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(AdduseradressActivity.this, "请填写相关信息！", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		EnnMemberReceipt add = new EnnMemberReceipt();
@@ -199,8 +198,7 @@ public class AdduseradressActivity extends BaseActivity {
 					@Override
 					public void onSuccess(String string) {
 						customProgressDialog.dismiss();
-						Toast.makeText(AdduseradressActivity.this, "添加成功！",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(AdduseradressActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
 						address_name.setText("");
 						address_phone.setText("");
 						address_detail.setText("");
@@ -217,15 +215,13 @@ public class AdduseradressActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(AdduseradressActivity.this, "添加失败！",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(AdduseradressActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(AdduseradressActivity.this, "添加失败！",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(AdduseradressActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 	}
@@ -273,8 +269,7 @@ public class AdduseradressActivity extends BaseActivity {
 
 					@Override
 					public void onFail(String failstring) {
-						Toast.makeText(AdduseradressActivity.this, "获取地区信息失败！",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(AdduseradressActivity.this, "获取地区信息失败！", Toast.LENGTH_SHORT).show();
 						switch (flag) {
 						case 1:
 							province_list = new ArrayList<EnnSysArea>();
@@ -293,8 +288,7 @@ public class AdduseradressActivity extends BaseActivity {
 
 					@Override
 					public void onError(VolleyError error) {
-						Toast.makeText(AdduseradressActivity.this, "获取地区信息失败！",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(AdduseradressActivity.this, "获取地区信息失败！", Toast.LENGTH_SHORT).show();
 						switch (flag) {
 						case 1:
 							province_list = new ArrayList<EnnSysArea>();
