@@ -336,6 +336,8 @@ public class MycenterFragment extends Fragment {
 			}
 		}else{
 			logout.setVisibility(View.GONE);
+			user_img.setImageResource(R.drawable.user_img);
+			user_name.setText("请登录");
 		}
 	}
 	private class ChangeReceiver extends BroadcastReceiver {
@@ -360,8 +362,11 @@ public class MycenterFragment extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if(ShopApplication.mainflag==4)
-		StatService.onPageStart(getActivity(),	"个人中心");
+		if(ShopApplication.mainflag==4){
+			StatService.onPageStart(getActivity(),	"个人中心");
+			changeuserinfo();
+		}
+
 	}
 	
 }

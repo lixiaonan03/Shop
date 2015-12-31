@@ -384,6 +384,7 @@ public class MyInformationActivity extends BaseActivity {
 						intent.setClass(MyInformationActivity.this, LoginActivity.class);
 						intent.putExtra("flag", 07);
 						startActivity(intent);
+						finish();
 					}
 					break;
 
