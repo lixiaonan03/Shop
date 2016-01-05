@@ -59,7 +59,7 @@ public class CommonVariable {
 	 * 近日配送清单 菜谱的页面
 	 */
 	public static String GetCookbookURL = IP1+"/mall/detail/getCookBook?menuId=";
-	//public static String GetCookbookURL = "http://192.168.10.27/mall/detail/getCookBook?menuId=";
+	//public static String GetCookbookURL = "http://192.168.10.127/mall/detail/getCookBook?menuId=";
 	
 	
 	/**
