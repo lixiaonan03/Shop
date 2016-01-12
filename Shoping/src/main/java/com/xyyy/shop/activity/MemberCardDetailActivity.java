@@ -439,7 +439,6 @@ public class MemberCardDetailActivity extends BaseActivity {
         }
         if (StringUtils.isBlank(currentobject.getEnnCardConfig()
                 .getDeliveWeek())) {
-            recevice_address.setText("请选择配送时间");
             Toast.makeText(MemberCardDetailActivity.this,
                     "请选择配送时间！", Toast.LENGTH_SHORT).show();
             return;
@@ -624,7 +623,7 @@ public class MemberCardDetailActivity extends BaseActivity {
                                         builder.setMessage("您的会员卡已启用!");
                                         break;
                                     case 1:
-                                        builder.setMessage("您的会员卡已暂停!");
+                                        builder.setMessage("暂停会员卡会取消该会员卡相关订单，您确定要暂停吗？");
                                         break;
                                     case 2:
                                         builder.setMessage("您的会员卡已恢复!");
