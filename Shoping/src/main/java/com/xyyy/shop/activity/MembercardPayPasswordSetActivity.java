@@ -57,17 +57,17 @@ public class MembercardPayPasswordSetActivity extends BaseActivity {
 				String password = edittextnew.getText().toString().trim();
 				String passwordagain = edittextnewagain.getText().toString().trim();
 				if(StringUtils.isBlank(password)||StringUtils.isBlank(passwordagain)){
-					Toast.makeText(MembercardPayPasswordSetActivity.this, "请输入相关信息！", 0).show();
+					Toast.makeText(MembercardPayPasswordSetActivity.this, "请输入相关信息！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				String check = RegularExpression.checkRegularExpression(password,
 						RegularExpression.paypassword, "请输入6位数字！");
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(MembercardPayPasswordSetActivity.this, check, 0).show();
+					Toast.makeText(MembercardPayPasswordSetActivity.this, check,Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(!password.equals(passwordagain)){
-					Toast.makeText(MembercardPayPasswordSetActivity.this, "两次输入的密码不一致！", 0).show();
+					Toast.makeText(MembercardPayPasswordSetActivity.this, "两次输入的密码不一致！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				customProgressDialog.show();
@@ -100,13 +100,13 @@ public class MembercardPayPasswordSetActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MembercardPayPasswordSetActivity.this, "设置失败！"+failstring, 0).show();
+						Toast.makeText(MembercardPayPasswordSetActivity.this, "设置失败！"+failstring,Toast.LENGTH_SHORT).show();
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MembercardPayPasswordSetActivity.this,  "设置失败！", 0).show();
+						Toast.makeText(MembercardPayPasswordSetActivity.this,  "设置失败！",Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 			}

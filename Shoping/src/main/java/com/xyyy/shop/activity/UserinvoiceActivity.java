@@ -141,14 +141,14 @@ public class UserinvoiceActivity extends BaseActivity {
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
 						customProgressDialog.dismiss();
-						Toast.makeText(UserinvoiceActivity.this,"获取发票信息失败！", 0).show();
+						Toast.makeText(UserinvoiceActivity.this,"获取发票信息失败！",Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
 						customProgressDialog.dismiss();
-						Toast.makeText(UserinvoiceActivity.this,"获取发票信息失败！", 0).show();
+						Toast.makeText(UserinvoiceActivity.this,"获取发票信息失败！",Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 	}

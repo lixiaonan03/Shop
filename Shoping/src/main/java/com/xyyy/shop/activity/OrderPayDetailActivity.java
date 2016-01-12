@@ -100,7 +100,7 @@ public class OrderPayDetailActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
-						Toast.makeText(OrderPayDetailActivity.this, "加载数据失败！", 0).show();
+						Toast.makeText(OrderPayDetailActivity.this, "加载数据失败！",Toast.LENGTH_SHORT).show();
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();
 					}
@@ -108,7 +108,7 @@ public class OrderPayDetailActivity extends BaseActivity {
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
-						Toast.makeText(OrderPayDetailActivity.this, "加载数据失败！", 0).show();
+						Toast.makeText(OrderPayDetailActivity.this, "加载数据失败！",Toast.LENGTH_SHORT).show();
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();
 					}

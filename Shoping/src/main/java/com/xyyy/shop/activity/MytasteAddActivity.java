@@ -149,7 +149,7 @@ public class MytasteAddActivity extends BaseActivity {
 				customProgressDialog.dismiss();
 				yesdata.setVisibility(View.VISIBLE);
 				nodata.setVisibility(View.GONE);
-				Toast.makeText(MytasteAddActivity.this, "加载失败！", 0).show();
+				Toast.makeText(MytasteAddActivity.this, "加载失败！",Toast.LENGTH_SHORT).show();
 			}
 
 			@Override
@@ -157,7 +157,7 @@ public class MytasteAddActivity extends BaseActivity {
 				customProgressDialog.dismiss();
 				yesdata.setVisibility(View.VISIBLE);
 				nodata.setVisibility(View.GONE);
-				Toast.makeText(MytasteAddActivity.this, "加载失败！", 0).show();
+				Toast.makeText(MytasteAddActivity.this, "加载失败！",Toast.LENGTH_SHORT).show();
 			}}, false, null);
 		
 		
@@ -209,7 +209,7 @@ public class MytasteAddActivity extends BaseActivity {
 			    }
 			}
 		if(ennMemberFlavors.size()==0){
-			Toast.makeText(MytasteAddActivity.this, "请选择相关口味", 0).show();
+			Toast.makeText(MytasteAddActivity.this, "请选择相关口味",Toast.LENGTH_SHORT).show();
 			return;
 		}
 		dto.setEnnMemberFlavors(ennMemberFlavors);

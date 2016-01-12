@@ -65,14 +65,14 @@ public class UsernameActivity extends BaseActivity {
 				final String  name=edittext.getText().toString().trim();
 				
 				if(StringUtils.isBlank(name)){
-					Toast.makeText(UsernameActivity.this, "请输入昵称！", 0).show();
+					Toast.makeText(UsernameActivity.this, "请输入昵称！", Toast.LENGTH_SHORT).show();
 					return;
 				}
 					String check = RegularExpression.checkRegularExpression(
 				edittext.getText().toString().trim(),RegularExpression.username,"请输入正确格式的昵称！"
 				);
 				if(StringUtils.isNotBlank(check)){
-						Toast.makeText(UsernameActivity.this,check, 0).show();
+						Toast.makeText(UsernameActivity.this,check,Toast.LENGTH_SHORT).show();
 						return;
 				}
 				EnnMember user=new EnnMember();
@@ -104,13 +104,13 @@ public class UsernameActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(UsernameActivity.this, "修改失败！", 0).show();
+						Toast.makeText(UsernameActivity.this, "修改失败！", Toast.LENGTH_SHORT).show();
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(UsernameActivity.this, "修改失败！", 0).show();
+						Toast.makeText(UsernameActivity.this, "修改失败！", Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);	
 			}

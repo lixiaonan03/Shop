@@ -95,13 +95,13 @@ public class ProductdeatilActivity extends BaseActivity {
 				@Override
 				public void onFail(String failstring) {
 					Toast.makeText(ProductdeatilActivity.this,
-							"获取商品信息失败！", 0).show();
+							"获取商品信息失败！",Toast.LENGTH_SHORT).show();
 				}
 
 				@Override
 				public void onError(VolleyError error) {
 					Toast.makeText(ProductdeatilActivity.this,
-							"获取商品信息失败！", 0).show();
+							"获取商品信息失败！",Toast.LENGTH_SHORT).show();
 				}
 			}, false, null);
 		}
@@ -269,7 +269,7 @@ public class ProductdeatilActivity extends BaseActivity {
 			case R.id.item_addcart:
 				if(null!=goodstate&&goodstate.equals("03")){
 					Toast.makeText(ProductdeatilActivity.this,
-							"该商品已下架，无法加入购物车！", 0).show();
+							"该商品已下架，无法加入购物车！", Toast.LENGTH_SHORT).show();
 					return;
 				}
 				// 加入购物车
@@ -302,7 +302,7 @@ public class ProductdeatilActivity extends BaseActivity {
 									if (!isFinishing()) {
 										builder.create().show();
 									}*/
-									Toast.makeText(ProductdeatilActivity.this, "加入购物车成功", 0).show();
+									Toast.makeText(ProductdeatilActivity.this, "加入购物车成功",Toast.LENGTH_SHORT).show();
 									if (num_rel.getVisibility() == View.GONE) {
 										num_rel.setVisibility(View.VISIBLE);
 										item_count.setText(1 + "");
@@ -320,14 +320,14 @@ public class ProductdeatilActivity extends BaseActivity {
 								public void onFail(String failstring) {
 									customProgressDialog.dismiss();
 									Toast.makeText(ProductdeatilActivity.this,
-											"加入购物车失败！", 0).show();
+											"加入购物车失败！", Toast.LENGTH_SHORT).show();
 								}
 
 								@Override
 								public void onError(VolleyError error) {
 									customProgressDialog.dismiss();
 									Toast.makeText(ProductdeatilActivity.this,
-											"加入购物车失败！", 0).show();
+											"加入购物车失败！", Toast.LENGTH_SHORT).show();
 								}
 							}, false, null);
 				} else {
@@ -371,7 +371,7 @@ public class ProductdeatilActivity extends BaseActivity {
 					if (!isFinishing()) {
 						builder.create().show();
 					}*/
-					Toast.makeText(ProductdeatilActivity.this, "加入购物车成功", 0).show();
+					Toast.makeText(ProductdeatilActivity.this, "加入购物车成功",Toast.LENGTH_SHORT).show();
 					if (num_rel.getVisibility() == View.GONE) {
 						num_rel.setVisibility(View.VISIBLE);
 						item_count.setText(1 + "");

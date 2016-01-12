@@ -64,7 +64,7 @@ public class MembercardPayPasswordFindActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(MembercardPayPasswordFindActivity.this, check, 0).show();
+					Toast.makeText(MembercardPayPasswordFindActivity.this, check,Toast.LENGTH_SHORT).show();
 					return;
 				}
 				getcodebutton.setBackgroundResource(R.drawable.getcode_onbutton);
@@ -80,14 +80,14 @@ public class MembercardPayPasswordFindActivity extends BaseActivity {
 					
 					@Override
 					public void onFail(String failstring) {
-						Toast.makeText(MembercardPayPasswordFindActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(MembercardPayPasswordFindActivity.this, "获取验证码失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
-						Toast.makeText(MembercardPayPasswordFindActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(MembercardPayPasswordFindActivity.this, "获取验证码失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -105,21 +105,21 @@ public class MembercardPayPasswordFindActivity extends BaseActivity {
 				String password = edittextnew.getText().toString().trim();
 				String passwordagain = edittextnewagain.getText().toString().trim();
 				if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)||StringUtils.isBlank(password)||StringUtils.isBlank(passwordagain)){
-					Toast.makeText(MembercardPayPasswordFindActivity.this, "请输入相关信息！", 0).show();
+					Toast.makeText(MembercardPayPasswordFindActivity.this, "请输入相关信息！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(yzm ==1){
-					Toast.makeText(MembercardPayPasswordFindActivity.this, "验证码已失效！", 0).show();
+					Toast.makeText(MembercardPayPasswordFindActivity.this, "验证码已失效！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				String check = RegularExpression.checkRegularExpression(password,
 						RegularExpression.paypassword, "请输入6位数字！");
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(MembercardPayPasswordFindActivity.this, check, 0).show();
+					Toast.makeText(MembercardPayPasswordFindActivity.this, check,Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(!password.equals(passwordagain)){
-					Toast.makeText(MembercardPayPasswordFindActivity.this, "两次输入的密码不一致！", 0).show();
+					Toast.makeText(MembercardPayPasswordFindActivity.this, "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
 					return;
 				}
 				customProgressDialog.show();
@@ -136,20 +136,20 @@ public class MembercardPayPasswordFindActivity extends BaseActivity {
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 			        	getcodebutton.setText("获取验证码");
 			        	yzm = 1;
-			        	Toast.makeText(MembercardPayPasswordFindActivity.this, "重置成功！", 0).show();
+			        	Toast.makeText(MembercardPayPasswordFindActivity.this, "重置成功！",Toast.LENGTH_SHORT).show();
 			        	finish();
 					}
 					
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MembercardPayPasswordFindActivity.this, "重置失败！"+failstring, 0).show();
+						Toast.makeText(MembercardPayPasswordFindActivity.this, "重置失败！"+failstring,Toast.LENGTH_SHORT).show();
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MembercardPayPasswordFindActivity.this,  "重置失败！", 0).show();
+						Toast.makeText(MembercardPayPasswordFindActivity.this,  "重置失败！",Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 			}

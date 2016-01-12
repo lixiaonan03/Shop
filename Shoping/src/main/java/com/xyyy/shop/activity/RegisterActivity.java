@@ -82,7 +82,7 @@ public class RegisterActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(RegisterActivity.this, check, 0).show();
+					Toast.makeText(RegisterActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				
@@ -101,7 +101,7 @@ public class RegisterActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
-						Toast.makeText(RegisterActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(RegisterActivity.this, "获取验证码失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -109,7 +109,7 @@ public class RegisterActivity extends BaseActivity {
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
-						Toast.makeText(RegisterActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(RegisterActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -149,7 +149,7 @@ public class RegisterActivity extends BaseActivity {
 						return;
 					}
 					if(!checkBox.isChecked()){
-				    	Toast.makeText(RegisterActivity.this,"请同意协议！", 0).show();
+				    	Toast.makeText(RegisterActivity.this,"请同意协议！", Toast.LENGTH_SHORT).show();
 						return;
 				    }
 					customProgressDialog.show();
@@ -207,14 +207,14 @@ public class RegisterActivity extends BaseActivity {
 													// TODO Auto-generated method stub
 													customProgressDialog.dismiss();
 													Toast.makeText(getApplicationContext(), failstring,
-															2).show();
+															Toast.LENGTH_LONG).show();
 												}
 
 												@Override
 												public void onError(VolleyError error) {
 													// TODO Auto-generated method stub
 													customProgressDialog.dismiss();
-													Toast.makeText(getApplicationContext(), "登录失败！", 0)
+													Toast.makeText(getApplicationContext(), "登录失败！", Toast.LENGTH_SHORT)
 															.show();
 												}
 
@@ -226,7 +226,8 @@ public class RegisterActivity extends BaseActivity {
 									// TODO 注册失败
 									customProgressDialog.dismiss();
 									Toast.makeText(getApplicationContext(),
-											"注册失败：" + failstring, 2).show();
+											"注册失败：" + failstring, Toast.LENGTH_LONG
+									).show();
 								}
 
 								@Override
@@ -234,7 +235,7 @@ public class RegisterActivity extends BaseActivity {
 									// TODO 接口访问出错
 									customProgressDialog.dismiss();
 									Toast.makeText(RegisterActivity.this,
-											"注册失败!", 0).show();
+											"注册失败!",Toast.LENGTH_SHORT).show();
 								}
 							}, false, null);
 				}

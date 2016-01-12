@@ -338,14 +338,14 @@ public class GiftDetailActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(GiftDetailActivity.this, "启用失败！", 0)
+						Toast.makeText(GiftDetailActivity.this, "启用失败！", Toast.LENGTH_SHORT)
 								.show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(GiftDetailActivity.this, "启用失败！", 0)
+						Toast.makeText(GiftDetailActivity.this, "启用失败！",Toast.LENGTH_SHORT)
 								.show();
 					}
 				}, false, null);

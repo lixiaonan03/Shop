@@ -93,7 +93,7 @@ public class MemberCompleteActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(MemberCompleteActivity.this, check, 0).show();
+					Toast.makeText(MemberCompleteActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				getcodebutton.setClickable(false);
@@ -111,14 +111,14 @@ public class MemberCompleteActivity extends BaseActivity {
 
 					@Override
 					public void onFail(String failstring) {
-						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
 
 					@Override
 					public void onError(VolleyError error) {
-						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(MemberCompleteActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -131,18 +131,18 @@ public class MemberCompleteActivity extends BaseActivity {
 			@Override
 			public void onClick(View paramView) {
 				if(!checkBox.isChecked()){
-					Toast.makeText(MemberCompleteActivity.this,"请同意协议！", 0).show();
+					Toast.makeText(MemberCompleteActivity.this,"请同意协议！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				final String name = edittextname.getText().toString().trim();
 				final String phone = edittextphone.getText().toString().trim();
 				String code = edittextcode.getText().toString().trim();
 				if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)||StringUtils.isBlank(name)){
-					Toast.makeText(MemberCompleteActivity.this,"请输入相关信息！", 0).show();
+					Toast.makeText(MemberCompleteActivity.this,"请输入相关信息！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(yzm==1){
-					Toast.makeText(MemberCompleteActivity.this,"验证码失效！", 0).show();
+					Toast.makeText(MemberCompleteActivity.this,"验证码失效！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				customProgressDialog.show();
@@ -178,7 +178,7 @@ public class MemberCompleteActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！"+failstring, 0).show();
+						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！"+failstring,Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -186,7 +186,7 @@ public class MemberCompleteActivity extends BaseActivity {
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！", 0).show();
+						Toast.makeText(MemberCompleteActivity.this,"完善资料失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}

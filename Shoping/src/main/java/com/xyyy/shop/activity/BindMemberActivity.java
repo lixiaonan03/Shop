@@ -161,7 +161,7 @@ public class BindMemberActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(BindMemberActivity.this, check, 0).show();
+					Toast.makeText(BindMemberActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				getcodebutton.setBackgroundResource(R.drawable.getcode_onbutton);
@@ -179,7 +179,7 @@ public class BindMemberActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
-						Toast.makeText(BindMemberActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(BindMemberActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -187,7 +187,7 @@ public class BindMemberActivity extends BaseActivity {
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
-						Toast.makeText(BindMemberActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(BindMemberActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}

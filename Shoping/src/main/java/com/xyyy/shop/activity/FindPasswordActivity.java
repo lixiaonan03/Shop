@@ -63,7 +63,7 @@ public class FindPasswordActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(FindPasswordActivity.this, check, 0).show();
+					Toast.makeText(FindPasswordActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				getcodebutton.setBackgroundResource(R.drawable.getcode_onbutton);
@@ -79,14 +79,14 @@ public class FindPasswordActivity extends BaseActivity {
 					
 					@Override
 					public void onFail(String failstring) {
-						Toast.makeText(FindPasswordActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(FindPasswordActivity.this, "获取验证码失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
-						Toast.makeText(FindPasswordActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(FindPasswordActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -103,17 +103,17 @@ public class FindPasswordActivity extends BaseActivity {
 				String code = edittextcode.getText().toString().trim();
 				String password = edittextpassword.getText().toString().trim();
 				if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)||StringUtils.isBlank(password)){
-					Toast.makeText(FindPasswordActivity.this, "请输入相关信息！", 0).show();
+					Toast.makeText(FindPasswordActivity.this, "请输入相关信息！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(yzm ==1){
-					Toast.makeText(FindPasswordActivity.this, "验证码已失效！", 0).show();
+					Toast.makeText(FindPasswordActivity.this, "验证码已失效！",Toast.LENGTH_SHORT).show();
 					return;
 				}
 				String check = RegularExpression.checkRegularExpression(password,
 						RegularExpression.userpass, "请输入6-12位字母或数字！");
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(FindPasswordActivity.this, check, 0).show();
+					Toast.makeText(FindPasswordActivity.this, check,Toast.LENGTH_SHORT).show();
 					return;
 				}
 				customProgressDialog.show();
@@ -129,20 +129,20 @@ public class FindPasswordActivity extends BaseActivity {
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 			        	getcodebutton.setText("获取验证码");
 			        	yzm = 1;
-			        	Toast.makeText(FindPasswordActivity.this, "重置成功！", 0).show();
+			        	Toast.makeText(FindPasswordActivity.this, "重置成功！", Toast.LENGTH_SHORT).show();
 			        	finish();
 					}
 					
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(FindPasswordActivity.this, "重置失败！"+failstring, 0).show();
+						Toast.makeText(FindPasswordActivity.this, "重置失败！"+failstring,Toast.LENGTH_SHORT).show();
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(FindPasswordActivity.this,  "重置失败！", 0).show();
+						Toast.makeText(FindPasswordActivity.this,  "重置失败！", Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 			}

@@ -7,13 +7,13 @@ android {
         applicationId "com.xyyy.shop"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 21
+        versionName "2.1"
     }
     buildTypes {
         release {
             // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "LOG_DEBUG", "true"
             // 移除无用的resource文件
             shrinkResources true
             minifyEnabled false

@@ -79,7 +79,7 @@ public class UserchangephoneActivity extends BaseActivity {
 						RegularExpression.MOBILE_PHONE, "请输入正确的手机号码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(UserchangephoneActivity.this, check, 0).show();
+					Toast.makeText(UserchangephoneActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 			
@@ -98,14 +98,14 @@ public class UserchangephoneActivity extends BaseActivity {
 					
 					@Override
 					public void onFail(String failstring) {
-						Toast.makeText(UserchangephoneActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(UserchangephoneActivity.this, "获取验证码失败！",Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
 					
 					@Override
 					public void onError(VolleyError error) {
-						Toast.makeText(UserchangephoneActivity.this, "获取验证码失败！", 0).show();
+						Toast.makeText(UserchangephoneActivity.this, "获取验证码失败！", Toast.LENGTH_SHORT).show();
 						getcodebutton.setBackgroundResource(R.drawable.login_button);
 						getcodebutton.setClickable(true);
 					}
@@ -121,11 +121,11 @@ public class UserchangephoneActivity extends BaseActivity {
 					String phone = edittextphone.getText().toString().trim();
 					String code = edittextcode.getText().toString().trim();
 					if(StringUtils.isBlank(phone)||StringUtils.isBlank(code)){
-						Toast.makeText(UserchangephoneActivity.this,"请输入相关信息！", 0).show();
+						Toast.makeText(UserchangephoneActivity.this,"请输入相关信息！",Toast.LENGTH_SHORT).show();
 						return;
 					}
 					if(yzm==1){
-						Toast.makeText(UserchangephoneActivity.this,"验证码失效！", 0).show();
+						Toast.makeText(UserchangephoneActivity.this,"验证码失效！", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					customProgressDialog.show();
@@ -160,13 +160,13 @@ public class UserchangephoneActivity extends BaseActivity {
 						@Override
 						public void onFail(String failstring) {
 							customProgressDialog.dismiss();
-							Toast.makeText(UserchangephoneActivity.this, "当前的手机号验证失败！", 0).show();
+							Toast.makeText(UserchangephoneActivity.this, "当前的手机号验证失败！",Toast.LENGTH_SHORT).show();
 						}
 
 						@Override
 						public void onError(VolleyError error) {
 							customProgressDialog.dismiss();
-							Toast.makeText(UserchangephoneActivity.this, "当前的手机号验证失败！", 0).show();
+							Toast.makeText(UserchangephoneActivity.this, "当前的手机号验证失败！",Toast.LENGTH_SHORT).show();
 						}
 						
 					}, false, null);

@@ -205,7 +205,7 @@ public class Welcome extends BaseActivity {
 					if (i == 100) {
 
 					} else {
-						Toast.makeText(Welcome.this, "正在下载,请稍后...", 0).show();
+						Toast.makeText(Welcome.this, "正在下载,请稍后...",Toast.LENGTH_SHORT).show();
 					}
 				}
 			}

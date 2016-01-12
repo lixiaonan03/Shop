@@ -77,7 +77,7 @@ public class MembercardPayPasswordchangeActivity extends BaseActivity {
 						RegularExpression.paypassword, "请输入6位支付密码！");
 				
 				if (StringUtils.isNotBlank(check)) {
-					Toast.makeText(MembercardPayPasswordchangeActivity.this, check, 0).show();
+					Toast.makeText(MembercardPayPasswordchangeActivity.this, check, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if(!newagain.equals(newpass)){

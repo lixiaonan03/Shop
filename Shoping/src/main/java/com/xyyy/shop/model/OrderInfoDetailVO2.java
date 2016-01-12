@@ -56,6 +56,9 @@ public class OrderInfoDetailVO2 {
 	private List<EnnOrderRecord>  ennOrderRecords;
 	
 	public String getPayFlag() {
+		if(null==payFlag){
+			payFlag="";
+		}
 		return payFlag;
 	}
 

@@ -63,7 +63,7 @@ public class MembernameActivity extends BaseActivity {
 				final String name = edittext.getText().toString().trim();
 
 				if (StringUtils.isBlank(name)) {
-					Toast.makeText(MembernameActivity.this, "请输入姓名！", 0).show();
+					Toast.makeText(MembernameActivity.this, "请输入姓名！", Toast.LENGTH_SHORT).show();
 					return;
 				}
 				EnnMember user = new EnnMember();
@@ -98,14 +98,14 @@ public class MembernameActivity extends BaseActivity {
 							public void onFail(String failstring) {
 								customProgressDialog.dismiss();
 								Toast.makeText(MembernameActivity.this,
-										"修改失败！", 0).show();
+										"修改失败！",Toast.LENGTH_SHORT).show();
 							}
 
 							@Override
 							public void onError(VolleyError error) {
 								customProgressDialog.dismiss();
 								Toast.makeText(MembernameActivity.this,
-										"修改失败！", 0).show();
+										"修改失败！",Toast.LENGTH_SHORT).show();
 							}
 						}, false, null);
 			}

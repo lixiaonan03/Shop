@@ -104,7 +104,7 @@ public class LoginActivity extends BaseActivity {
 				case R.id.login_wx:
 					// 微信登录的方式
 					if(!(ShopApplication.api.isWXAppInstalled()&&ShopApplication.api.isWXAppSupportAPI())){
-						Toast.makeText(LoginActivity.this, "请安装最新版本的微信客户端！", 0).show();
+						Toast.makeText(LoginActivity.this, "请安装最新版本的微信客户端！", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					customProgressDialog.show();
@@ -177,14 +177,14 @@ public class LoginActivity extends BaseActivity {
 							// TODO Auto-generated method stub
 							customProgressDialog.dismiss();
 							Toast.makeText(getApplicationContext(), failstring,
-									2).show();
+									Toast.LENGTH_LONG).show();
 						}
 
 						@Override
 						public void onError(VolleyError error) {
 							// TODO Auto-generated method stub
 							customProgressDialog.dismiss();
-							Toast.makeText(getApplicationContext(), "登录失败！", 0)
+							Toast.makeText(getApplicationContext(), "登录失败！",Toast.LENGTH_SHORT)
 									.show();
 						}
 

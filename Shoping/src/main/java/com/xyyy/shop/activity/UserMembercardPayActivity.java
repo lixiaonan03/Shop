@@ -162,15 +162,15 @@ public class UserMembercardPayActivity extends BaseActivity {
 								}
 							}
 							if (membercardpaylist.size() > 0) {
-								// TODO 默认排序数据变化
+								// TODO 排序数据变化
 								Collections.sort(membercardpaylist, new Comparator<MemCardVO>() {
 
 									@Override
 									public int compare(MemCardVO paramT1, MemCardVO paramT2) {
-										return paramT1
+										return paramT2
 												.getEnnCard()
 												.getCardRemain()
-												.compareTo(paramT2.getEnnCard()
+												.compareTo(paramT1.getEnnCard()
 														.getCardRemain());
 									}
 
@@ -190,7 +190,7 @@ public class UserMembercardPayActivity extends BaseActivity {
 					public void onFail(String failstring) {
 						// TODO Auto-generated method stub
 						Toast.makeText(UserMembercardPayActivity.this,
-								"加载数据失败！", 0).show();
+								"加载数据失败！", Toast.LENGTH_SHORT).show();
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();
 					}
@@ -199,7 +199,7 @@ public class UserMembercardPayActivity extends BaseActivity {
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
 						Toast.makeText(UserMembercardPayActivity.this,
-								"加载数据失败！", 0).show();
+								"加载数据失败！", Toast.LENGTH_SHORT).show();
 						listview.setVisibility(View.GONE);
 						customProgressDialog.dismiss();
 					}

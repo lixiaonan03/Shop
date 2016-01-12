@@ -121,13 +121,13 @@ public class OrderDetailActivity extends BaseActivity {
 				@Override
 				public void onFail(String failstring) {
 					customProgressDialog.dismiss();
-					Toast.makeText(OrderDetailActivity.this, "加载失败！", 0).show();
+					Toast.makeText(OrderDetailActivity.this, "加载失败！", Toast.LENGTH_SHORT).show();
 				}
 
 				@Override
 				public void onError(VolleyError error) {
 					customProgressDialog.dismiss();
-					Toast.makeText(OrderDetailActivity.this, "加载失败！", 0).show();
+					Toast.makeText(OrderDetailActivity.this, "加载失败！", Toast.LENGTH_SHORT).show();
 				}
 				
 			}, false, null);
@@ -143,13 +143,13 @@ public class OrderDetailActivity extends BaseActivity {
 				@Override
 				public void onFail(String failstring) {
 					customProgressDialog.dismiss();
-					Toast.makeText(OrderDetailActivity.this, "加载失败！", 0).show();
+					Toast.makeText(OrderDetailActivity.this, "加载失败！",Toast.LENGTH_SHORT).show();
 				}
 
 				@Override
 				public void onError(VolleyError error) {
 					customProgressDialog.dismiss();
-					Toast.makeText(OrderDetailActivity.this, "加载失败！", 0).show();
+					Toast.makeText(OrderDetailActivity.this, "加载失败！",Toast.LENGTH_SHORT).show();
 				}
 				
 			}, false, null);

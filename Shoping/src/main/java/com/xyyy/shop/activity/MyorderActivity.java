@@ -370,7 +370,7 @@ public class MyorderActivity extends BaseActivity {
                 customProgressDialog.dismiss();
                 noorder.setVisibility(View.VISIBLE);
                 listview.setVisibility(View.GONE);
-                Toast.makeText(MyorderActivity.this, "加载数据失败！", 0).show();
+                Toast.makeText(MyorderActivity.this, "加载数据失败！", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -379,7 +379,7 @@ public class MyorderActivity extends BaseActivity {
                 customProgressDialog.dismiss();
                 noorder.setVisibility(View.VISIBLE);
                 listview.setVisibility(View.GONE);
-                Toast.makeText(MyorderActivity.this, "加载数据失败！", 0).show();
+                Toast.makeText(MyorderActivity.this, "加载数据失败！",Toast.LENGTH_SHORT).show();
             }
         }, false, null);
     }

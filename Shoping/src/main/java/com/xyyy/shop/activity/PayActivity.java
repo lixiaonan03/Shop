@@ -223,13 +223,13 @@ public class PayActivity extends BaseActivity {
 					@Override
 					public void onFail(String failstring) {
 						customProgressDialog.dismiss();
-						Toast.makeText(PayActivity.this, "加载订单信息失败！", 0).show();
+						Toast.makeText(PayActivity.this, "加载订单信息失败！",Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						customProgressDialog.dismiss();
-						Toast.makeText(PayActivity.this, "加载订单信息失败！", 0).show();
+						Toast.makeText(PayActivity.this, "加载订单信息失败！", Toast.LENGTH_SHORT).show();
 					}
 
 				}, false, null);
@@ -326,7 +326,7 @@ public class PayActivity extends BaseActivity {
 		if (otherpayIsgone != 1) {
 			if (!(ShopApplication.api.isWXAppInstalled() && ShopApplication.api
 					.isWXAppSupportAPI())) {
-				Toast.makeText(PayActivity.this, "请安装最新版本的微信客户端！", 0).show();
+				Toast.makeText(PayActivity.this, "请安装最新版本的微信客户端！",Toast.LENGTH_SHORT).show();
 				return;
 			}
 		}
@@ -336,7 +336,7 @@ public class PayActivity extends BaseActivity {
 		if (otherpayIsgone != 2) {
 			if(StringUtils.isBlank(membercardpassword.getText().toString()
 					.trim())){
-				Toast.makeText(PayActivity.this, "请输入会员卡支付密码！", 0).show();
+				Toast.makeText(PayActivity.this, "请输入会员卡支付密码！", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			insertpaydto.setPayPass(membercardpassword.getText().toString()
@@ -377,14 +377,14 @@ public class PayActivity extends BaseActivity {
 						// TODO Auto-generated method stub
 						customProgressDialog.dismiss();
 						Toast.makeText(PayActivity.this, "支付失败！" + failstring,
-								0).show();
+								Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onError(VolleyError error) {
 						// TODO Auto-generated method stub
 						customProgressDialog.dismiss();
-						Toast.makeText(PayActivity.this, "支付失败！", 0).show();
+						Toast.makeText(PayActivity.this, "支付失败！",Toast.LENGTH_SHORT).show();
 					}
 				}, false, null);
 
