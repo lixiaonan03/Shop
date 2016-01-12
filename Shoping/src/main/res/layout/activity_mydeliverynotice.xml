@@ -106,7 +106,7 @@
                         android:layout_marginLeft="12sp"
                         android:layout_marginRight="12sp"
                         android:layout_marginTop="3dp"
-                        android:text="   亲，请您于配送日前2天选择喜欢的菜品。因会员较多，按选菜会员顺序优先发送。如遇产能不足无法满足每位会员的要求，请您谅解。"
+                        android:text="   亲，请您于配送日之前2天（中午12点之前）选择喜欢的菜品。因会员较多，按选菜会员顺序优先发送。如遇产能不足无法满足每位会员的要求，请谅解。"
                         android:textColor="#333333"
                         android:textSize="@dimen/textsizesmall" />
                 </LinearLayout>
