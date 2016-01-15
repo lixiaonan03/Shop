@@ -65,7 +65,7 @@ public class ShopApplication extends Application {
 		application = this;
 		PreferencesUtil.init(application);
 		BadHandler.getInstance().init(application);
-		StatService.setDebugOn(false);
+		StatService.setDebugOn(true);
 		//初始化数据库
 		DataBaseHelper.getHelper(application).getWritableDatabase();
 		
