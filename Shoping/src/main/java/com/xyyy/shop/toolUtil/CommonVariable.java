@@ -9,17 +9,17 @@ public class CommonVariable {
 	//public static String IP1="http://192.168.10.27";
 	//public static String IP1="http://192.168.10.13";
 	//公网开发所用的
-	public static String IP1="http://test.sun-yard.com";
+	//public static String IP1="http://test.sun-yard.com";
 	//正式服务器的嵌套页地址
-	//public static String IP1="http://weixin.sun-yard.com";
+	public static String IP1="http://weixin.sun-yard.com";
 	// 开发测试服务器地址
 	//public static String IP = "http://101.200.228.203:8181";
 	// 产品测试环境下服务器地址
-	public static String IP = "http://101.200.228.203:81";
+	//public static String IP = "http://101.200.228.203:81";
 	// 王龙的
 	//public static String IP = "http://192.168.10.21";
 	//正式服务器地址
-	//public static String IP = "http://weixin.sun-yard.com:51";
+	public static String IP = "http://weixin.sun-yard.com:51";
 	/**
 	 * 嵌套的首页的地址
 	 */
