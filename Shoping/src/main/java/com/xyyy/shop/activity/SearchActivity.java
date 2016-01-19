@@ -47,6 +47,7 @@ import com.xyyy.shop.model.PageParameter;
 import com.xyyy.shop.model.QueryReqBean;
 import com.xyyy.shop.toolUtil.CommonVariable;
 import com.xyyy.shop.toolUtil.PreferencesUtil;
+import com.xyyy.shop.toolUtil.StringUtils;
 import com.xyyy.shop.view.CustomProgressDialog;
 
 /**
@@ -96,12 +97,17 @@ public class SearchActivity extends BaseActivity {
 	int pageNum = 0;
 	int pagesize = 5;
 	private String searchkey="";
+	private int flag;//进入标志  3表示从商品详情页进入的（促销赠送列表）
+	private String salename;//促销商品活动名称点击的关键字
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
 		catid = getIntent().getIntExtra("id", -1);
+		flag = getIntent().getIntExtra("flag", 0);
+		salename = getIntent().getStringExtra("salename");
 		customProgressDialog = new CustomProgressDialog(SearchActivity.this,
 				"正在加载......");
 
@@ -198,6 +204,7 @@ public class SearchActivity extends BaseActivity {
 					// 修改 Pref 文件中最近搜索的内容
 					savehistory(searchtext);
 					// 执行搜索方法
+					pageNum=0;
 					loadData(true,searchtext,"ONSHELF_TIME desc");
 				}
 			}
@@ -569,12 +576,25 @@ public class SearchActivity extends BaseActivity {
 		pageNum = 0;
 		// 在这做判断 如果是商品分类进来的就
 		if (catid == -1) {
-			// 获取搜索历史内容
-			getnearsearch();
-			baselinear.setVisibility(View.VISIBLE);
-			searchanswerLin.setVisibility(View.GONE);
+
+			if(flag==3){
+				//商品促销标签点击进入的
+				pageNum=0;
+				if(StringUtils.isBlank(salename)){
+					salename="";
+				}
+				loadData(true,salename, "ONSHELF_TIME desc");
+				baselinear.setVisibility(View.GONE);
+				searchanswerLin.setVisibility(View.VISIBLE);
+			}else{
+				// 获取搜索历史内容
+				getnearsearch();
+				baselinear.setVisibility(View.VISIBLE);
+				searchanswerLin.setVisibility(View.GONE);
+			}
+
 		} else {
-			getGoodsBycatid(true,catid,"ONSHELF_TIME desc");
+			getGoodsBycatid(true, catid,"ONSHELF_TIME desc");
 			baselinear.setVisibility(View.GONE);
 			searchanswerLin.setVisibility(View.VISIBLE);
 		}
@@ -585,11 +605,11 @@ public class SearchActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 									long arg3) {
-				long id = list.get(arg2).getEnnGoods().getGoodsId();
-				String name = list.get(arg2).getEnnGoods().getGoodsName();
-				String goodstate = list.get(arg2).getEnnGoods().getGoodsState();
-				String imgurl = list.get(arg2).getImgUrl();
-				BigDecimal goodprice = list.get(arg2).getEnnGoods()
+				long id = list.get(arg2-1).getEnnGoods().getGoodsId();
+				String name = list.get(arg2-1).getEnnGoods().getGoodsName();
+				String goodstate = list.get(arg2-1).getEnnGoods().getGoodsState();
+				String imgurl = list.get(arg2-1).getImgUrl();
+				BigDecimal goodprice = list.get(arg2-1).getEnnGoods()
 						.getMallPrice();
 				// int iseletron = list.get(arg2).getEnnGoods().getIsdianzi();
 				Intent intent = new Intent();
@@ -667,12 +687,12 @@ public class SearchActivity extends BaseActivity {
 							}
 							baselinear.setVisibility(View.GONE);
 							searchanswerLin.setVisibility(View.VISIBLE);
-						}else{
-							if(pageNum==1){
+						} else {
+							if (pageNum == 1) {
 								baselinear.setVisibility(View.GONE);
 								searchanswerLin.setVisibility(View.GONE);
 								nodata.setVisibility(View.VISIBLE);
-							}else{
+							} else {
 								baselinear.setVisibility(View.GONE);
 								searchanswerLin.setVisibility(View.VISIBLE);
 								listview.setMode(Mode.PULL_FROM_START);
@@ -688,7 +708,7 @@ public class SearchActivity extends BaseActivity {
 						baselinear.setVisibility(View.GONE);
 						searchanswerLin.setVisibility(View.GONE);
 						nodata.setVisibility(View.VISIBLE);
-						Toast.makeText(SearchActivity.this,"加载数据失败！",Toast.LENGTH_SHORT).show();
+						Toast.makeText(SearchActivity.this, "加载数据失败！", Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
@@ -697,7 +717,7 @@ public class SearchActivity extends BaseActivity {
 						baselinear.setVisibility(View.GONE);
 						searchanswerLin.setVisibility(View.GONE);
 						nodata.setVisibility(View.VISIBLE);
-						Toast.makeText(SearchActivity.this,"加载数据失败！",Toast.LENGTH_SHORT).show();
+						Toast.makeText(SearchActivity.this, "加载数据失败！", Toast.LENGTH_SHORT).show();
 					}
 
 				}, false, null);
@@ -744,12 +764,12 @@ public class SearchActivity extends BaseActivity {
 							} else {
 								listview.setMode(Mode.BOTH);
 							}
-						}else{
-							if(pageNum==1){
+						} else {
+							if (pageNum == 1) {
 								baselinear.setVisibility(View.GONE);
 								searchanswerLin.setVisibility(View.GONE);
 								nodata.setVisibility(View.VISIBLE);
-							}else{
+							} else {
 								listview.setMode(Mode.PULL_FROM_START);
 							}
 						}
@@ -762,7 +782,7 @@ public class SearchActivity extends BaseActivity {
 						baselinear.setVisibility(View.GONE);
 						searchanswerLin.setVisibility(View.GONE);
 						nodata.setVisibility(View.VISIBLE);
-						Toast.makeText(SearchActivity.this,"加载数据失败！",Toast.LENGTH_SHORT).show();
+						Toast.makeText(SearchActivity.this, "加载数据失败！", Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
@@ -771,7 +791,7 @@ public class SearchActivity extends BaseActivity {
 						baselinear.setVisibility(View.GONE);
 						searchanswerLin.setVisibility(View.GONE);
 						nodata.setVisibility(View.VISIBLE);
-						Toast.makeText(SearchActivity.this,"加载数据失败！",Toast.LENGTH_SHORT).show();
+						Toast.makeText(SearchActivity.this, "加载数据失败！", Toast.LENGTH_SHORT).show();
 					}
 
 				}, false, null);
