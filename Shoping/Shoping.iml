@@ -129,5 +129,6 @@
     <orderEntry type="library" exported="" name="jackson-annotations-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="slf4j-api-1.7.6" level="project" />
     <orderEntry type="library" exported="" name="design-22.2.1" level="project" />
+    <orderEntry type="module" module-name="pulltorefreshlibrary" exported="" />
   </component>
 </module>
