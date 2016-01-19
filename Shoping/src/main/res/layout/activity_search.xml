@@ -322,7 +322,8 @@
                     android:background="@color/listView_line_color" />
             </LinearLayout>
 
-            <ListView
+            <com.handmark.pulltorefresh.library.PullToRefreshListView
+                xmlns:ptr="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -330,7 +331,11 @@
                 android:divider="@color/listView_line_color"
                 android:dividerHeight="@dimen/listview_line_height"
                 android:fadingEdge="none"
-                android:scrollbars="none" />
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                ptr:ptrAnimationStyle="flip"
+                ptr:ptrHeaderBackground="#383838"
+                ptr:ptrHeaderTextColor="@color/textcolorhint" />
         </LinearLayout>
 
         <RelativeLayout
