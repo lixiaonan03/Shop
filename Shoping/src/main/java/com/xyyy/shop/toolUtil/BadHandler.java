@@ -72,8 +72,7 @@ public class BadHandler implements UncaughtExceptionHandler {
 	// 获取时间和手机信息
 	private StringBuilder getDriverInfo() {
 		StringBuilder sb = new StringBuilder();
-		SimpleDateFormat formatter = new SimpleDateFormat(
-				"yyyy年MM月dd日   HH:mm:ss ");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss ");
 		sb.append("日期:");
 		sb.append(formatter.format(System.currentTimeMillis()));
 		sb.append("\n 手机型号:");

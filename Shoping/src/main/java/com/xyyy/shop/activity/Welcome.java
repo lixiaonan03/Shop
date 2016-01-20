@@ -138,8 +138,7 @@ public class Welcome extends BaseActivity {
 					handle.sendMessage(handle.obtainMessage(1));
 				} else {
 					handle.sendMessage(handle.obtainMessage(2));
-				}
-			} else {
+				}			} else {
 				// 获取版本更新数据失败
 				handle.sendMessage(handle.obtainMessage(2));
 			}
