@@ -53,7 +53,6 @@ public class Welcome extends BaseActivity {
 	private Handler handle = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case 1:

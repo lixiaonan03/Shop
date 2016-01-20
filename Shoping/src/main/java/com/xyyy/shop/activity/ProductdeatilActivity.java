@@ -35,6 +35,7 @@ import com.xyyy.shop.db.Cart;
 import com.xyyy.shop.db.CartDao;
 import com.xyyy.shop.model.GoodItemVO;
 import com.xyyy.shop.toolUtil.CommonVariable;
+import com.xyyy.shop.toolUtil.LogUtils;
 import com.xyyy.shop.toolUtil.StrToNumber;
 import com.xyyy.shop.view.CustomProgressDialog;
 
@@ -107,7 +108,8 @@ public class ProductdeatilActivity extends BaseActivity {
 		}
 		
 
-		url = CommonVariable.GoodDeatilURL +id+"&device=android";
+		//url = CommonVariable.GoodDeatilURL +id+"&device=android";
+		url = "http://192.168.10.127/mall/cat/goodInfo?device=android&id=21";
 		top_back = (ImageView) findViewById(R.id.top_back);
 		top_back.setOnClickListener(new OnClickListener() {
 
@@ -415,15 +417,24 @@ public class ProductdeatilActivity extends BaseActivity {
     	   //跳转商品详情图文介绍的
     	   Intent intent = new Intent();
     	   intent.setClass(ProductdeatilActivity.this, ProductdetailIntroduceActivity.class);
-    	   intent.putExtra("url",CommonVariable.GoodDeatilIntroduceURL+goodid+"&device=android");
+    	   intent.putExtra("url", CommonVariable.GoodDeatilIntroduceURL + goodid + "&device=android");
     	   startActivity(intent);
        }
        @JavascriptInterface
        public void goodevaluate(String goodid,String evaluate) {
     	   //跳转商品详情图文介绍的
     	   Intent intent = new Intent();
-    	   intent.setClass(ProductdeatilActivity.this, ProductdetailEvaluateActivity.class);
+    	   intent.setClass(ProductdeatilActivity.this,  ProductdetailEvaluateActivity.class);
     	   intent.putExtra("url",CommonVariable.GoodDeatilEvaluateURL+goodid+"&fivePec="+evaluate+"&device=android");
+    	   startActivity(intent);
+       }
+       @JavascriptInterface
+       public void getgift(String sale) {
+    	   //跳转到赠品列表的
+    	   Intent intent = new Intent();
+    	   intent.setClass(ProductdeatilActivity.this, SearchActivity.class);
+		   intent.putExtra("salename",sale);
+		   intent.putExtra("flag",3);
     	   startActivity(intent);
        }
    }

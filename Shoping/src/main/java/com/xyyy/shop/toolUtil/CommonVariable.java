@@ -9,17 +9,17 @@ public class CommonVariable {
 	//public static String IP1="http://192.168.10.27";
 	//public static String IP1="http://192.168.10.13";
 	//公网开发所用的
-	//public static String IP1="http://test.sun-yard.com";
+	public static String IP1="http://test.sun-yard.com";
 	//正式服务器的嵌套页地址
-	public static String IP1="http://weixin.sun-yard.com";
+	//public static String IP1="http://weixin.sun-yard.com";
 	// 开发测试服务器地址
-	//public static String IP = "http://101.200.228.203:8181";
+	public static String IP = "http://101.200.228.203:8181";
 	// 产品测试环境下服务器地址
 	//public static String IP = "http://101.200.228.203:81";
 	// 王龙的
 	//public static String IP = "http://192.168.10.21";
 	//正式服务器地址
-	public static String IP = "http://weixin.sun-yard.com:51";
+	//public static String IP = "http://weixin.sun-yard.com:51";
 	/**
 	 * 嵌套的首页的地址
 	 */
@@ -83,17 +83,17 @@ public class CommonVariable {
 	public static String GetCatURL = IP
 			+ "/mallService/api/EnnGoodsCat/getCat/v1/";
 	/**
-	 * 获取商品列表的url 参数为2级分类的id
+	 * 获取商品列表的url 参数为2级分类的id     如果是分页的话  id和search是同一个 接口
 	 */
-	public static String GetGoodURL = IP
-			+ "/mallService/api/EnnGoods/getGoods/v1/";
 	/*public static String GetGoodURL = IP
-			+ "/mallService/api/EnnGoods/searchByName/v3";*/
+			+ "/mallService/api/EnnGoods/getGoods/v1/";*/
+	public static String GetGoodURL = IP
+			+ "/mallService/api/EnnGoods/searchByName/v3";
 	/**
 	 * 搜索商品的url
 	 */
 	public static String SearchGoodURL = IP
-			+ "/mallService/api/EnnGoods/searchByName/v1/";
+			+ "/mallService/api/EnnGoods/searchByName/v3";
 
 	/**
 	 * 通过商品id获取商品详情
@@ -325,12 +325,12 @@ public class CommonVariable {
 	public static String MembercardPayPasswordUpdateURL = IP
 			+ "/mallService/api/EnnMemberPaypwd/setPayPwd/v1/";
 	/**
-	 * 获取会员卡消费记录的列表
+	 * 获取会员卡消费记录的列表   bypage是分页的
 	 */
-	public static String GetMemberCardRecord = IP
-			+ "/mallService/api/EnnCardRecord/search/v1";
 	/*public static String GetMemberCardRecord = IP
-			+ "/mallService/api/EnnCardRecord/searchByPage/v1";*/
+			+ "/mallService/api/EnnCardRecord/search/v1";*/
+	public static String GetMemberCardRecord = IP
+			+ "/mallService/api/EnnCardRecord/searchByPage/v1";
 	
 	/**
 	 * 会员卡充值规则接口

@@ -4,17 +4,21 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xyyy.shop.R;
+import com.xyyy.shop.model.EnnSalesAction;
 import com.xyyy.shop.model.GoodItemVO;
+import com.xyyy.shop.toolUtil.UnitUtil;
 
 public class SearchItemAdapter extends BaseAdapter {
 	private Context _context;
@@ -61,6 +65,10 @@ public class SearchItemAdapter extends BaseAdapter {
 					.findViewById(R.id.item_img);
 			holder.item_describe = (TextView) convertView
 					.findViewById(R.id.item_describe);
+
+				holder.lin = (LinearLayout) convertView
+					.findViewById(R.id.lin);
+
 			holder.item_price = (TextView) convertView
 					.findViewById(R.id.item_price);
 			holder.item_pricenouse = (TextView) convertView
@@ -110,10 +118,32 @@ public class SearchItemAdapter extends BaseAdapter {
 		}else{
 			holder.item_peoplenum.setText("0人付款");
 		}
+
+		if(null!=oneitem.getEnnSalesActions()&&oneitem.getEnnSalesActions().size()>0){
+			holder.lin.setVisibility(View.VISIBLE);
+			holder.lin.removeAllViews();
+			for (int i=0;i<oneitem.getEnnSalesActions().size();i++){
+				EnnSalesAction onesalesaction=oneitem.getEnnSalesActions().get(i);
+                TextView onetextview=new TextView(_context);
+				onetextview.setTextSize(12);
+				onetextview.setTextColor(Color.WHITE);
+				onetextview.setText(onesalesaction.getActionNameSimp());
+				onetextview.setPadding(UnitUtil.dpTopx(5),UnitUtil.dpTopx(1),UnitUtil.dpTopx(5),UnitUtil.dpTopx(1));
+				onetextview.setBackgroundResource(R.drawable.sale_bg);
+				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				if(i!=0)
+				layoutParams.setMargins(UnitUtil.dpTopx(8), 0, 0,0 );//4个参数按顺序分别是左上右下
+				onetextview.setLayoutParams(layoutParams);
+				holder.lin.addView(onetextview);
+			}
+		}else{
+			holder.lin.setVisibility(View.GONE);
+		}
 		return convertView;
 	}
 
 	private static class Holder {
+		LinearLayout lin;
 		ImageView item_img;
 		TextView item_describe;
 		TextView item_price;
